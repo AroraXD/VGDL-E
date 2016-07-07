@@ -1,0 +1,60 @@
+#Bolo Adventures III: http://www.mobygames.com/game/dos/bolo-adventures-iii
+BasicGame key_handler=Pulse
+    SpriteSet
+        hole   > Immovable color=DARKBLUE img=hole
+        goal > Immovable img=door
+        avatar > OrientedAvatar rotateInPlace=false
+        box    > Passive img=box
+        boulder  > Passive img=boulder
+        boulderm > Missile img=boulder
+        lasercannon > SpawnPoint 
+            lcup > img=spaceship stype=lup
+            lcdown > img=spaceship stype=ldown
+            lcright > img=spaceship stype=lright
+            lcleft > img=spaceship stype=lleft
+        laser > Missile color=YELLOW  shrinkfactor=0.5 speed=0.1
+            lup > orientation=UP
+            ldown > orientation=DOWN
+            lright > orientation=RIGHT
+            lleft > orientation=LEFT
+
+    LevelMapping
+        A > avatar
+        b > box
+        c > boulder
+        l > lcleft
+        r > lcright
+        u > lcup
+        d > lcdown
+        0 > hole
+        g > goal
+
+    InteractionSet
+
+        boulderm wall box boulder lasercannon > transformTo stype=boulder
+        boulderm hole > killBoth scoreChange=1
+
+        avatar wall lasercannon > stepBack
+        avatar box > shieldFrom ftype=killIfFrontal stype=laser
+
+        box avatar  > bounceForward
+        box wall box hole lasercannon   > undoAll
+        
+        avatar wall > stepBack
+        boulder avatar  > transformTo stype=boulderm
+        boulderm avatar > attractGaze
+        avatar boulder boulderm > stepBack
+
+        boulder box wall boulder lasercannon > undoAll
+        laser wall boulder boulderm box hole > killSprite
+        avatar hole > stepBack
+
+        avatar laser > killIfFrontal
+        avatar laser > killIfNotFrontal
+
+        
+        goal avatar > killSprite scoreChange=5
+
+    TerminationSet
+        SpriteCounter stype=avatar    limit=0 win=False
+        SpriteCounter stype=goal    limit=0 win=True

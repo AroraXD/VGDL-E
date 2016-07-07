@@ -1,0 +1,25 @@
+BasicGame square_size=80 key_handler=Pulse
+    SpriteSet
+        door > Door img=exit
+        wall > Immovable img=wall
+        water > Immovable img=water
+        box > Passive img=box
+        avatar > MovingAvatar img=avatar
+    TerminationSet
+        SpriteCounter stype=door limit=0 win=True
+        SpriteCounter stype=avatar limit=0 win=False
+    InteractionSet
+        avatar wall > stepBack
+        box avatar > bounceForward
+        box wall box > undoAll
+        wall box > undoAll
+        water box > killBoth
+        avatar water > killSprite
+        door avatar > killSprite
+
+    LevelMapping
+        p > avatar
+        w > wall
+        x > water
+        c > box
+        o > door

@@ -1,0 +1,51 @@
+BasicGame
+    SpriteSet
+
+        sky   > Immovable color=WHITE
+        saved > Immovable color=LIGHTGREEN img=avatar
+        holes > SpawnPoint color=LIGHTGRAY img=portal portal=True
+            sharkhole  >  stype=shark  prob=0.01
+            whalehole  >  stype=whale  prob=0.005
+            diverhole  >  stype=diver
+                normaldiverhole > prob=0.005
+                oftendiverhole  > prob=0.025
+
+        moving >
+            avatar  > ShootAvatar color=YELLOW  stype=torpedo img=spaceship healthPoints=18 limitHealthPoints=20
+            torpedo > Missile color=YELLOW shrinkfactor=0.3 img=missile
+            fish >
+                shark  > Missile orientation=LEFT  speed=0.25 color=ORANGE img=frog
+                whale  > Bomber  orientation=RIGHT  speed=0.1 color=BROWN stype=pirana prob=0.02 img=bee 
+                pirana > Missile orientation=RIGHT speed=0.25 color=RED shrinkfactor=0.5 img=camel
+            diver > RandomNPC color=GREEN speed=0.5 img=ghost cons=2
+
+        crew  > Resource color=GREEN limit=4 img=alien
+
+    InteractionSet
+
+        avatar TIME > subtractHealthPoints timer=26 repeating=True
+
+        EOS avatar diver sky   > stepBack
+        fish EOS  > killSprite #Note that from vgdl 2.0, EOS can be the first or the second sprite.
+
+        fish torpedo > killBoth scoreChange=1
+        avatar fish  > killSprite
+
+        avatar sky > addHealthPoints value=1
+        avatar sky > spawnIfHasMore resource=crew stype=saved limit=4 spend=4
+        saved  sky > killSprite scoreChange=1000
+
+        avatar diver > changeResource resource=crew
+        diver avatar > killSprite
+
+    LevelMapping
+        a > sky
+        A > avatar
+        1 > sharkhole
+        2 > whalehole
+        3 > normaldiverhole
+        4 > oftendiverhole
+
+    TerminationSet
+        SpriteCounter      stype=avatar               limit=0 win=False
+        Timeout limit=1000 win=True

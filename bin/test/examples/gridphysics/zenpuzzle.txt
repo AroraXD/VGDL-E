@@ -1,0 +1,25 @@
+#http://www.puzzlescript.net/editor.html?hack=6847423
+
+BasicGame key_handler=Pulse square_size=48
+    SpriteSet
+        background > Immovable img=backBiege
+        isincenter > Flicker limit=1
+        avatar  > MovingAvatar img=angel1
+        ground > Immovable img=floorTileOrange
+        walked > Immovable img=floorTileGreen
+        rock > Immovable img=wall5
+    
+    LevelMapping
+        r > background rock
+        g > background ground
+        . > background
+        A > background avatar
+        
+    TerminationSet
+        SpriteCounter      stype=avatar               limit=0 win=False  
+        MultiSpriteCounter   stype1=isincenter  stype2=ground   limit=0 win=True
+
+    InteractionSet
+        avatar  EOS rock walked  > stepBack
+        ground avatar > transformTo stype=walked scoreChange=1
+        walked avatar > spawnIfHasMore resource=null limit=0 stype=isincenter

@@ -1,0 +1,91 @@
+#Chip's Challenge
+
+BasicGame square_size=45 key_handler=Pulse
+    SpriteSet
+        water > Immovable img=water
+        mud > Immovable img=marsh
+        fire > Immovable img=fire
+
+        key > Resource shrinkfactor=0.5
+            redkey > color=RED
+            bluekey > color=BLUE
+            greenkey > color=GREEN
+            yellowkey > color=YELLOW
+
+        door > Immovable
+            reddoor > Immovable color=RED
+            bluedoor > Immovable color=BLUE
+            greendoor > Immovable color=GREEN
+            yellowdoor > Immovable color=YELLOW
+
+        boots > Resource limit=1
+            flippers > img=diamond
+            fireboots > img=powerpill
+        
+        crate > Passive img=box
+        
+        gate > Immovable img=base
+        exit > Immovable img=goal
+        chip > Resource img=gold limit=11
+        avatar > MovingAvatar img=alien
+            
+    
+    LevelMapping
+        A > avatar
+        ~ > water
+        m > mud
+        x > fire
+        r > redkey
+        g > greenkey
+        b > bluekey
+        y > yellowkey
+
+        1 > reddoor
+        2 > greendoor
+        3 > bluedoor
+        4 > yellowdoor
+
+        - > gate
+        c > chip
+        e > exit
+        f > flippers
+        i > fireboots
+        d > crate
+
+
+    TerminationSet
+        SpriteCounter      stype=avatar               limit=0 win=False  
+        SpriteCounter      stype=exit               limit=0 win=True        
+    InteractionSet
+
+        crate avatar > bounceForward
+        crate crate wall door key chip gate mud fire boots > undoAll
+
+        water crate > transformTo stype=mud scoreChange=1 killSecond=true
+        
+        mud avatar > killSprite
+        
+        gate avatar > killIfOtherHasMore resource=chip limit=11 scoreChange=4
+        avatar gate > stepBack
+
+        chip avatar > collectResource scoreChange=1
+        key avatar > collectResource
+        boots avatar > collectResource scoreChange=3
+
+        reddoor avatar > killIfOtherHasMore resource=redkey limit=1 scoreChange=2
+        avatar reddoor > changeResource resource=redkey value=-1
+
+        greendoor avatar > killIfOtherHasMore resource=greenkey limit=1  scoreChange=2
+        avatar greendoor > changeResource resource=greenkey value=-1
+
+        bluedoor avatar > killIfOtherHasMore resource=bluekey limit=1  scoreChange=2
+        avatar bluedoor > changeResource resource=bluekey value=-1
+
+        yellowdoor avatar > killIfOtherHasMore resource=yellowkey limit=1  scoreChange=2
+        avatar yellowdoor > changeResource resource=yellowkey value=-1
+        
+        avatar wall door > undoAll
+        avatar water > killIfHasLess resource=flippers limit=0
+        avatar fire > killIfHasLess resource=fireboots limit=0
+
+        exit avatar > killSprite scoreChange=5

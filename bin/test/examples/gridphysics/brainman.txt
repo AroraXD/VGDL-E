@@ -1,0 +1,50 @@
+#BrainMan: http://www.mobygames.com/game/brainman
+
+BasicGame
+    SpriteSet
+        avatar > OrientedAvatar img=alien rotateInPlace=false
+        gem > Immovable
+            green > Immovable img=diamond
+            red > Immovable img=powerpill
+            blue > Immovable img=mana
+        key > Passive img=key
+        keym > Missile img=city
+        exit > Immovable img=goal
+        door > Immovable img=door
+        boulder > Passive img=boulder 
+    LevelMapping
+        A > avatar
+        k > key
+        d > door
+        e > exit
+        g > green
+        r > red
+        b > blue 
+        O > boulder
+    InteractionSet
+
+        keym key wall gem boulder > transformTo stype=key
+
+        avatar wall door > stepBack
+        
+        boulder avatar > bounceForward
+        
+        key avatar > transformTo stype=keym
+        keym avatar > attractGaze
+        avatar key keym > stepBack
+        
+        door keym > killBoth scoreChange=4
+
+        green avatar > killSprite scoreChange=1
+        blue avatar > killSprite scoreChange=2
+        red avatar > killSprite scoreChange=5
+        
+        boulder wall key gem boulder > undoAll
+        
+        key wall gem key > undoAll
+
+        exit avatar > killSprite scoreChange=10
+        
+    TerminationSet
+        SpriteCounter stype=avatar limit=0 win=False
+        SpriteCounter stype=exit limit=0 win=True
