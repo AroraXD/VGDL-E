@@ -25,6 +25,9 @@ public:
 	void addSpriteInList(Sprite newS);
 
 	std::vector<std::string> getSpriteTypeList();
+	std::vector<std::string> getColorList();
+	std::vector<std::string> getSpriteParameterList();
+
 
 
 private:
@@ -40,7 +43,7 @@ private:
 
 	std::vector<std::string> colorList = { "BLUE", "DARKBLUE","RED","YELLOW","ORANGE","WHITE" };
 
-	std::vector<std::string> parameterTypeList = { "shrinkfactor","invisible","hidden","img", //0-3
+	std::vector<std::string> spriteParameterList = { "shrinkfactor","invisible","hidden","img", //0-3
 										"color","singleton","cooldown","speed", //4-7
 										"orientation","rotateInPlace"//8-9 
 										};//list of possible parameter types

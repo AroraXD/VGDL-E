@@ -19,8 +19,8 @@
 
 class Sprite {
 public:
-	Sprite(std::string newName, std::string stype);
-	Sprite(std::string newName, std::string stype, std::list<SpriteParameter> paramList);
+	Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null");
+	Sprite(std::string newName, std::string stype, std::vector<SpriteParameter> paramList, bool hasParent = false, std::string parent = "null");
 
 	virtual ~Sprite();
 
@@ -37,7 +37,12 @@ public:
 
 private:
 	std::string name;
+	std::string parentName; //if there is any
 	std::string spriteType;//sprite type of this particular sprite
+	
+	bool hasParent;//true if sprite is part of a higher sprite class
+	std::string parent;
+
 
 	std::vector<SpriteParameter> parameterList;//one sprite can have a lot of parameters
 

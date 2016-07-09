@@ -1,14 +1,14 @@
 #pragma once
 #include <string>
 
-class SpriteParameter
+class Parameter
 {
 public:
-	SpriteParameter(std::string name, int value);
-	SpriteParameter(std::string name, float value);
-	SpriteParameter(std::string name, std::string value);
+	Parameter(std::string name, int value);
+	Parameter(std::string name, float value);
+	Parameter(std::string name, std::string value);
 
-	~SpriteParameter();
+	~Parameter();
 
 private:
 	std::string parameterName;

@@ -36,8 +36,8 @@ std::vector<std::string> SpriteSet::getColorList()
 	return colorList;
 }
 
-std::vector<std::string> SpriteSet::getParameterTypeList()
+std::vector<std::string> SpriteSet::getSpriteParameterList()
 {
-	return parameterTypeList;
+	return spriteParameterList;
 }
 
