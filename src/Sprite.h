@@ -10,7 +10,7 @@
 #include <string>
 #include <list>
 #include <vector>
-#include "SpriteParameter.h"
+#include "Parameter.h"
 
 
 /*Sprite is a class that holds a single instance of a Sprite object, with all its possible variables, like
@@ -20,7 +20,7 @@
 class Sprite {
 public:
 	Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null");
-	Sprite(std::string newName, std::string stype, std::vector<SpriteParameter> paramList, bool hasParent = false, std::string parent = "null");
+	Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, std::string parent = "null");
 
 	virtual ~Sprite();
 
@@ -31,8 +31,8 @@ public:
 	std::string getSpriteType();
 	void setSpriteType(std::string newstype);
 
-	std::vector<SpriteParameter> getSpriteParameters();
-	void addParameter(SpriteParameter newParameter);
+	std::vector<Parameter> getSpriteParameters();
+	void addParameter(Parameter newParameter);
 	
 
 private:
