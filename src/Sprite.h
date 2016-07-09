@@ -33,18 +33,22 @@ public:
 
 	std::vector<Parameter> getSpriteParameters();
 	void addParameter(Parameter newParameter);
+
+	std::string getParent();
+	void setParent(std::string newParent);
+
+	bool spriteHasParent();
 	
 
 private:
 	std::string name;
-	std::string parentName; //if there is any
 	std::string spriteType;//sprite type of this particular sprite
 	
 	bool hasParent;//true if sprite is part of a higher sprite class
 	std::string parent;
 
 
-	std::vector<SpriteParameter> parameterList;//one sprite can have a lot of parameters
+	std::vector<Parameter> parameterList;//one sprite can have a lot of parameters
 
 
 
