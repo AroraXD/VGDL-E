@@ -41,7 +41,7 @@ public:
 	
 
 private:
-	std::string name;
+	std::string name;//name of the sprite
 	std::string spriteType;//sprite type of this particular sprite
 	
 	bool hasParent;//true if sprite is part of a higher sprite class

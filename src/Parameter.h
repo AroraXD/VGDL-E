@@ -13,9 +13,18 @@ public:
 
 	~Parameter();
 
+	std::string getParameterName();
+	void setParameterName(std::string newName);
+
+	std::string getParameterValue();
+	void setParameterValue(std::string newValue);
+
+
 private:
 	std::string parameterName;
-	std::string parameterValue;//because the parameter may be a string, a float or an int, we simply cast them all to strings, since we'll only use them to create the script
+	//because the parameter may be a string, a float or an int, we simply cast them all to strings, since we'll only use them to create the script
+	std::string parameterValue;
+
 	int parameterType;//1=int, 2=float, 3=bool, 4=string
 };
 

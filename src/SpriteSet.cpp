@@ -16,7 +16,7 @@ SpriteSet::~SpriteSet() {
 	// TODO Auto-generated destructor stub
 }
 
-std::list<Sprite> SpriteSet::getSpriteList()
+std::vector<Sprite> SpriteSet::getSpriteList()
 {
 	return spriteList;
 }

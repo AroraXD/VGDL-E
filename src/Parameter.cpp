@@ -36,3 +36,23 @@ Parameter::Parameter(std::string name, std::string value)
 Parameter::~Parameter()
 {
 }
+
+std::string Parameter::getParameterName()
+{
+	return parameterName;
+}
+
+void Parameter::setParameterName(std::string newName)
+{
+	parameterName = newName;
+}
+
+std::string Parameter::getParameterValue()
+{
+	return parameterValue;
+}
+
+void Parameter::setParameterValue(std::string newValue)
+{
+	parameterValue = newValue;
+}

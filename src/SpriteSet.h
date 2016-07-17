@@ -21,7 +21,7 @@ public:
 	SpriteSet();
 	virtual ~SpriteSet();
 
-	std::list<Sprite> getSpriteList();
+	std::vector<Sprite> getSpriteList();
 	void addSpriteInList(Sprite newS);
 
 	std::vector<std::string> getSpriteTypeList();
@@ -31,7 +31,7 @@ public:
 
 
 private:
-	std::list<Sprite> spriteList;//holds list of sprites. Needs to be dynamic, right?
+	std::vector<Sprite> spriteList;//holds list of sprites. Needs to be dynamic, right?
 	std::vector<std::string> spriteTypeList = {"MovingAvatar", "HorizontalAvatar", "OngoingAvatar","OngoingTurningAvatar",//0-3
 									  "MissileAvatar","OrientedAvatar","ShootAvatar","FlakAvatar",//4-7, here ends Avatar Sprites section
 									  "Immovable","Passive","Flicker","OrientedFlicker",//8-11, in 8 starts "Other Sprites" section

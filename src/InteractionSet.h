@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Interaction.h"
 #include <vector>
 
 class InteractionSet
@@ -13,7 +14,7 @@ public:
 
 
 private:
-	//std::vector<Interaction> interactionList;
+	std::vector<Interaction> interactionList;
 	std::vector<std::string> interactionTypeList = {};
 	std::vector<std::string> interactionParametersList = {};
 };

@@ -2,6 +2,7 @@
 
 #include <string>
 #include "SpriteSet.h"
+#include "InteractionSet.h"
 #include "TerminationSet.h"
 
 
@@ -9,7 +10,7 @@
 class VDGLParser
 {
 public:
-	VDGLParser();
+	VDGLParser(std::string fileName);
 	~VDGLParser();
 
 	std::string getPath();
@@ -18,11 +19,16 @@ public:
 	std::string getLevelPath();
 	void setLevelPath(std::string newLevelPath);
 
-	void createVGDLScript(std::string path, SpriteSet spriteSet, TerminationSet terminationSet);//creates a text file in the path indicated, and builds the VGDL script in it
+
+
+	bool reloadFile(std::string filePath);
+	bool writeVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);
+	bool createVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);//creates a text file in the path indicated, and builds the VGDL script in it
 
 private:
 	std::string scriptPath;//holds the path to the VGDL script
 	std::string levelScriptPath;//holds the path to the VGDL level script
+
 
 };
 

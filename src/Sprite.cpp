@@ -12,7 +12,7 @@
 //
 //}
 
-Sprite::Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null")
+Sprite::Sprite(std::string newName, std::string stype, bool hasParent, std::string parent)
 {
 	name = newName;
 	spriteType = stype;
@@ -20,7 +20,7 @@ Sprite::Sprite(std::string newName, std::string stype, bool hasParent = false, s
 	this->parent = parent;
 }
 
-Sprite::Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, std::string parent = "null")
+Sprite::Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent, std::string parent)
 {
 	name = newName;
 	spriteType = stype;
