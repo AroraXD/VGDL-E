@@ -193,12 +193,13 @@
     <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParameterizableObj.cpp" />
+    <ClCompile Include="src\ScriptTester.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Parameter.cpp" />
     <ClCompile Include="src\SpriteSet.cpp" />
     <ClCompile Include="src\Termination.cpp" />
     <ClCompile Include="src\TerminationSet.cpp" />
-    <ClCompile Include="src\VDGLParser.cpp" />
+    <ClCompile Include="src\VGDLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
@@ -215,12 +216,13 @@
     <ClInclude Include="src\Manager.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\ParameterizableObj.h" />
+    <ClInclude Include="src\ScriptTester.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Parameter.h" />
     <ClInclude Include="src\SpriteSet.h" />
     <ClInclude Include="src\Termination.h" />
     <ClInclude Include="src\TerminationSet.h" />
-    <ClInclude Include="src\VDGLParser.h" />
+    <ClInclude Include="src\VGDLParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

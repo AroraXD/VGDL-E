@@ -1,17 +1,24 @@
 #pragma once
 
 #include <string>
-#include <list>
+#include "Termination.h"
 
 class TerminationSet
 {
 public:
 	TerminationSet();
+	TerminationSet(std::vector<Termination> newTerminationList);
 	~TerminationSet();
 
+	std::vector<Termination> getTerminationList();
+	void setTerminationList(std::vector<Termination> newTerminationList);
+	void addTermination(Termination newTermination);
 
 private:
-	//std::list<Termination> terminationList;
+	std::vector<Termination> terminationList;
+
+	std::vector<std::string> terminationTypeList = { "SpriteCounter","MultiSpriteCounter","TimeoutScoreCount" };
+	std::vector<std::string> terminationParameterList = { "stype","limit","stype1","stype2" };
 
 };
 

@@ -1,8 +1,8 @@
-#include "VDGLParser.h"
+#include "VGDLParser.h"
 #include <fstream>
 
 
-VDGLParser::VDGLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
+VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
 {
 	//for now, sets the script paths to default(save on C:/)
 	setPath("C:/" + fileName + ".txt");
@@ -19,26 +19,26 @@ VDGLParser::VDGLParser(std::string fileName)//filename is VGDL script's name, ma
 }
 
 
-VDGLParser::~VDGLParser()
+VGDLParser::~VGDLParser()
 {
 }
 
-std::string VDGLParser::getPath()
+std::string VGDLParser::getPath()
 {
 	return scriptPath;
 }
 
-void VDGLParser::setPath(std::string newPath)
+void VGDLParser::setPath(std::string newPath)
 {
 	scriptPath = newPath;
 }
 
-std::string VDGLParser::getLevelPath()
+std::string VGDLParser::getLevelPath()
 {
 	return levelScriptPath;
 }
 
-void VDGLParser::setLevelPath(std::string newLevelPath)
+void VGDLParser::setLevelPath(std::string newLevelPath)
 {
 	levelScriptPath = newLevelPath;
 }
@@ -46,7 +46,7 @@ void VDGLParser::setLevelPath(std::string newLevelPath)
 
 
 
-bool VDGLParser::reloadFile(std::string filePath)
+bool VGDLParser::reloadFile(std::string filePath)
 {
 	//returns true if reload is successfull
 	if (remove(filePath.c_str()) != 0)
@@ -61,7 +61,7 @@ bool VDGLParser::reloadFile(std::string filePath)
 		return false;
 }
 
-bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
 {
 	//here is where the action happens
 	//The method writes the VGDL script from scratch, so it must place ALL of the necessary things in it
@@ -108,7 +108,7 @@ bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		for (int i = 0; i < interactionList.size(); i++)
 		{
 			VGDLScript << "\t";
-			VGDLScript << "\t"+interactionList[i].getInteractedSprite + " ";
+			VGDLScript << "\t"+interactionList[i].getInteractedSprite() + " ";
 			for (int j = 0; j < interactionList[i].getInteractorSprites().size(); j++)
 			{
 				//gets each of the current interacted sprite's interactor sprites
@@ -116,7 +116,7 @@ bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 			}
 			VGDLScript << " > ";
 			//now to write the "consequence" and its possible parameters
-			VGDLScript << interactionList[i].getInteractionType+" ";
+			VGDLScript << interactionList[i].getInteractionType()+" ";
 			for (int j = 0; j < interactionList[i].getParameterList().size(); j++)
 			{
 				//write the existing parameters of the consequence
@@ -133,6 +133,21 @@ bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 
 		VGDLScript << "\tTerminationSet";
+		std::vector<Termination> terminationList = terminationSet.getTerminationList();
+		for (int i = 0; i < terminationList.size(); i++)
+		{
+			//get the termination type
+			VGDLScript << "\t";
+			VGDLScript << "\t" + terminationList[i].getTerminationType() + " ";
+			//now get each of its possible parameters
+			for (int j = 0; j < terminationList[i].getParameterList().size(); j++)
+			{
+				VGDLScript << terminationList[i].getParameterList()[j].getParameterName() + "=" + terminationList[i].getParameterList()[j].getParameterValue();
+				
+			}
+			VGDLScript << "\n";
+
+		}
 
 		VGDLScript << "\tLevelMapping";
 
@@ -152,7 +167,7 @@ bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 }
 
-bool VDGLParser::createVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::createVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
 {
 	//first, we must open the files
 

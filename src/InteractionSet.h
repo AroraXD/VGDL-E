@@ -19,7 +19,15 @@ public:
 
 private:
 	std::vector<Interaction> interactionList;
-	std::vector<std::string> interactionTypeList = {};
-	std::vector<std::string> interactionParametersList = {};
+	std::vector<std::string> interactionTypeList = {"killSprite", "killIfHasMore","killIfHasLess","killFromAbove","killIfOtherHasMore","transformToSingleton", //0-5, KILL category
+													"spawnBehind","spawnIfHasMore","spawnIfHasLess","cloneSprite","transformTo","updateSpawnType","removeScore",//6-12, SPAWN category
+													"stepBack","undoAll",//13-14, UNDO category
+													"flipDirection","reverseDirection","attractGaze",//15-17, DIRECTION category
+													"turnAround","wrapAround","teleportToExit","pullWithIt","bounceForward",//18-22,MOVE category
+													"collectResource","changeResource"//23-24, RESOURCE category
+													};
+
+
+	std::vector<std::string> interactionParametersList = {"resource", "limit","stype","stype_other","spawnPoint","value"};
 };
 

@@ -7,11 +7,12 @@
 
 
 
-class VDGLParser
+class VGDLParser
 {
 public:
-	VDGLParser(std::string fileName);
-	~VDGLParser();
+
+	VGDLParser(std::string fileName);
+	~VGDLParser();
 
 	std::string getPath();
 	void setPath(std::string newPath);

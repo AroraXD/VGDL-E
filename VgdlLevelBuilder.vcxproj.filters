@@ -40,9 +40,6 @@
     <ClCompile Include="src\TerminationSet.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\VDGLParser.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Parameter.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -59,6 +56,12 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\ParameterizableObj.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ScriptTester.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VGDLParser.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,9 +119,6 @@
     <ClInclude Include="src\TerminationSet.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\VDGLParser.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\Parameter.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -135,6 +135,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ParameterizableObj.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ScriptTester.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\VGDLParser.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
