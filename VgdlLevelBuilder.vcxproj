@@ -192,9 +192,11 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\ParameterizableObj.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Parameter.cpp" />
     <ClCompile Include="src\SpriteSet.cpp" />
+    <ClCompile Include="src\Termination.cpp" />
     <ClCompile Include="src\TerminationSet.cpp" />
     <ClCompile Include="src\VDGLParser.cpp" />
   </ItemGroup>
@@ -212,9 +214,11 @@
     <ClInclude Include="src\InteractionSet.h" />
     <ClInclude Include="src\Manager.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\ParameterizableObj.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Parameter.h" />
     <ClInclude Include="src\SpriteSet.h" />
+    <ClInclude Include="src\Termination.h" />
     <ClInclude Include="src\TerminationSet.h" />
     <ClInclude Include="src\VDGLParser.h" />
   </ItemGroup>

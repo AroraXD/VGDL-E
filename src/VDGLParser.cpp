@@ -97,9 +97,40 @@ bool VDGLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		//APART FROM PARENT SPRITES, SPRITESET CONSTRUCTION IS COMPLETE
 
 
-		//TODO: complete InteractionSet and TerminationSet, leave LevelMapping for last
 
 		VGDLScript << "\tInteractionSet";
+
+		//now we fill the interactions with the following syntax:
+		//	sprite ListOfInteractorSprites > consequence PossibleParameterList
+		std::vector<Interaction> interactionList = interactionSet.getInteractionList();
+
+		//for each interaction, write a line
+		for (int i = 0; i < interactionList.size(); i++)
+		{
+			VGDLScript << "\t";
+			VGDLScript << "\t"+interactionList[i].getInteractedSprite + " ";
+			for (int j = 0; j < interactionList[i].getInteractorSprites().size(); j++)
+			{
+				//gets each of the current interacted sprite's interactor sprites
+				VGDLScript << interactionList[i].getInteractorSprites()[j]+ " ";
+			}
+			VGDLScript << " > ";
+			//now to write the "consequence" and its possible parameters
+			VGDLScript << interactionList[i].getInteractionType+" ";
+			for (int j = 0; j < interactionList[i].getParameterList().size(); j++)
+			{
+				//write the existing parameters of the consequence
+				VGDLScript <<interactionList[i].getParameterList()[j].getParameterName()+"="+interactionList[i].getParameterList()[j].getParameterValue();
+				VGDLScript << " ";
+			}
+			//end of this interaction, change line
+			VGDLScript << "\n";
+
+		}
+		//believe InteractionSet is complete as well
+
+		//TODO: complete and TerminationSet, leave LevelMapping for last
+
 
 		VGDLScript << "\tTerminationSet";
 

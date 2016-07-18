@@ -55,6 +55,12 @@
     <ClCompile Include="src\Manager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Termination.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParameterizableObj.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -123,6 +129,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Manager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Termination.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParameterizableObj.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

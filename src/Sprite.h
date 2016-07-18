@@ -10,14 +10,15 @@
 #include <string>
 #include <list>
 #include <vector>
-#include "Parameter.h"
+#include "ParameterizableObj.h"
 
 
 /*Sprite is a class that holds a single instance of a Sprite object, with all its possible variables, like
 *name, its spriteType,
 */
 
-class Sprite {
+class Sprite : public ParameterizableObj
+{
 public:
 	Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null");
 	Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, std::string parent = "null");
@@ -48,7 +49,6 @@ private:
 	std::string parent;
 
 
-	std::vector<Parameter> parameterList;//one sprite can have a lot of parameters
 
 
 
