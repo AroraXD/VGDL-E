@@ -15,6 +15,9 @@
 TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction and Termination sets
 TODO: create more methods to build the flow of the scriptTester script
 
+//for later on...
+TODO: start thinking about Sprite parenting
+
 */
 
 

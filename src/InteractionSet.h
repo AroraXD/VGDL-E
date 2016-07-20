@@ -7,15 +7,18 @@ class InteractionSet
 {
 public:
 	InteractionSet();
-	InteractionSet(std::vector<Interaction> intList);
+	InteractionSet(std::vector<Interaction> intList);//most likely won't use this, as I might just add interactions one by one
 	~InteractionSet();
 
-	std::vector<std::string> getInteractionTypeList();
-	std::vector<std::string> getInteractionParametersList();
+	std::vector<std::string> getInteractionTypeList();//gets interaction type list; used for drop down menus in GUI
+	std::vector<std::string> getInteractionParametersList();//gets possible parameters list; used for drop down menus in GUI
 
-	std::vector<Interaction> getInteractionList();
-	void setInteractionList(std::vector<Interaction> newIntList);
-	void addInteraction(Interaction newInteraction);
+	std::vector<Interaction> getInteractionList();//returns the existing list of interactions
+	void setInteractionList(std::vector<Interaction> newIntList);//sets a whole interaction list; probably not going to be used
+	void addInteraction(Interaction newInteraction);//adds new interaction to list
+
+	//deletes Interaction from the Interaction list; has to check all, so O(n), but list will be small, so it should be fine
+	void deleteInteraction(Interaction erasedInteraction);
 
 private:
 	std::vector<Interaction> interactionList;

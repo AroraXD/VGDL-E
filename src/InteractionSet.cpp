@@ -40,3 +40,18 @@ void InteractionSet::addInteraction(Interaction newInteraction)
 {
 	interactionList.push_back(newInteraction);
 }
+
+void InteractionSet::deleteInteraction(Interaction erasedInteraction)
+{
+	//goes through the sprite list(O(n), I know) and delete the correct sprite
+	for (int i = 0; i < interactionList.size(); i++)
+	{
+		if (interactionList[i] == erasedInteraction)
+		{
+			//delete this sprite
+			interactionList.erase(interactionList.begin() + i);
+			return;
+		}
+	}
+}
+

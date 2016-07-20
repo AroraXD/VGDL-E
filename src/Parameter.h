@@ -19,6 +19,10 @@ public:
 	std::string getParameterValue();
 	void setParameterValue(std::string newValue);
 
+	int getParameterType();
+	void setParameterType(int newParameterType);
+
+	bool operator==(Parameter p);
 
 private:
 	std::string parameterName;

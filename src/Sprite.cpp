@@ -79,3 +79,29 @@ bool Sprite::spriteHasParent()
 	return hasParent;
 }
 
+bool Sprite::operator==(Sprite s)
+{
+	return (this->getName() == s.getName() && this->getParent() == s.getParent() && haveSameParameterList(*this, s));
+}
+
+bool Sprite::haveSameParameterList(Sprite s1, Sprite s2)
+{
+	//if they're not even the same size, goes straight to false
+	if (s1.getParameterList().size() != s2.getParameterList().size())
+		return false;
+	else//same size, so we check item by item
+	{
+		for (int i = 0; i < s1.getParameterList().size(); i++)
+		{
+			if (!(s1.getParameterList()[i] == s2.getParameterList()[i]))//diff name or value, ergo diff parameter
+			{
+				return false;
+			}
+
+		}
+
+	}
+	//after all tests, if it got here, means it has the same parameter list
+	return true;
+}
+

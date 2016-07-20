@@ -21,12 +21,16 @@ public:
 	SpriteSet();
 	virtual ~SpriteSet();
 
-	std::vector<Sprite> getSpriteList();
-	void addSpriteInList(Sprite newS);
+	std::vector<Sprite> getSpriteList();//returns sprite list
+	void addSprite(Sprite newSprite);//adds new sprite to the Sprite list
+	
+	//deletes Sprite from the Sprite list; has to check all, so O(n), but list will be small, so it should be fine
+	void deleteSprite(Sprite erasedSprite); 
 
-	std::vector<std::string> getSpriteTypeList();
-	std::vector<std::string> getColorList();
-	std::vector<std::string> getSpriteParameterList();
+	//fixed possible parameter lists, so no "set" needed for them
+	std::vector<std::string> getSpriteTypeList();//returns sprite type list; most likely to be used in the GUI for the drop-down menus
+	std::vector<std::string> getColorList();//returns possible color list; to be used when parameter is of type COLOR
+	std::vector<std::string> getSpriteParameterList();//returns all the possible parameters a sprite can have
 
 
 

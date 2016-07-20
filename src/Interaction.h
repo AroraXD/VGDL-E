@@ -23,6 +23,11 @@ public:
 	void setInteractorSprites(std::vector<std::string> newInteractorList);
 	void addNewInteractorSprite(std::string newInteractorSprite);
 
+
+	bool operator==(Interaction i);
+	bool haveSameInteractorSprites(Interaction i1, Interaction i2);//check if two interactions have the same interactor sprites
+	bool haveSameParameterList(Interaction i1, Interaction i2);//check if the two sprite's parameter lists are the same; to be used with delete method
+
 private:
 	std::string interactedSprite;//the first sprite, the one that's suffering the action
 	std::vector<std::string> interactorSprites; //the sprite( or sprites) that is(are) the doer(s) of the action

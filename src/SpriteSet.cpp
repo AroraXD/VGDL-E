@@ -21,10 +21,25 @@ std::vector<Sprite> SpriteSet::getSpriteList()
 	return spriteList;
 }
 
-void SpriteSet::addSpriteInList(Sprite newS)
+void SpriteSet::addSprite(Sprite newSprite)
 {
-	spriteList.push_back(newS);
+	spriteList.push_back(newSprite);
 }
+
+void SpriteSet::deleteSprite(Sprite erasedSprite)
+{
+	//goes through the sprite list(O(n), I know) and delete the correct sprite
+	for (int i = 0; i < spriteList.size(); i++)
+	{
+		if (spriteList[i] == erasedSprite)
+		{
+			//delete this sprite
+			spriteList.erase(spriteList.begin()+i);
+			return;
+		}
+	}
+}
+
 
 std::vector<std::string> SpriteSet::getSpriteTypeList()
 {

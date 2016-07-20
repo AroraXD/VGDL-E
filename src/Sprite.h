@@ -39,7 +39,10 @@ public:
 	void setParent(std::string newParent);
 
 	bool spriteHasParent();
-	
+
+
+	bool operator==(Sprite s);
+	bool haveSameParameterList(Sprite s1, Sprite s2);//check if the two sprite's parameter lists are the same; to be used with delete method
 
 private:
 	std::string name;//name of the sprite

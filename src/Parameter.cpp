@@ -56,3 +56,18 @@ void Parameter::setParameterValue(std::string newValue)
 {
 	parameterValue = newValue;
 }
+
+int Parameter::getParameterType()
+{
+	return parameterType;
+}
+
+void Parameter::setParameterType(int newParameterType)
+{
+	parameterType = newParameterType;
+}
+
+bool Parameter::operator==(Parameter p)
+{
+	return (this->getParameterName() == p.getParameterName() && this->getParameterValue() == p.getParameterValue() && this->getParameterType() == p.getParameterType());
+}

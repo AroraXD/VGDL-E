@@ -13,6 +13,7 @@ public:
 	std::vector<Termination> getTerminationList();
 	void setTerminationList(std::vector<Termination> newTerminationList);
 	void addTermination(Termination newTermination);
+	void deleteTermination(Termination deletedTermination);
 
 private:
 	std::vector<Termination> terminationList;

@@ -56,3 +56,36 @@ void Interaction::addNewInteractorSprite(std::string newInteractorSprite)
 	interactorSprites.push_back(newInteractorSprite);
 }
 
+bool Interaction::operator==(Interaction i)
+{
+	return (this->getInteractedSprite() == i.getInteractedSprite() &&
+			haveSameParameterList(*this, i) && haveSameInteractorSprites(*this, i) &&
+			this->getInteractionType() == i.getInteractionType());
+}
+
+bool Interaction::haveSameInteractorSprites(Interaction i1, Interaction i2)
+{
+	return i1==i2;
+}
+
+bool Interaction::haveSameParameterList(Interaction i1, Interaction i2)
+{
+	//if they're not even the same size, goes straight to false
+	if (i1.getParameterList().size() != i2.getParameterList().size())
+		return false;
+	else//same size, so we check item by item
+	{
+		for (int i = 0; i < i1.getParameterList().size(); i++)
+		{
+			if (!(i1.getParameterList()[i] == i2.getParameterList()[i]))//diff name or value, ergo diff parameter
+			{
+				return false;
+			}
+
+		}
+
+	}
+	//after all tests, if it got here, means it has the same parameter list
+	return true;
+}
+
