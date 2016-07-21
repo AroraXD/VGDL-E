@@ -18,10 +18,25 @@ void ofApp::draw(){
 
 	ofBackground(200, 40, 100);
 
-	font.drawString("Pick a game # using the slider\n\nPress any key to play", 50, 100);
-	ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, game*2);
+	font.drawString("Pick a game # using the slider\n\nPress any key to play", 10, 100);
+	//ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, game*2);
 
+	//draws the gui in the top left
 	gui.draw();
+
+	//play button
+	ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
+
+	//asset select 
+	ofDrawRectangle(ofGetWidth()*0, ofGetHeight()*0.8, ofGetWidth(), ofGetHeight()*0.2);
+
+	//game map/grid
+	ofDrawRectangle(ofGetWidth()*0.5, ofGetHeight()*0.1, ofGetWidth()*0.49, ofGetHeight()*0.6);
+
+
+	//code/flowchart stuff
+	ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
+
 }
 
 //--------------------------------------------------------------
