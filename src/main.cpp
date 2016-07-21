@@ -12,8 +12,10 @@
 /*For organization's sake, every TODO of the program shall be put in this file, to organize what needs to be done and 
 * decently track what has already been accomplished.
 
-TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction and Termination sets
-TODO: create more methods to build the flow of the scriptTester script
+TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction and Termination sets(DONE, NEEDS TESTING)
+TODO: create 'deleteByName' methods for the vectors of objs in the 3 sets above(make it a boolean)(DONE, NEEDS TESTING)
+TODO: create 'add' and 'delete' methods in scriptTester and fill them out(HALF DONE)
+
 
 //for later on...
 TODO: start thinking about Sprite parenting

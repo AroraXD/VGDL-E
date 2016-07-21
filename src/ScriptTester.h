@@ -23,7 +23,19 @@ public:
 
 	void workWithVGDLCreator(VGDLParser* vgdl);
 
-	//gets the list of sprites/terminations/interactions and shows it in a decent way to the user
+	//methods for each of the possible options when choosing one of the 3 main categories(not working with level mapping now
+
+	//Option 1: Add methods, gets all the possible values and parameters of a Sprite/Termination/Interaction, and at the end saves a new obj to the list
+	void addSpriteInList(SpriteSet* ss);
+	void addTerminationInList(TerminationSet* ts);
+	void addInteractionInList(InteractionSet* is);
+
+	//Option 2: Delete methods, deletes objects based on name/position in list
+	void deleteSpriteFromList(SpriteSet* ss);
+	void deleteTerminationFromList(TerminationSet* ts);
+	void deleteInteractionFromList(InteractionSet* is);
+
+	//Option 3: Display methods, gets the list of sprites/terminations/interactions and shows it in a decent way to the user
 	void showSpriteList(SpriteSet* ss);
 	void showTerminationList(TerminationSet* ts);
 	void showInteractionList(InteractionSet* is);

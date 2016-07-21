@@ -13,7 +13,9 @@ public:
 	std::vector<Termination> getTerminationList();
 	void setTerminationList(std::vector<Termination> newTerminationList);
 	void addTermination(Termination newTermination);
-	void deleteTermination(Termination deletedTermination);
+
+	bool deleteTermination(Termination deletedTermination);
+	bool deleteTermination(int index);//delete termination based on the index of the termination in the list
 
 private:
 	std::vector<Termination> terminationList;

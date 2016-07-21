@@ -18,7 +18,9 @@ public:
 	void addInteraction(Interaction newInteraction);//adds new interaction to list
 
 	//deletes Interaction from the Interaction list; has to check all, so O(n), but list will be small, so it should be fine
-	void deleteInteraction(Interaction erasedInteraction);
+	bool deleteInteraction(Interaction erasedInteraction);
+	bool deleteInteraction(std::string interactedSpriteName);//deletes interaction by getting the first case where the interacted sprite = parameter
+	bool deleteInteraction(int index);//deletes interaction based on its position in the list
 
 private:
 	std::vector<Interaction> interactionList;

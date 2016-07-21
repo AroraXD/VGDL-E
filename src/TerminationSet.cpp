@@ -31,7 +31,7 @@ void TerminationSet::addTermination(Termination newTermination)
 	terminationList.push_back(newTermination);
 }
 
-void TerminationSet::deleteTermination(Termination deletedTermination)
+bool TerminationSet::deleteTermination(Termination deletedTermination)
 {
 	//goes through the sprite list(O(n), I know) and delete the correct sprite
 	for (int i = 0; i < terminationList.size(); i++)
@@ -40,7 +40,18 @@ void TerminationSet::deleteTermination(Termination deletedTermination)
 		{
 			//delete this sprite
 			terminationList.erase(terminationList.begin() + i);
-			return;
+			return true;//deletion successful
 		}
 	}
+	return false;//didn't find termination
+}
+
+bool TerminationSet::deleteTermination(int index)
+{
+	if (index <= terminationList.size() - 1)
+	{
+		terminationList.erase(terminationList.begin() + index);
+		return true;
+	}
+	return false;
 }

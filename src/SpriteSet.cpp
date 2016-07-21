@@ -26,7 +26,7 @@ void SpriteSet::addSprite(Sprite newSprite)
 	spriteList.push_back(newSprite);
 }
 
-void SpriteSet::deleteSprite(Sprite erasedSprite)
+bool SpriteSet::deleteSprite(Sprite erasedSprite)
 {
 	//goes through the sprite list(O(n), I know) and delete the correct sprite
 	for (int i = 0; i < spriteList.size(); i++)
@@ -35,9 +35,36 @@ void SpriteSet::deleteSprite(Sprite erasedSprite)
 		{
 			//delete this sprite
 			spriteList.erase(spriteList.begin()+i);
-			return;
+			return true;
 		}
 	}
+	return true;
+}
+
+bool SpriteSet::deleteSprite(std::string spriteName)
+{
+	//goes through the sprite list(O(n), I know) and delete the correct sprite
+	for (int i = 0; i < spriteList.size(); i++)
+	{
+		if (spriteList[i].getName() == spriteName)
+		{
+			//delete this sprite
+			spriteList.erase(spriteList.begin() + i);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool SpriteSet::deleteSprite(int index)
+{
+	if (index <= spriteList.size() - 1)
+	{
+		spriteList.erase(spriteList.begin() + index);
+		return true;
+	}
+	return false;
 }
 
 

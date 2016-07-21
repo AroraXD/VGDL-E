@@ -25,7 +25,9 @@ public:
 	void addSprite(Sprite newSprite);//adds new sprite to the Sprite list
 	
 	//deletes Sprite from the Sprite list; has to check all, so O(n), but list will be small, so it should be fine
-	void deleteSprite(Sprite erasedSprite); 
+	bool deleteSprite(Sprite erasedSprite);
+	bool deleteSprite(std::string spriteName);//deletes first sprite whose name = parameter
+	bool deleteSprite(int index);
 
 	//fixed possible parameter lists, so no "set" needed for them
 	std::vector<std::string> getSpriteTypeList();//returns sprite type list; most likely to be used in the GUI for the drop-down menus
