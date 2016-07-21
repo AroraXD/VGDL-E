@@ -27,8 +27,11 @@ public:
 
 	//Option 1: Add methods, gets all the possible values and parameters of a Sprite/Termination/Interaction, and at the end saves a new obj to the list
 	void addSpriteInList(SpriteSet* ss);
+	void addParameter(Sprite* s);
 	void addTerminationInList(TerminationSet* ts);
+	void addParameter(Termination* t);
 	void addInteractionInList(InteractionSet* is);
+	void addParameter(Interaction* i);
 
 	//Option 2: Delete methods, deletes objects based on name/position in list
 	void deleteSpriteFromList(SpriteSet* ss);
