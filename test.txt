@@ -1,0 +1,14 @@
+BasicGame
+	SpriteSet
+
+	InteractionSet
+		movable wall  > stepBack 
+		nokey goal  > stepBack 
+		goal withkey  > killSprite scoreChange=1 
+		enemy sword  > killSprite scoreChange=2 
+
+	TerminationSet
+		SpriteCounter stype=goal win=true 
+		SpriteCounter stype=avatar win=false 
+
+	LevelMapping

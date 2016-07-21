@@ -1,12 +1,12 @@
 #include "VGDLParser.h"
 #include <fstream>
-
+#include <iostream>
 
 VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
 {
 	//for now, sets the script paths to default(save on C:/)
-	setPath("C:/" + fileName + ".txt");
-	setLevelPath("C:/" + fileName + "Map.txt");
+	setPath(fileName + ".txt");
+	setLevelPath(fileName + "Map.txt");
 
 	//then creates the files themselves
 	std::ofstream newFile(getPath());
@@ -68,11 +68,11 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 	std::ofstream VGDLScript;
 	VGDLScript.open(getPath());
-
+	std::cout << "Opening file named "<< getPath() <<"..." << std::endl;
 	if (VGDLScript.is_open())
 	{
 		//does everything
-
+		std::cout << "File Open. Begin writing..." << std::endl;
 		VGDLScript << "BasicGame\n";
 		VGDLScript << "\tSpriteSet\n";
 		//now fill up all the sprites in sprite set following the syntax:
@@ -84,7 +84,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 			//following the syntax, put two tabs to correctly indent the script
 			VGDLScript << "\t";
 			//goes through all of the items in the spriteList and puts them in the spriteSet using the VGDL syntax
-			VGDLScript << "\t" + spriteList[i].getName() + " > ";
+			VGDLScript << "\t" + spriteList[i].getName() + " > " + spriteList[i].getSpriteType() + " ";
 			for (int j = 0; j < spriteList[i].getSpriteParameters().size(); j++)
 			{
 				//puts the parameters in order
@@ -98,7 +98,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 
 
-		VGDLScript << "\tInteractionSet";
+		VGDLScript << "\n\tInteractionSet\n";
 
 		//now we fill the interactions with the following syntax:
 		//	sprite ListOfInteractorSprites > consequence PossibleParameterList
@@ -129,10 +129,9 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		}
 		//believe InteractionSet is complete as well
 
-		//TODO: complete and TerminationSet, leave LevelMapping for last
 
 
-		VGDLScript << "\tTerminationSet";
+		VGDLScript << "\n\tTerminationSet\n";
 		std::vector<Termination> terminationList = terminationSet.getTerminationList();
 		for (int i = 0; i < terminationList.size(); i++)
 		{
@@ -143,19 +142,22 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 			for (int j = 0; j < terminationList[i].getParameterList().size(); j++)
 			{
 				VGDLScript << terminationList[i].getParameterList()[j].getParameterName() + "=" + terminationList[i].getParameterList()[j].getParameterValue();
-				
+				VGDLScript << " ";
 			}
 			VGDLScript << "\n";
 
 		}
 
-		VGDLScript << "\tLevelMapping";
+		//TODO:leave LevelMapping for last
+
+		VGDLScript << "\n\tLevelMapping\n";
 
 
 
 
 
 		//closes it to save it
+		std::cout << "Writing complete." << std::endl;
 		VGDLScript.close();
 		//returns true at the very end
 		return true;

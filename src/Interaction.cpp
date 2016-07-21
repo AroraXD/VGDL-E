@@ -9,6 +9,13 @@ Interaction::Interaction(std::string spriteName, std::vector<std::string> intera
 	interactorSprites = interactorSpritesList;
 }
 
+Interaction::Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList, std::string consequence)
+{
+	interactedSprite = spriteName;
+	interactorSprites = interactorSpritesList;
+	interactionType = consequence;
+}
+
 Interaction::Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList, std::vector<Parameter> interactionParameterList)
 {
 	interactedSprite = spriteName;

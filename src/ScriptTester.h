@@ -21,7 +21,7 @@ public:
 	void workWithInteractionSet(InteractionSet* is);
 	void workWithTerminationSet(TerminationSet* ts);
 
-	void workWithVGDLCreator(VGDLParser* vgdl);
+	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts);
 
 	//methods for each of the possible options when choosing one of the 3 main categories(not working with level mapping now
 
