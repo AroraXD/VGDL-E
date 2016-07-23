@@ -23,11 +23,11 @@ void ofApp::draw(){
 	ofSetColor(200,200,200,200);
 
 
-	font.drawString("Pick a game # using the slider\n\nPress any key to play", 10, 100);
+	//old code
+	//font.drawString("Pick a game # using the slider\n\nPress any key to play", 10, 50);
 	//ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, game*2);
-
 	//draws the gui in the top left
-	gui.draw();
+	//gui.draw();
 
 	//play button
 	ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
@@ -99,6 +99,9 @@ void ofApp::typeKey(int key) {
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
+
+	//old - used to launch the game examples 
+	/*
 	ofBackground(0);
 
 	int chosenGame = game;
@@ -110,9 +113,8 @@ void ofApp::keyReleased(int key){
 	sysString += "\"";
 	const char* c = sysString.c_str();//...and need to make string into char* to use with system
 
-
 	system(c);//actually calls VGDL
-
+	*/
 } 
 
 //--------------------------------------------------------------
