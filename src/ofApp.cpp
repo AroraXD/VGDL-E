@@ -7,6 +7,8 @@ void ofApp::setup(){
 
 	gui.setup();
 	gui.add(game.setup("game", 10, 0, 70));
+
+	text = "code goes here";
 }
 
 //--------------------------------------------------------------
@@ -16,7 +18,10 @@ void ofApp::update(){
 //--------------------------------------------------------------wwwwwwwwwww
 void ofApp::draw(){
 
-	ofBackground(200, 40, 100);
+	ofBackground(180, 40, 100);
+
+	ofSetColor(200,200,200,200);
+
 
 	font.drawString("Pick a game # using the slider\n\nPress any key to play", 10, 100);
 	//ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, game*2);
@@ -36,14 +41,61 @@ void ofApp::draw(){
 
 	//code/flowchart stuff
 	ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
+	drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	typeKey(key);
 }
 
+//todo add tab key support 
+void ofApp::typeKey(int key) {
+	//add charachter
+	if (key >= 32 && key <= 126) {
+		text.insert(text.begin() + position, key);
+		position++;
+	}
+
+	if (key == OF_KEY_RETURN) {
+		text.insert(text.begin() + position, '\n');
+		position++;
+	}
+
+	if (key == OF_KEY_BACKSPACE) {
+		if (position>0) {
+			text.erase(text.begin() + position - 1);
+			--position;
+		}
+	}
+
+	if (key == OF_KEY_DEL) {
+		if (text.size() > position) {
+			text.erase(text.begin() + position);
+		}
+	}
+
+	if (key == OF_KEY_LEFT)
+		if (position>0)
+			--position;
+
+	if (key == OF_KEY_RIGHT)
+		if (position<text.size())
+			++position;
+
+	//for multiline:
+	cursorx = cursory = 0;
+	for (int i = 0; i<position; ++i) {
+		if (*(text.begin() + i) == '\n') {
+			++cursory;
+			cursorx = 0;
+		}
+		else {
+			cursorx++;
+		}
+	}
+}
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
@@ -106,4 +158,19 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void ofApp::drawText(int x,int y) {
+	//ofScale(5, 5);
+	ofTranslate(x, y+5, 0);
+
+	ofSetColor(10);
+	ofDrawBitmapString(text, 10, 10);
+
+	ofPushStyle();
+	float timeFrac = 255.0f * sin(3.0f * ofGetElapsedTimef());
+	ofSetColor(timeFrac, timeFrac, timeFrac);
+	ofSetLineWidth(3.0f);
+	ofLine(cursorx * 8 + 10, 13.7*cursory, cursorx * 8 + 10, 10 + 13.7*cursory);
+	ofPopStyle();
 }

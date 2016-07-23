@@ -37,8 +37,8 @@ int main() {
 	// pass in width and height too:
 
 	//uncomment the following two lines if you wish to open the OF windows
-	//ofSetupOpenGL(1024, 768, OF_WINDOW);			// <-------- setup the GL context
-	//ofRunApp(new ofApp());
+	ofSetupOpenGL(1024, 768, OF_WINDOW);			// <-------- setup the GL context
+	ofRunApp(new ofApp());
 
 
 	//this will eventually be used as a text-based tester for the VDGL script builder

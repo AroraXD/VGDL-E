@@ -1,1 +1,3 @@
 ofxGui
+ofxTextBox
+ofxTrueTypeFontUC

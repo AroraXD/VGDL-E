@@ -4,6 +4,7 @@
 #include "ofxGui.h"
 
 
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -26,5 +27,12 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont font;
 		ofxIntSlider game;
 		ofxPanel gui;
+
+		string	text;
+		void	typeKey(int key);
+		int		position;
+		int		cursorx, cursory;
+
+		void	drawText(int x, int y);
 
 };
