@@ -6,7 +6,10 @@ void ofApp::setup(){
 	font.loadFont("playtime.ttf", 14);
 
 	gui.setup();
-	gui.add(game.setup("game", 10, 0, 70));
+	///	gui.add(game.setup("game", 10, 0, 70));
+	gui.add(mapWidth.setup("MapHeight", 10, 1, 20));
+	gui.add(mapHeight.setup("MapWidth", 10, 1, 20));
+
 
 	text = "code goes here";
 }
@@ -23,25 +26,39 @@ void ofApp::draw(){
 	ofSetColor(200,200,200,200);
 
 
-	//old code
-	//font.drawString("Pick a game # using the slider\n\nPress any key to play", 10, 50);
-	//ofDrawCircle(ofGetWidth() / 2, ofGetHeight() / 2, game*2);
 	//draws the gui in the top left
-	//gui.draw();
+	gui.draw();
 
 	//play button
 	ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
 
 	//asset select 
 	ofDrawRectangle(ofGetWidth()*0, ofGetHeight()*0.8, ofGetWidth(), ofGetHeight()*0.2);
+	ofDrawRectangle(10, 650, 50, 50);
 
 	//game map/grid
-	ofDrawRectangle(ofGetWidth()*0.5, ofGetHeight()*0.1, ofGetWidth()*0.49, ofGetHeight()*0.6);
+	int gridPosX = ofGetWidth()*0.5;
+	int gridPosY = ofGetHeight()*0.1;
+	int gridWidth= ofGetWidth()*0.49;
+	int gridHeight = ofGetHeight()*0.6;
+	ofDrawRectangle(gridPosX, gridPosY, gridWidth, gridHeight);
 
+	int gridsquarewidth = gridWidth / mapWidth/2;
+	int gridsquareheight = gridHeight / mapHeight/2;
+	for (int i = 0; i < mapWidth; i++)
+	{
+		for (int j = 0; j < mapHeight; j++)
+		{ 
+			int tempx = gridPosX + i * (gridWidth/mapWidth);
+			int tempy = gridPosY + j * (gridHeight/mapHeight);
+			ofDrawCircle(tempx+gridsquarewidth,tempy+gridsquareheight,MIN(gridsquarewidth,gridsquareheight));
+		}
+	}
 
 	//code/flowchart stuff
 	ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
 	drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);
+
 
 }
 
