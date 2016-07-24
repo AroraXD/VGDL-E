@@ -75,7 +75,7 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 			break;
 		case 2:
 			//ask the name of the sprite to be deleted, look it up in the sprite list, return true if found name and deleted it
-			cout << "\nNot yet implemented"<<endl;
+			deleteSpriteFromList(ss);
 			break;
 		case 3:
 			//get sprite list and display it someway nice(create 'display' method around here)
@@ -108,7 +108,7 @@ void ScriptTester::workWithInteractionSet(InteractionSet* is)
 			break;
 		case 2:
 			//show interaction list, ask for index of interaction to remove, look it up in the interaction list, return true if found and deleted it
-			cout << "Not yet implemented" << endl;
+			deleteInteractionFromList(is);
 			break;
 		case 3:
 			//get interaction list and display it someway nice(create 'display' method around here)
@@ -141,7 +141,7 @@ void ScriptTester::workWithTerminationSet(TerminationSet* ts)
 			break;
 		case 2:
 			//show termination list, ask for index of termination to remove, look it up in the termination list, return true if found and deleted it
-			cout << "Not yet implemented" << endl;
+			deleteTerminationFromList(ts);
 			break;
 		case 3:
 			//get termination list and display it someway nice(create 'display' method around here)
@@ -351,25 +351,89 @@ void ScriptTester::addParameter(Interaction * i)
 	}
 }
 
+//=========================================================================== DELETE METHODS ==============================================================================================
+
+
+void ScriptTester::deleteSpriteFromList(SpriteSet * ss)
+{
+	//shows sprites, asks user to give sprite name, delete sprite from name 
+	showSpriteList(ss);
+	cout << "\nEnter the name of the sprite to be deleted: ";
+	string spriteName;
+	cin >> spriteName;
+	if (ss->deleteSprite(spriteName))
+		cout << "Sprite successfully deleted" << endl;
+	else
+		cout << "Error: sprite not found in list, deletion failed.\n" << endl;
+
+}
+
+void ScriptTester::deleteTerminationFromList(TerminationSet * ts)
+{
+	//shows termination list, asks for index of termination to be deleted, deletes it
+	showTerminationList(ts);
+	cout << "Please give the number of the termination you wish to delete: ";
+	int tNumber;
+	cin >> tNumber;
+	if (ts->deleteTermination(tNumber))
+		cout << "Termination successfully deleted";
+	else
+		cout << "Error: termination deletion failed.\n" << endl;
+}
+
+void ScriptTester::deleteInteractionFromList(InteractionSet * is)
+{
+	//shows termination list, asks for index of termination to be deleted, deletes it
+	showInteractionList(is);
+	cout << "Please give the number of the interaction you wish to delete: ";
+	int tNumber;
+	cin >> tNumber;
+	if (is->deleteInteraction(tNumber))
+		cout << "Interation successfully deleted";
+	else
+		cout << "Error: interaction deletion failed.\n" << endl;
+}
+
+
+//=========================================================================== DISPLAY METHODS ==========================================================================
+
+
+void ScriptTester::showSprite(SpriteSet * ss, int index)
+{
+	cout << "\nSprite " << (index + 1) << ": " << endl;
+	cout << "Name: " << ss->getSpriteList()[index].getName() << endl;
+	cout << "Type: " << ss->getSpriteList()[index].getSpriteType() << endl;
+	cout << "Parameters: " << endl;
+	//puts parameters one by one, name and value
+	for (int j = 0; j < ss->getSpriteList()[index].getParameterList().size(); j++)
+	{
+		cout << "Name: " << ss->getSpriteList()[index].getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << ss->getSpriteList()[index].getParameterList()[j].getParameterValue() << endl;
+
+	}
+}
+
 void ScriptTester::showSpriteList(SpriteSet * ss)
 {
 	cout << "\nShowing all sprites in sprite list..." << endl;
 	for (int i = 0; i < ss->getSpriteList().size(); i++)
 	{
-		cout << "\nSprite " << (i + 1) << ": " << endl;
-		cout << "Name: " << ss->getSpriteList()[i].getName() << endl;
-		cout << "Type: " << ss->getSpriteList()[i].getSpriteType() << endl;
-		cout << "Parameters: " << endl;
-		//puts parameters one by one, name and value
-		for (int j = 0; j < ss->getSpriteList()[i].getParameterList().size(); j++)
-		{
-			cout << "Name: " << ss->getSpriteList()[i].getParameterList()[j].getParameterName() << endl;
-			cout << "Value: "<< ss->getSpriteList()[i].getParameterList()[j].getParameterValue() << endl;
-
-		}
-
+		showSprite(ss, i);
 	}
 	cout << "\n\n";
+}
+
+void ScriptTester::showTermination(TerminationSet * ts, int index)
+{
+	cout << "\nTermination " << (index + 1) << ": " << endl;
+	cout << "Type: " << ts->getTerminationList()[index].getTerminationType() << endl;
+	cout << "Parameters: " << endl;
+	for (int j = 0; j < ts->getTerminationList()[index].getParameterList().size(); j++)
+	{
+		cout << "Name: " << ts->getTerminationList()[index].getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << ts->getTerminationList()[index].getParameterList()[j].getParameterValue() << endl;
+
+	}
 }
 
 void ScriptTester::showTerminationList(TerminationSet * ts)
@@ -377,19 +441,31 @@ void ScriptTester::showTerminationList(TerminationSet * ts)
 	cout << "\nShowing all Terminations in Termination list..." << endl;
 	for (int i = 0; i < ts->getTerminationList().size(); i++)
 	{
-		cout << "\nTermination " << (i + 1) << ": " << endl;
-		cout << "Type: " << ts->getTerminationList()[i].getTerminationType() << endl;
-		cout << "Parameters: " << endl;
-		for (int j = 0; j < ts->getTerminationList()[i].getParameterList().size(); j++)
-		{
-			cout << "Name: " << ts->getTerminationList()[i].getParameterList()[j].getParameterName() << endl;
-			cout << "Value: " << ts->getTerminationList()[i].getParameterList()[j].getParameterValue() << endl;
-
-		}
+		showTermination(ts, i);
 
 	}
 	cout << "\n\n";
 
+}
+
+void ScriptTester::showInteraction(InteractionSet * is, int index)
+{
+	cout << "\nInteraction" << (index + 1) << ": " << endl;
+	cout << "Interacted sprite: " << is->getInteractionList()[index].getInteractedSprite() << endl;
+	cout << "Interactor sprites: ";
+	for (int j = 0; j < is->getInteractionList()[index].getInteractorSprites().size(); j++)
+	{
+		//gets each interactor sprite of this interaction
+		cout << is->getInteractionList()[index].getInteractorSprites()[j] << " ";
+	}
+	cout << endl;
+	cout << "Parameters: " << endl;
+	for (int j = 0; j < is->getInteractionList()[index].getParameterList().size(); j++)
+	{
+		cout << "Name: " << is->getInteractionList()[index].getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << is->getInteractionList()[index].getParameterList()[j].getParameterValue() << endl;
+
+	}
 }
 
 void ScriptTester::showInteractionList(InteractionSet * is)
@@ -397,23 +473,7 @@ void ScriptTester::showInteractionList(InteractionSet * is)
 	cout << "\nShowing all Interactions in Interaction list..." << endl;
 	for (int i = 0; i < is->getInteractionList().size(); i++)
 	{
-		cout << "\nInteraction" << (i + 1) << ": " << endl;
-		cout << "Interacted sprite: " << is->getInteractionList()[i].getInteractedSprite() << endl;
-		cout << "Interactor sprites: ";
-		for (int j = 0; j < is->getInteractionList()[i].getInteractorSprites().size(); j++)
-		{
-			//gets each interactor sprite of this interaction
-			cout << is->getInteractionList()[i].getInteractorSprites()[j]<< " ";
-		}
-		cout << endl;
-		cout << "Parameters: " << endl;
-		for (int j = 0; j < is->getInteractionList()[i].getParameterList().size(); j++)
-		{
-			cout << "Name: " << is->getInteractionList()[i].getParameterList()[j].getParameterName() << endl;
-			cout << "Value: " << is->getInteractionList()[i].getParameterList()[j].getParameterValue() << endl;
-
-		}
-
+		showInteraction(is, i);
 	}
 	cout << "\n\n";
 

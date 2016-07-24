@@ -15,5 +15,10 @@ public:
 	static std::string toString(float f);
 	static std::string toString(bool b);
 
+	static void capitalizeInitial(std::string input);//capitalizes first letter of the string
+	static void decapitalizeInitial(std::string input);//opposite of method above
+
+	static bool isAlphabetic(std::string input);//check if input is alphabetic, i.e., if all chars in it are letters
+
 };
 

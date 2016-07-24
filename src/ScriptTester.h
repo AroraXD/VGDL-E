@@ -33,14 +33,25 @@ public:
 	void addInteractionInList(InteractionSet* is);
 	void addParameter(Interaction* i);
 
+	//Option 2: Modify methods, shows user a list of objects, asks them to pick one, modify all atributes to their heart's content
+	void modifySprite(SpriteSet* ss);
+	void modifyTermination(TerminationSet* ts);
+	void mofidyInteraction(InteractionSet* is);
+
+
 	//Option 2: Delete methods, deletes objects based on name/position in list
 	void deleteSpriteFromList(SpriteSet* ss);
 	void deleteTerminationFromList(TerminationSet* ts);
 	void deleteInteractionFromList(InteractionSet* is);
 
-	//Option 3: Display methods, gets the list of sprites/terminations/interactions and shows it in a decent way to the user
+
+
+	//Option 4: Display methods, gets the list of sprites/terminations/interactions and shows it in a decent way to the user
+	void showSprite(SpriteSet* ss, int index);//shows sprite of index i in spriteList
 	void showSpriteList(SpriteSet* ss);
+	void showTermination(TerminationSet* ts, int index);
 	void showTerminationList(TerminationSet* ts);
+	void showInteraction(InteractionSet* is, int index);
 	void showInteractionList(InteractionSet* is);
 
 };
