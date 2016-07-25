@@ -4,6 +4,7 @@
 #include "ofxGui.h"
 
 
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -24,7 +25,18 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		ofTrueTypeFont font;
-		ofxIntSlider game;
+		//ofxIntSlider game;
 		ofxPanel gui;
+
+		string	text;
+		void	typeKey(int key);
+		int		position;
+		int		cursorx, cursory;
+		void	drawText(int x, int y);
+
+		//int mapWidth = 11;
+		//int mapHeight = 12;
+		ofxIntSlider mapWidth;
+		ofxIntSlider mapHeight;
 
 };

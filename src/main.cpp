@@ -16,7 +16,10 @@ TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction
 TODO: create 'deleteByName' methods for the vectors of objs in the 3 sets above(make it a boolean)(DONE, NEEDS TESTING)
 TODO: create 'add' and 'delete' methods in scriptTester and fill them out(DONE, need tests with Interaction)
 TODO: fix fstream VGDL builder that's not creating the document for some reason(DONE)
-TODO: add a "modify object" option to the Sprite, Termination, Interaction menus(to add/remove parameters and etc after creation)
+TODO: add a "modify object" option to the Sprite, Termination, Interaction menus(to add/remove parameters and etc after creation)(STARTED, FINISH IT)
+TODO: as usual, items in vectors can't be modified, so you'll need to create a method that creates a new type and puts it into the list(at the right position) everytime u modify it
+You'll probably need to make operator= for all 3 main objects, to make life easier
+
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk
 
 //for later on...

@@ -65,7 +65,7 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 	int choice = 0;
 	while(loop)
 	{ 
-		cout << "\nWhat do you want to do?\n1)Add Sprite to list\n2)Delete sprite from list\n3)Show list of Sprites\n4)Return to main menu\nChoice: ";
+		cout << "\nWhat do you want to do?\n1)Add Sprite to list\n2)Modify sprite\n3)Delete sprite from list\n4)Show list of Sprites\n5)Return to main menu\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
@@ -74,14 +74,18 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 			addSpriteInList(ss);
 			break;
 		case 2:
+			//modify sprite
+			modifySprite(ss);//NEEDS WORK, NOT MODIFYING YET SINCE WORKING WITH VECTORS IS SOMETIMES ANNOYING
+			break;
+		case 3:
 			//ask the name of the sprite to be deleted, look it up in the sprite list, return true if found name and deleted it
 			deleteSpriteFromList(ss);
 			break;
-		case 3:
+		case 4:
 			//get sprite list and display it someway nice(create 'display' method around here)
 			showSpriteList(ss);
 			break;
-		case 4:
+		case 5:
 			cout << "\nReturning to main menu...\n" << endl;
 			loop = false;
 			break;
@@ -348,6 +352,63 @@ void ScriptTester::addParameter(Interaction * i)
 		cin >> choice;
 		if (choice != 1)
 			loop = false;
+	}
+}
+
+//================================================================================ MODIFY METHODS ============================================================================
+
+
+void ScriptTester::modifySprite(SpriteSet * ss)
+{
+	//shows sprites, asks user to pick one, then keep modifying it until user is satisfied
+	showSpriteList(ss);
+	cout << "Pick one sprite(by index): ";
+	int spriteIndex;
+	cin >> spriteIndex;
+	bool loop = true;
+	while (loop)
+	{
+		showSprite(ss, spriteIndex-1);
+		cout << "\nWhat would you like to do with this sprite?\n1)Modify name\n2)Modify type\n3)Add parameter\n4)Remove parameter\n5)Change sprite's parent\n6)Return to previous menu\nChoice: ";
+		int choice;
+		string str;//used for anything string-related inside switch
+		cin >> choice;
+		switch (choice)
+		{
+		case 1://Change name
+			cout << "What's the sprite's new name?\nNew name: ";
+			cin >> str;
+			ss->getSpriteList()[spriteIndex].setName(str);
+			break;
+		case 2://change type
+			cout << "What's the sprite's new type?\nNew type: ";
+			cin >> str;
+			ss->getSpriteList()[spriteIndex].setSpriteType(str);
+			break;
+		case 3://add parameter
+			cout << "To be implemented\n";
+			break;
+		case 4://remove parameter
+			cout << "To be implemented\n";
+			break;
+		case 5://change parent's name
+			cout << "What's the sprite's parent's name?\nParent's name: ";
+			cin >> str;
+			ss->getSpriteList()[spriteIndex].setParent(str);
+			break;
+		case 6:
+			//returns to menu, so leave loop
+			cout << "Returning to previous menu..." << endl;
+			loop = false;
+			break;
+		default:
+			cout << "Invalid choice.";
+			break;
+
+
+
+
+		}
 	}
 }
 
