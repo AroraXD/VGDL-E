@@ -67,6 +67,11 @@ bool SpriteSet::deleteSprite(int index)
 	return false;
 }
 
+void SpriteSet::modifySprite(Sprite newSprite, int index)
+{
+	this->spriteList[index] = newSprite;
+}
+
 
 std::vector<std::string> SpriteSet::getSpriteTypeList()
 {

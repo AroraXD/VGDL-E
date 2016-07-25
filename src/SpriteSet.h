@@ -23,11 +23,15 @@ public:
 
 	std::vector<Sprite> getSpriteList();//returns sprite list
 	void addSprite(Sprite newSprite);//adds new sprite to the Sprite list
+	void addSpriteAt(Sprite newSprite, int index);//adds new sprite at position index
 	
 	//deletes Sprite from the Sprite list; has to check all, so O(n), but list will be small, so it should be fine
 	bool deleteSprite(Sprite erasedSprite);
 	bool deleteSprite(std::string spriteName);//deletes first sprite whose name = parameter
 	bool deleteSprite(int index);
+
+	void modifySprite(Sprite newSprite, int index);//puts newSprite in the position index of the spriteSet
+
 
 	//fixed possible parameter lists, so no "set" needed for them
 	std::vector<std::string> getSpriteTypeList();//returns sprite type list; most likely to be used in the GUI for the drop-down menus

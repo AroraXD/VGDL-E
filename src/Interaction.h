@@ -26,6 +26,7 @@ public:
 
 
 	bool operator==(Interaction i);
+	void operator=(Interaction i);
 	bool haveSameInteractorSprites(Interaction i1, Interaction i2);//check if two interactions have the same interactor sprites
 	bool haveSameParameterList(Interaction i1, Interaction i2);//check if the two sprite's parameter lists are the same; to be used with delete method
 

@@ -12,6 +12,10 @@
 //
 //}
 
+Sprite::Sprite()
+{
+}
+
 Sprite::Sprite(std::string newName, std::string stype, bool hasParent, std::string parent)
 {
 	name = newName;
@@ -82,6 +86,16 @@ bool Sprite::spriteHasParent()
 bool Sprite::operator==(Sprite s)
 {
 	return (this->getName() == s.getName() && this->getParent() == s.getParent() && haveSameParameterList(*this, s));
+}
+
+void Sprite::operator=(Sprite s)
+{
+	this->name = s.getName();
+	this->parent = s.getParent();
+	this->hasParent = s.spriteHasParent();
+	this->spriteType = s.getSpriteType();
+
+	this->parameterList = s.getParameterList();
 }
 
 bool Sprite::haveSameParameterList(Sprite s1, Sprite s2)

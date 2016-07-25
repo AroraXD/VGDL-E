@@ -34,6 +34,12 @@ bool Termination::operator==(Termination t)
 	return (this->getTerminationType() == t.getTerminationType() && haveSameParameterList(*this, t));
 }
 
+void Termination::operator=(Termination t)
+{
+	this->terminationType = t.getTerminationType();
+	this->parameterList = t.getParameterList();
+}
+
 bool Termination::haveSameParameterList(Termination t1, Termination t2)
 {
 	//if they're not even the same size, goes straight to false

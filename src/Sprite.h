@@ -20,6 +20,7 @@
 class Sprite : public ParameterizableObj
 {
 public:
+	Sprite();
 	Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null");
 	Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, std::string parent = "null");
 
@@ -42,6 +43,7 @@ public:
 
 
 	bool operator==(Sprite s);
+	void operator=(Sprite s);
 	bool haveSameParameterList(Sprite s1, Sprite s2);//check if the two sprite's parameter lists are the same; to be used with delete method
 
 private:

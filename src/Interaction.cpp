@@ -70,6 +70,14 @@ bool Interaction::operator==(Interaction i)
 			this->getInteractionType() == i.getInteractionType());
 }
 
+void Interaction::operator=(Interaction i)
+{
+	this->interactedSprite = i.getInteractedSprite();
+	this->interactorSprites = i.getInteractorSprites();
+	this->interactionType = i.getInteractionType();
+	this->parameterList = i.getParameterList();
+}
+
 bool Interaction::haveSameInteractorSprites(Interaction i1, Interaction i2)
 {
 	return i1==i2;

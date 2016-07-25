@@ -4,6 +4,10 @@
 
 
 
+Parameter::Parameter()
+{
+}
+
 Parameter::Parameter(std::string name, int value)
 {
 	parameterName = name;

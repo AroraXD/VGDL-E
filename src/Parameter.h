@@ -6,6 +6,7 @@
 class Parameter
 {
 public:
+	Parameter();
 	Parameter(std::string name, int value);
 	Parameter(std::string name, float value);
 	Parameter(std::string name, bool value);

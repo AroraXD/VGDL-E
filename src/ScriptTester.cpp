@@ -102,7 +102,8 @@ void ScriptTester::workWithInteractionSet(InteractionSet* is)
 	int choice = 0;
 	while (loop)
 	{
-		cout << "\nWhat do you want to do?\n1)Add Interaction to list\n2)Delete Interaction from list\n3)Show list of Interactions\n4)Return to main menu\nChoice: ";
+		cout << "\nWhat do you want to do?\n1)Add Interaction to list\n2)Modify Interaction\n3)Delete Interaction from list\n4)Show list of Interactions" << 
+				"\n5)Return to main menu\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
@@ -110,15 +111,18 @@ void ScriptTester::workWithInteractionSet(InteractionSet* is)
 			//ask for info on new interaction, ask for possible parameters, etc, and finally put the new interaction in the list
 			addInteractionInList(is);
 			break;
-		case 2:
+		case 2://modify interaction
+			modifyInteraction(is);
+			break;
+		case 3:
 			//show interaction list, ask for index of interaction to remove, look it up in the interaction list, return true if found and deleted it
 			deleteInteractionFromList(is);
 			break;
-		case 3:
+		case 4:
 			//get interaction list and display it someway nice(create 'display' method around here)
 			showInteractionList(is);
 			break;
-		case 4:
+		case 5:
 			cout << "Returning to main menu...\n" << endl;
 			loop = false;
 			break;
@@ -135,7 +139,8 @@ void ScriptTester::workWithTerminationSet(TerminationSet* ts)
 	int choice = 0;
 	while (loop)
 	{
-		cout << "\nWhat do you want to do?\n1)Add Termination to list\n2)Delete Termination from list\n3)Show list of Terminations\n4)Return to main menu\nChoice: ";
+		cout << "\nWhat do you want to do?\n1)Add Termination to list\n2)Modify Termination\n3)Delete Termination from list\n"<<
+				"4)Show list of Terminations\n5)Return to main menu\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
@@ -143,15 +148,18 @@ void ScriptTester::workWithTerminationSet(TerminationSet* ts)
 			//ask for info on new termination, ask for possible parameters, etc, and finally put the new termination in the list
 			addTerminationInList(ts);
 			break;
-		case 2:
+		case 2://modifies Termination
+			modifyTermination(ts);
+			break;
+		case 3:
 			//show termination list, ask for index of termination to remove, look it up in the termination list, return true if found and deleted it
 			deleteTerminationFromList(ts);
 			break;
-		case 3:
+		case 4:
 			//get termination list and display it someway nice(create 'display' method around here)
 			showTerminationList(ts);
 			break;
-		case 4:
+		case 5:
 			cout << "\nReturning to main menu...\n" << endl;
 			loop = false;
 			break;
@@ -365,28 +373,40 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 	cout << "Pick one sprite(by index): ";
 	int spriteIndex;
 	cin >> spriteIndex;
+
+	//temp variables to use while modifying the object
+	string str;//used for anything string-related inside switch
+	int i;
+	Sprite modifiedSprite;
+	Parameter newParam;//will be used to add any parameters
+	modifiedSprite = ss->getSpriteList()[spriteIndex - 1];
 	bool loop = true;
 	while (loop)
 	{
-		showSprite(ss, spriteIndex-1);
+		showSprite(modifiedSprite);
 		cout << "\nWhat would you like to do with this sprite?\n1)Modify name\n2)Modify type\n3)Add parameter\n4)Remove parameter\n5)Change sprite's parent\n6)Return to previous menu\nChoice: ";
 		int choice;
-		string str;//used for anything string-related inside switch
 		cin >> choice;
 		switch (choice)
 		{
 		case 1://Change name
 			cout << "What's the sprite's new name?\nNew name: ";
 			cin >> str;
-			ss->getSpriteList()[spriteIndex].setName(str);
+			modifiedSprite.setName(str);
 			break;
 		case 2://change type
 			cout << "What's the sprite's new type?\nNew type: ";
 			cin >> str;
-			ss->getSpriteList()[spriteIndex].setSpriteType(str);
+			modifiedSprite.setSpriteType(str);
 			break;
 		case 3://add parameter
-			cout << "To be implemented\n";
+			cout << "New parameter type: ";
+			cin >> str;
+			newParam.setParameterName(str);
+			cout << "New parameter value: ";
+			cin >> str;
+			newParam.setParameterValue(str);
+			modifiedSprite.addParameter(newParam);
 			break;
 		case 4://remove parameter
 			cout << "To be implemented\n";
@@ -394,22 +414,29 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 		case 5://change parent's name
 			cout << "What's the sprite's parent's name?\nParent's name: ";
 			cin >> str;
-			ss->getSpriteList()[spriteIndex].setParent(str);
+			modifiedSprite.setParent(str);
 			break;
 		case 6:
 			//returns to menu, so leave loop
-			cout << "Returning to previous menu..." << endl;
+			cout << "Returning to previous menu, saving changes..." << endl;
 			loop = false;
+			ss->modifySprite(modifiedSprite, spriteIndex - 1);
 			break;
 		default:
 			cout << "Invalid choice.";
 			break;
 
 
-
-
 		}
 	}
+}
+
+void ScriptTester::modifyTermination(TerminationSet * ts)
+{
+}
+
+void ScriptTester::modifyInteraction(InteractionSet * is)
+{
 }
 
 //=========================================================================== DELETE METHODS ==============================================================================================
@@ -459,6 +486,8 @@ void ScriptTester::deleteInteractionFromList(InteractionSet * is)
 //=========================================================================== DISPLAY METHODS ==========================================================================
 
 
+
+
 void ScriptTester::showSprite(SpriteSet * ss, int index)
 {
 	cout << "\nSprite " << (index + 1) << ": " << endl;
@@ -471,6 +500,20 @@ void ScriptTester::showSprite(SpriteSet * ss, int index)
 		cout << "Name: " << ss->getSpriteList()[index].getParameterList()[j].getParameterName() << endl;
 		cout << "Value: " << ss->getSpriteList()[index].getParameterList()[j].getParameterValue() << endl;
 
+	}
+}
+
+void ScriptTester::showSprite(Sprite s)
+{
+	cout << "\nSelected Sprite: " << endl;
+	cout << "Name: " << s.getName() << endl;
+	cout << "Type: " << s.getSpriteType() << endl;
+	cout << "Parameters: " << endl;
+	//puts parameters one by one, name and value
+	for (int j = 0; j < s.getParameterList().size(); j++)
+	{
+		cout << "Name: " << s.getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << s.getParameterList()[j].getParameterValue() << endl;
 	}
 }
 
@@ -494,6 +537,18 @@ void ScriptTester::showTermination(TerminationSet * ts, int index)
 		cout << "Name: " << ts->getTerminationList()[index].getParameterList()[j].getParameterName() << endl;
 		cout << "Value: " << ts->getTerminationList()[index].getParameterList()[j].getParameterValue() << endl;
 
+	}
+}
+
+void ScriptTester::showTermination(Termination t)
+{
+	cout << "\nTermination: " << endl;
+	cout << "Type: " << t.getTerminationType() << endl;
+	cout << "Parameters: " << endl;
+	for (int j = 0; j < t.getParameterList().size(); j++)
+	{
+		cout << "Name: " << t.getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << t.getParameterList()[j].getParameterValue() << endl;
 	}
 }
 
@@ -525,6 +580,26 @@ void ScriptTester::showInteraction(InteractionSet * is, int index)
 	{
 		cout << "Name: " << is->getInteractionList()[index].getParameterList()[j].getParameterName() << endl;
 		cout << "Value: " << is->getInteractionList()[index].getParameterList()[j].getParameterValue() << endl;
+
+	}
+}
+
+void ScriptTester::showInteraction(Interaction i)
+{
+	cout << "\nInteraction: " << endl;
+	cout << "Interacted sprite: " << i.getInteractedSprite() << endl;
+	cout << "Interactor sprites: ";
+	for (int j = 0; j < i.getInteractorSprites().size(); j++)
+	{
+		//gets each interactor sprite of this interaction
+		cout << i.getInteractorSprites()[j] << " ";
+	}
+	cout << endl;
+	cout << "Parameters: " << endl;
+	for (int j = 0; j < i.getParameterList().size(); j++)
+	{
+		cout << "Name: " << i.getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << i.getParameterList()[j].getParameterValue() << endl;
 
 	}
 }

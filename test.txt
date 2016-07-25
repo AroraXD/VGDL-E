@@ -1,0 +1,12 @@
+BasicGame
+	SpriteSet
+		floor > Immovable randomtiling=0.9 img=floor3 
+		goal > Door color=GREEN img=doorclosed1 
+		sword > OrientedFlicker 
+		key > Door color=ORANGE img=key2 
+
+	InteractionSet
+
+	TerminationSet
+
+	LevelMapping
