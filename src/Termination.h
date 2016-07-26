@@ -7,6 +7,7 @@
 class Termination : public ParameterizableObj
 {
 public:
+	Termination();
 	Termination(std::string terminationName);
 	Termination(std::string terminationName, std::vector<Parameter> paramList);
 	~Termination();

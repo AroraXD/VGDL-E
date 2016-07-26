@@ -55,3 +55,8 @@ bool TerminationSet::deleteTermination(int index)
 	}
 	return false;
 }
+
+void TerminationSet::modifyTermination(Termination newTermination, int index)
+{
+	this->terminationList[index] = newTermination;
+}

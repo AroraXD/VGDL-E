@@ -17,6 +17,9 @@ public:
 	bool deleteTermination(Termination deletedTermination);
 	bool deleteTermination(int index);//delete termination based on the index of the termination in the list
 
+	//puts newTermination in terminationList at position index
+	void modifyTermination(Termination newTermination, int index);
+
 private:
 	std::vector<Termination> terminationList;
 

@@ -82,3 +82,10 @@ bool InteractionSet::deleteInteraction(int index)
 	return false;
 }
 
+void InteractionSet::modifyInteraction(Interaction newInteraction, int index)
+{
+	this->interactionList[index] = newInteraction;
+}
+
+
+

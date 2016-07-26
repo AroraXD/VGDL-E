@@ -57,5 +57,13 @@ public:
 	void showInteraction(Interaction i);
 	void showInteractionList(InteractionSet* is);
 
+	//parameter-handling methods
+	void showParameters(Sprite s);
+	void showParameters(Termination t);
+	void showParameters(Interaction i);
+	void deleteParameterAtPosition(Sprite* s, int index);
+	void deleteParameterAtPosition(Termination* t, int index);
+	void deleteParameterAtPosition(Interaction* i, int index);
+
 };
 

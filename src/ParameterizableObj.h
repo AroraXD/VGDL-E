@@ -13,6 +13,7 @@ public:
 	std::vector<Parameter> getParameterList();
 	void setParameterList(std::vector<Parameter> newParameterList);
 	void addParameter(Parameter newParameter);
+	void deleteParameterAtPosition(int i);
 
 protected:
 	//will pass along to kids

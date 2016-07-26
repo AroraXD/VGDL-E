@@ -4,6 +4,10 @@
 
 
 
+Termination::Termination()
+{
+}
+
 Termination::Termination(std::string terminationName)
 {
 	terminationType = terminationName;

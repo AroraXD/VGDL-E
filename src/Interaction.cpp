@@ -3,6 +3,10 @@
 
 
 
+Interaction::Interaction()
+{
+}
+
 Interaction::Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList)
 {
 	interactedSprite = spriteName;

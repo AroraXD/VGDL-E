@@ -1,9 +1,7 @@
 BasicGame
 	SpriteSet
 		floor > Immovable randomtiling=0.9 img=floor3 
-		goal > Door color=GREEN img=doorclosed1 
-		sword > OrientedFlicker 
-		key > Door color=ORANGE img=key2 
+		goal > Door color=Green img=doorclosed1 
 
 	InteractionSet
 

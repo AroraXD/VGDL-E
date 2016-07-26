@@ -22,6 +22,10 @@ public:
 	bool deleteInteraction(std::string interactedSpriteName);//deletes interaction by getting the first case where the interacted sprite = parameter
 	bool deleteInteraction(int index);//deletes interaction based on its position in the list
 
+	//puts newInteraction in InteractionList at the position index
+	void modifyInteraction(Interaction newInteraction, int index);
+
+
 private:
 	std::vector<Interaction> interactionList;
 	std::vector<std::string> interactionTypeList = {"killSprite", "killIfHasMore","killIfHasLess","killFromAbove","killIfOtherHasMore","transformToSingleton", //0-5, KILL category

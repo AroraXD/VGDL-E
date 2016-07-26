@@ -8,7 +8,7 @@
 class Interaction : public ParameterizableObj
 {
 public:
-
+	Interaction();
 	Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList);
 	Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList, std::string consequence);
 	Interaction(std::string spriteName, std::vector<std::string> interactorSpritesList, std::vector<Parameter> interactionParameterList);
