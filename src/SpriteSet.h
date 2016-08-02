@@ -21,16 +21,16 @@ public:
 	SpriteSet();
 	virtual ~SpriteSet();
 
-	std::vector<Sprite> getSpriteList();//returns sprite list
-	std::vector<Sprite>* getSpriteListReference();//returns a pointer to the spriteList
-	void addSprite(Sprite newSprite);//adds new sprite to the Sprite list
+	std::vector<Sprite*> getSpriteList();//returns sprite list
+	std::vector<Sprite*>* getSpriteListReference();//returns a pointer to the spriteList
+	void addSprite(Sprite* newSprite);//adds new sprite to the Sprite list
 	
 	//deletes Sprite from the Sprite list; has to check all, so O(n), but list will be small, so it should be fine
-	bool deleteSprite(Sprite erasedSprite);
+	bool deleteSprite(Sprite* erasedSprite);
 	bool deleteSprite(std::string spriteName);//deletes first sprite whose name = parameter
 	bool deleteSprite(int index);
 
-	void modifySprite(Sprite newSprite, int index);//puts newSprite in the position index of the spriteSet
+	void modifySprite(Sprite* newSprite, int index);//puts newSprite in the position index of the spriteSet
 
 	void addRootSprite(Sprite* rSprite);//adds a root sprite to the root sprite list
 	std::vector<Sprite*> getRootSpriteList();
@@ -56,7 +56,7 @@ private:
 	//holds list of ALL the sprites. This will make my life easier so that I don't have to worry about creating
 	//'new' sprites and dealing with memory leak; this list holds all existing sprites, and the parent-child relationships
 	//are dealt in the individual sprites through pointer lists(so that all the actual sprites are only stored in one location)
-	std::vector<Sprite> spriteList;
+	std::vector<Sprite*> spriteList;
 
 
 	//holds a list of pointers to all root sprites, i.e., sprites that do not have parents

@@ -48,8 +48,11 @@ public:
 
 	//Option 4: Display methods, gets the list of sprites/terminations/interactions and shows it in a decent way to the user
 	void showSprite(SpriteSet* ss, int index);//shows sprite of index i in spriteList
-	void showSprite(Sprite s);//displays selected sprite on screen
+	void showSprite(Sprite* s);//displays selected sprite on screen
 	void showSpriteList(SpriteSet* ss);
+	void showSpriteParentTree(SpriteSet* ss);//shows children of spriteList
+	void showSpriteAndChildren(SpriteSet* ss, Sprite* s);//shows children of s
+
 	void showTermination(TerminationSet* ts, int index);
 	void showTermination(Termination t);
 	void showTerminationList(TerminationSet* ts);
@@ -58,7 +61,7 @@ public:
 	void showInteractionList(InteractionSet* is);
 
 	//parameter-handling methods
-	void showParameters(Sprite s);
+	void showParameters(Sprite* s);
 	void showParameters(Termination t);
 	void showParameters(Interaction i);
 

@@ -14,29 +14,34 @@ SpriteSet::SpriteSet() {
 
 SpriteSet::~SpriteSet() {
 	// TODO Auto-generated destructor stub
+	//since the spriteList vector is now a list of POINTERS, needs to delete all objects 
+	for (auto it = spriteList.begin(); it != spriteList.end(); ++it)
+	{
+		delete *it;
+	}
 }
 
-std::vector<Sprite> SpriteSet::getSpriteList()
+std::vector<Sprite*> SpriteSet::getSpriteList()
 {
 	return spriteList;
 }
 
-std::vector<Sprite>* SpriteSet::getSpriteListReference()
+std::vector<Sprite*>* SpriteSet::getSpriteListReference()
 {
 	return &spriteList;
 }
 
-void SpriteSet::addSprite(Sprite newSprite)
+void SpriteSet::addSprite(Sprite* newSprite)
 {
 	spriteList.push_back(newSprite);
-	if (newSprite.getParent() == NULL)
+	if (newSprite->getParent() == NULL)
 	{
 		//also add it to root sprite list
-		rootSpriteList.push_back(&spriteList[spriteList.size() - 1]);
+		rootSpriteList.push_back(newSprite);
 	}
 }
 
-bool SpriteSet::deleteSprite(Sprite erasedSprite)
+bool SpriteSet::deleteSprite(Sprite* erasedSprite)
 {
 	//goes through the sprite list(O(n), I know) and delete the correct sprite
 	for (int i = 0; i < spriteList.size(); i++)
@@ -56,9 +61,10 @@ bool SpriteSet::deleteSprite(std::string spriteName)
 	//goes through the sprite list(O(n), I know) and delete the correct sprite
 	for (int i = 0; i < spriteList.size(); i++)
 	{
-		if (spriteList[i].getName() == spriteName)
+		if (spriteList[i]->getName() == spriteName)
 		{
-			//delete this sprite
+			//delete this sprite(obj, then pointer
+			delete spriteList[i];
 			spriteList.erase(spriteList.begin() + i);
 			return true;
 		}
@@ -71,14 +77,18 @@ bool SpriteSet::deleteSprite(int index)
 {
 	if (index <= spriteList.size() - 1)
 	{
+		//delete this sprite(obj, then pointer
+		delete spriteList[index];
 		spriteList.erase(spriteList.begin() + index);
 		return true;
 	}
 	return false;
 }
 
-void SpriteSet::modifySprite(Sprite newSprite, int index)
+void SpriteSet::modifySprite(Sprite* newSprite, int index)
 {
+	//erases old sprite, sets the pointer to the new one
+	delete spriteList[index];
 	this->spriteList[index] = newSprite;
 }
 
@@ -96,13 +106,13 @@ bool SpriteSet::addChildToSprite(int parentIndex, Sprite * childSprite)
 {
 	//adds childSprite as a child of parent(if it's not already) and adds parent as parent of childSprite
 	//checks if they are already related
-	if (childSprite->isAChildOf(&spriteList[parentIndex]))
+	if (childSprite->isAChildOf(spriteList[parentIndex]))
 		return false;//failed to add child because it was already a child of the parent
 
 	//proceeds to add child to parent
-	spriteList[parentIndex].addChild(childSprite);
+	spriteList[parentIndex]->addChild(childSprite);
 	//now, adds parent to child
-	childSprite->setParent(&spriteList[parentIndex]);
+	childSprite->setParent(spriteList[parentIndex]);
 	return true;
 
 }
@@ -162,7 +172,7 @@ bool SpriteSet::deleteChild(int parentIndex, Sprite * childSprite)
 {
 	if (parentIndex < spriteList.size())
 	{
-		spriteList[parentIndex].deleteChild(childSprite);
+		spriteList[parentIndex]->deleteChild(childSprite);
 		return true;
 	}
 
@@ -174,7 +184,7 @@ bool SpriteSet::deleteChild(Sprite * parentSprite, Sprite * childSprite)
 	//goes through child list, if found, delete child
 	for (int i = 0; i < spriteList.size(); i++)
 	{
-		if (&spriteList[i] == parentSprite)
+		if (spriteList[i] == parentSprite)
 		{
 			//delete
 			return deleteChild(i, childSprite);

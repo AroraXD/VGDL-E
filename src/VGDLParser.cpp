@@ -47,6 +47,8 @@ void VGDLParser::writeSpriteAndChildren(Sprite* s)
 	//following the syntax, put two tabs to correctly indent the script
 	std::ofstream fileToWrite;
 	fileToWrite.open(getPath());
+	if (fileToWrite.is_open())
+		std::cout << "Writing sprites..." << std::endl;
 	fileToWrite << "\t";
 	//goes through all of the items in the spriteList and puts them in the spriteSet using the VGDL syntax
 	fileToWrite << "\t" + s->getName() + " > " + s->getSpriteType() + " ";
@@ -57,6 +59,7 @@ void VGDLParser::writeSpriteAndChildren(Sprite* s)
 	}
 	fileToWrite << "\n";
 	//TODO: add possible children
+	std::cout << "Adding possible children of " << s->getName() << std::endl;
 	for (int i = 0; i < s->getChildren().size(); i++)
 	{
 		fileToWrite << "\t";
@@ -65,11 +68,15 @@ void VGDLParser::writeSpriteAndChildren(Sprite* s)
 	}
 	//sprite is over, jump line and go to next sprite
 	fileToWrite<< "\n";
+	fileToWrite.close();
 }
 
 void VGDLParser::writeTermination(Termination t)
 {
 	std::ofstream VGDLScript(getPath());
+	if (VGDLScript.is_open())
+		std::cout << "Writing terminations..." << std::endl;
+
 	//get the termination type
 	VGDLScript << "\t";
 	VGDLScript << "\t" + t.getTerminationType() + " ";
@@ -86,6 +93,9 @@ void VGDLParser::writeTermination(Termination t)
 void VGDLParser::writeInteraction(Interaction i)
 {
 	std::ofstream VGDLScript(getPath());
+	if (VGDLScript.is_open())
+		std::cout << "Writing interactions..." << std::endl;
+
 	VGDLScript << "\t";
 	VGDLScript << "\t" + i.getInteractedSprite() + " ";
 	for (int j = 0; j < i.getInteractorSprites().size(); j++)

@@ -65,7 +65,8 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 	int choice = 0;
 	while(loop)
 	{ 
-		cout << "\nWhat do you want to do?\n1)Add Sprite to list\n2)Modify sprite\n3)Delete sprite from list\n4)Show list of Sprites\n5)Return to main menu\nChoice: ";
+		cout << "\nWhat do you want to do?\n1)Add Sprite to list\n2)Modify sprite\n3)Delete sprite from list\n" <<
+				"4)Show list of Sprites\n5)Show parent tree\n6)Return to main menu\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
@@ -85,7 +86,10 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 			//get sprite list and display it someway nice(create 'display' method around here)
 			showSpriteList(ss);
 			break;
-		case 5:
+		case 5://shows parent and child tree
+			showSpriteParentTree(ss);
+			break;
+		case 6:
 			cout << "\nReturning to main menu...\n" << endl;
 			loop = false;
 			break;
@@ -214,9 +218,8 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 	{
 		spriteHasParent = false;
 	}
-	Sprite newSprite(name, stype, spriteHasParent);
-	if(spriteHasParent)
-		ss->addChildToSprite(pIndex-1, &newSprite);
+	Sprite* newSprite = new Sprite(name, stype, spriteHasParent);
+
 
 
 
@@ -227,7 +230,7 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 	{
 		//asks for parameter value, now just accepts any strings
 		cout << "Adding parameter...";
-		addParameter(&newSprite);
+		addParameter(newSprite);
 		cout << "\nAdding sprite to list...";
 
 	}
@@ -239,6 +242,12 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 	//after name and possible parameter(s), add sprite to list
 	ss->addSprite(newSprite);//this also deals with the possible root sprite issue
 
+	//deals with parenting
+	if (spriteHasParent)
+	{
+		cout << "Fixing child-parent relationships for " << newSprite->getName() << endl;
+		ss->addChildToSprite(ss->getSpriteList()[pIndex - 1], newSprite);//TODO: probably gives error
+	}
 	
 	cout << "\nSprite added.\n\n";
 }
@@ -401,9 +410,9 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 	//temp variables to use while modifying the object
 	string str;//used for anything string-related inside switch
 	int i;
-	Sprite modifiedSprite;
+	Sprite* modifiedSprite = new Sprite();
 	Parameter newParam;//will be used to add any parameters
-	modifiedSprite = ss->getSpriteList()[spriteIndex - 1];
+	*modifiedSprite = *(ss->getSpriteList()[spriteIndex - 1]);
 	bool loop = true;
 	while (loop)
 	{
@@ -416,12 +425,12 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 		case 1://Change name
 			cout << "What's the sprite's new name?\nNew name: ";
 			cin >> str;
-			modifiedSprite.setName(str);
+			modifiedSprite->setName(str);
 			break;
 		case 2://change type
 			cout << "What's the sprite's new type?\nNew type: ";
 			cin >> str;
-			modifiedSprite.setSpriteType(str);
+			modifiedSprite->setSpriteType(str);
 			break;
 		case 3://add parameter
 			cout << "New parameter type: ";
@@ -430,20 +439,20 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 			cout << "New parameter value: ";
 			cin >> str;
 			newParam.setParameterValue(str);
-			modifiedSprite.addParameter(newParam);
+			modifiedSprite->addParameter(newParam);
 			break;
 		case 4://shows user parameters of this obj(with index), user chooses an index, removes chosen parameter
 			showParameters(modifiedSprite);
 			cout << "Type the index of the parameter to be deleted: ";
 			cin >> i;
-			modifiedSprite.deleteParameterAtPosition(i - 1);
+			modifiedSprite->deleteParameterAtPosition(i - 1);
 			break;
 		case 5://change parent's name
 			//cout << "Not implemented yet" << endl;
 			showSpriteList(ss);
 			cout << "What's the sprite's parent's index?\nParent's index: ";
 			cin >> index;
-			ss->changeParentHood(modifiedSprite.getParent(), index, &modifiedSprite);
+			ss->changeParentHood(modifiedSprite->getParent(), index, modifiedSprite);
 			modifiedSprite;//TODO: fix since it doesn't get a string anymore, gets the sprite pointer for parent!!
 			break;
 		case 6:
@@ -646,11 +655,11 @@ void ScriptTester::deleteInteractionFromList(InteractionSet * is)
 void ScriptTester::showSprite(SpriteSet * ss, int index)
 {
 	cout << "\nSprite " << (index + 1) << ": " << endl;
-	cout << "Name: " << ss->getSpriteList()[index].getName() << endl;
-	cout << "Type: " << ss->getSpriteList()[index].getSpriteType() << endl;	
+	cout << "Name: " << ss->getSpriteList()[index]->getName() << endl;
+	cout << "Type: " << ss->getSpriteList()[index]->getSpriteType() << endl;	
 	cout << "Parent: ";
-	if (ss->getSpriteList()[index].getParent() != NULL)
-		cout << ss->getSpriteList()[index].getParent()->getName() << endl;
+	if (ss->getSpriteList()[index]->getParent() != NULL)
+		cout << ss->getSpriteList()[index]->getParent()->getName() << endl;
 	else
 		cout << "none" << endl;
 	cout << "Parameters: " << endl;
@@ -658,14 +667,14 @@ void ScriptTester::showSprite(SpriteSet * ss, int index)
 	showParameters(ss->getSpriteList()[index]);
 }
 
-void ScriptTester::showSprite(Sprite s)
+void ScriptTester::showSprite(Sprite* s)
 {
 	cout << "\nSelected Sprite: " << endl;
-	cout << "Name: " << s.getName() << endl;
-	cout << "Type: " << s.getSpriteType() << endl;
+	cout << "Name: " << s->getName() << endl;
+	cout << "Type: " << s->getSpriteType() << endl;
 	cout << "Parent: ";
-	if (s.getParent() != NULL)
-		cout << s.getParent()->getName() << endl;
+	if (s->getParent() != NULL)
+		cout << s->getParent()->getName() << endl;
 	else
 		cout << "none" << endl;
 
@@ -682,6 +691,30 @@ void ScriptTester::showSpriteList(SpriteSet * ss)
 		showSprite(ss, i);
 	}
 	cout << "\n\n";
+}
+
+void ScriptTester::showSpriteAndChildren(SpriteSet* ss, Sprite * s)
+{
+		cout << "\nSprite: " << s->getName() << endl;
+		cout << "Parent: ";
+		if (s->getParent() != NULL)
+			cout << s->getParent()->getName() << endl;
+		cout << "\nChildren: " << endl;
+		for (int i = 0; i < s->getChildren().size();i++)
+		{
+			cout << s->getChildren()[i]->getName() << endl;
+			if (s->getChildren()[i]->getChildren().size() != NULL)//that is, if the child has children
+				showSpriteAndChildren(ss, s->getChildren()[i]);//shows children of child(and so on and so forth)
+		}
+}
+
+void ScriptTester::showSpriteParentTree(SpriteSet * ss)
+{
+	for (int i = 0; i < ss->getRootSpriteList().size(); i++)
+	{
+		//shows sprites and their children, one by one
+		showSpriteAndChildren(ss, ss->getRootSpriteList()[i]);
+	}
 }
 
 void ScriptTester::showTermination(TerminationSet * ts, int index)
@@ -753,13 +786,13 @@ void ScriptTester::showInteractionList(InteractionSet * is)
 
 }
 
-void ScriptTester::showParameters(Sprite s)
+void ScriptTester::showParameters(Sprite* s)
 {
-	for (int j = 0; j < s.getParameterList().size(); j++)
+	for (int j = 0; j < s->getParameterList().size(); j++)
 	{
 		cout << "Parameter " << (j + 1) << endl;
-		cout << "Name: " << s.getParameterList()[j].getParameterName() << endl;
-		cout << "Value: " << s.getParameterList()[j].getParameterValue() << endl;
+		cout << "Name: " << s->getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << s->getParameterList()[j].getParameterValue() << endl;
 
 	}
 }

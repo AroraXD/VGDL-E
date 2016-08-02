@@ -20,9 +20,9 @@ TODO: add a "modify object" option to the Sprite, Termination, Interaction menus
 TODO: make operator= for all 3 main objects, to make life easier(OPERATOR= DONE)
 TODO: Finish 'modify' methods in script tester(DONE, NEEDS TESTING)
 
-
+TODO: make a method to display all parenting and children(DONE)
+TODO: fix possible problem with ofstream giving runtime error
 TODO: start thinking about Sprite parenting(DOING, NEED TO FINISH NEW VGDL PARSER METHODS AND TEST, TEST, TEST A LOT)(FIX RUNTIME ERRORS)
-TODO: Look for an optimized way of working with the ofstreams in the Parser
 
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk
 
