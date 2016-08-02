@@ -189,15 +189,37 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 {
 	//same deal as methods above it, lock the program in a loop until user decides to return
 	int choice = 0;
+	int pIndex=0;
 
 	cout << "\nCreating a new sprite....\nEnter a name of the new sprite(not checking for validation at this point): ";
 	string name;
 	cin >> name;
-	cout << "\nEnter the type of the sprite: ";
+	cout << "\nEnter the type of the sprite(enter 'none' if sprite doesn't have/inherits its type): ";
 	string stype;
 	cin >> stype;
+	if (stype == "none")
+		stype = "";
 	//creates a basic sprite with just the name and type
-	Sprite newSprite(name, stype);
+	bool spriteHasParent;
+	cout << "Does the sprite have a parent?\n1)Yes  2)No\n";
+	cin >> choice;
+	if (choice == 1)
+	{
+		showSpriteList(ss);
+		cout << "Choose index of parent: ";
+		cin >> pIndex;
+		spriteHasParent = true;
+	}
+	else
+	{
+		spriteHasParent = false;
+	}
+	Sprite newSprite(name, stype, spriteHasParent);
+	if(spriteHasParent)
+		ss->addChildToSprite(pIndex-1, &newSprite);
+
+
+
 
 	cout << "\nAdd parameter?\n1) Yes 2)No\n";
 	cin >> choice;
@@ -215,7 +237,9 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 		cout << "\nAdding sprite to list without parameters...\n";
 	}
 	//after name and possible parameter(s), add sprite to list
-	ss->addSprite(newSprite);
+	ss->addSprite(newSprite);//this also deals with the possible root sprite issue
+
+	
 	cout << "\nSprite added.\n\n";
 }
 
@@ -385,7 +409,7 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 	{
 		showSprite(modifiedSprite);
 		cout << "\nWhat would you like to do with this sprite?\n1)Modify name\n2)Modify type\n3)Add parameter\n4)Remove parameter\n5)Change sprite's parent\n6)Return to previous menu\nChoice: ";
-		int choice;
+		int choice, index;
 		cin >> choice;
 		switch (choice)
 		{
@@ -415,9 +439,12 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 			modifiedSprite.deleteParameterAtPosition(i - 1);
 			break;
 		case 5://change parent's name
-			cout << "What's the sprite's parent's name?\nParent's name: ";
-			cin >> str;
-			modifiedSprite.setParent(str);
+			//cout << "Not implemented yet" << endl;
+			showSpriteList(ss);
+			cout << "What's the sprite's parent's index?\nParent's index: ";
+			cin >> index;
+			ss->changeParentHood(modifiedSprite.getParent(), index, &modifiedSprite);
+			modifiedSprite;//TODO: fix since it doesn't get a string anymore, gets the sprite pointer for parent!!
 			break;
 		case 6:
 			//returns to menu, so leave loop
@@ -620,7 +647,12 @@ void ScriptTester::showSprite(SpriteSet * ss, int index)
 {
 	cout << "\nSprite " << (index + 1) << ": " << endl;
 	cout << "Name: " << ss->getSpriteList()[index].getName() << endl;
-	cout << "Type: " << ss->getSpriteList()[index].getSpriteType() << endl;
+	cout << "Type: " << ss->getSpriteList()[index].getSpriteType() << endl;	
+	cout << "Parent: ";
+	if (ss->getSpriteList()[index].getParent() != NULL)
+		cout << ss->getSpriteList()[index].getParent()->getName() << endl;
+	else
+		cout << "none" << endl;
 	cout << "Parameters: " << endl;
 	//puts parameters one by one, name and value
 	showParameters(ss->getSpriteList()[index]);
@@ -631,6 +663,12 @@ void ScriptTester::showSprite(Sprite s)
 	cout << "\nSelected Sprite: " << endl;
 	cout << "Name: " << s.getName() << endl;
 	cout << "Type: " << s.getSpriteType() << endl;
+	cout << "Parent: ";
+	if (s.getParent() != NULL)
+		cout << s.getParent()->getName() << endl;
+	else
+		cout << "none" << endl;
+
 	cout << "Parameters: " << endl;
 	//puts parameters one by one, name and value
 	showParameters(s);

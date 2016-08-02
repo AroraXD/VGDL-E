@@ -21,8 +21,8 @@ class Sprite : public ParameterizableObj
 {
 public:
 	Sprite();
-	Sprite(std::string newName, std::string stype, bool hasParent = false, std::string parent = "null");
-	Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, std::string parent = "null");
+	Sprite(std::string newName, std::string stype, bool hasParent = false, Sprite* parent = NULL);
+	Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent = false, Sprite* parent =NULL);
 
 	virtual ~Sprite();
 
@@ -36,11 +36,16 @@ public:
 	std::vector<Parameter> getSpriteParameters();
 	void addParameter(Parameter newParameter);
 
-	std::string getParent();
-	void setParent(std::string newParent);
-
+	Sprite* getParent();
+	void setParent(Sprite* newParent);
 	bool spriteHasParent();
+	void setHasParent(bool hasP);
+	bool isAChildOf(Sprite* possibleParent);//returns true if parent == parent sprite
 
+
+	std::vector<Sprite*> getChildren();//gets the children of this sprite
+	void addChild(Sprite* newChild);//adds pointer to a child for this sprite
+	bool deleteChild(Sprite* childToDelete);
 
 	bool operator==(Sprite s);
 	void operator=(Sprite s);
@@ -51,10 +56,11 @@ private:
 	std::string spriteType;//sprite type of this particular sprite
 	
 	bool hasParent;//true if sprite is part of a higher sprite class
-	std::string parent;
+
+	Sprite* parent;//holds a pointer to the parent of this sprite
 
 
-
+	std::vector<Sprite*> children;//holds a vector of pointers to all childrens 
 
 
 };

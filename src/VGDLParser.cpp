@@ -1,5 +1,4 @@
 #include "VGDLParser.h"
-#include <fstream>
 #include <iostream>
 
 VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
@@ -43,6 +42,73 @@ void VGDLParser::setLevelPath(std::string newLevelPath)
 	levelScriptPath = newLevelPath;
 }
 
+void VGDLParser::writeSpriteAndChildren(Sprite* s)
+{
+	//following the syntax, put two tabs to correctly indent the script
+	std::ofstream fileToWrite;
+	fileToWrite.open(getPath());
+	fileToWrite << "\t";
+	//goes through all of the items in the spriteList and puts them in the spriteSet using the VGDL syntax
+	fileToWrite << "\t" + s->getName() + " > " + s->getSpriteType() + " ";
+	for (int j = 0; j < s->getSpriteParameters().size(); j++)
+	{
+		//puts the parameters in order
+		fileToWrite << s->getSpriteParameters()[j].getParameterName() + "=" + s->getSpriteParameters()[j].getParameterValue() + " ";
+	}
+	fileToWrite << "\n";
+	//TODO: add possible children
+	for (int i = 0; i < s->getChildren().size(); i++)
+	{
+		fileToWrite << "\t";
+		writeSpriteAndChildren(s->getChildren()[i]);//wtf?
+		fileToWrite << "\n";
+	}
+	//sprite is over, jump line and go to next sprite
+	fileToWrite<< "\n";
+}
+
+void VGDLParser::writeTermination(Termination t)
+{
+	std::ofstream VGDLScript(getPath());
+	//get the termination type
+	VGDLScript << "\t";
+	VGDLScript << "\t" + t.getTerminationType() + " ";
+	//now get each of its possible parameters
+	for (int j = 0; j < t.getParameterList().size(); j++)
+	{
+		VGDLScript << t.getParameterList()[j].getParameterName() + "=" + t.getParameterList()[j].getParameterValue();
+		VGDLScript << " ";
+	}
+	VGDLScript << "\n";
+
+}
+
+void VGDLParser::writeInteraction(Interaction i)
+{
+	std::ofstream VGDLScript(getPath());
+	VGDLScript << "\t";
+	VGDLScript << "\t" + i.getInteractedSprite() + " ";
+	for (int j = 0; j < i.getInteractorSprites().size(); j++)
+	{
+		//gets each of the current interacted sprite's interactor sprites
+		VGDLScript << i.getInteractorSprites()[j] + " ";
+	}
+	VGDLScript << " > ";
+	//now to write the "consequence" and its possible parameters
+	VGDLScript << i.getInteractionType() + " ";
+	for (int j = 0; j < i.getParameterList().size(); j++)
+	{
+		//write the existing parameters of the consequence
+		VGDLScript << i.getParameterList()[j].getParameterName() + "=" + i.getParameterList()[j].getParameterValue();
+		VGDLScript << " ";
+	}
+	//end of this interaction, change line
+	VGDLScript << "\n";
+
+}
+
+
+
 
 
 
@@ -78,21 +144,10 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		//now fill up all the sprites in sprite set following the syntax:
 		//	sprite > type ListOfVariables
 		//for now we'll ignore parent sprites, as that will put another layer of complexity in the for loops
-		std::vector<Sprite> spriteList = spriteSet.getSpriteList();
-		for (int i = 0; i < spriteList.size(); i++)
+		std::vector<Sprite*> rootSpriteList = spriteSet.getRootSpriteList();
+		for (int i = 0; i < rootSpriteList.size(); i++)
 		{
-			//following the syntax, put two tabs to correctly indent the script
-			VGDLScript << "\t";
-			//goes through all of the items in the spriteList and puts them in the spriteSet using the VGDL syntax
-			VGDLScript << "\t" + spriteList[i].getName() + " > " + spriteList[i].getSpriteType() + " ";
-			for (int j = 0; j < spriteList[i].getSpriteParameters().size(); j++)
-			{
-				//puts the parameters in order
-				VGDLScript << spriteList[i].getSpriteParameters()[j].getParameterName() + "=" + spriteList[i].getSpriteParameters()[j].getParameterValue() + " ";
-			}
-			//sprite is over, jump line and go to next sprite
-			VGDLScript << "\n";
-
+			writeSpriteAndChildren(rootSpriteList[i]);
 		}
 		//APART FROM PARENT SPRITES, SPRITESET CONSTRUCTION IS COMPLETE
 
@@ -107,25 +162,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		//for each interaction, write a line
 		for (int i = 0; i < interactionList.size(); i++)
 		{
-			VGDLScript << "\t";
-			VGDLScript << "\t"+interactionList[i].getInteractedSprite() + " ";
-			for (int j = 0; j < interactionList[i].getInteractorSprites().size(); j++)
-			{
-				//gets each of the current interacted sprite's interactor sprites
-				VGDLScript << interactionList[i].getInteractorSprites()[j]+ " ";
-			}
-			VGDLScript << " > ";
-			//now to write the "consequence" and its possible parameters
-			VGDLScript << interactionList[i].getInteractionType()+" ";
-			for (int j = 0; j < interactionList[i].getParameterList().size(); j++)
-			{
-				//write the existing parameters of the consequence
-				VGDLScript <<interactionList[i].getParameterList()[j].getParameterName()+"="+interactionList[i].getParameterList()[j].getParameterValue();
-				VGDLScript << " ";
-			}
-			//end of this interaction, change line
-			VGDLScript << "\n";
-
+			writeInteraction(interactionList[i]);
 		}
 		//believe InteractionSet is complete as well
 
@@ -135,17 +172,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 		std::vector<Termination> terminationList = terminationSet.getTerminationList();
 		for (int i = 0; i < terminationList.size(); i++)
 		{
-			//get the termination type
-			VGDLScript << "\t";
-			VGDLScript << "\t" + terminationList[i].getTerminationType() + " ";
-			//now get each of its possible parameters
-			for (int j = 0; j < terminationList[i].getParameterList().size(); j++)
-			{
-				VGDLScript << terminationList[i].getParameterList()[j].getParameterName() + "=" + terminationList[i].getParameterList()[j].getParameterValue();
-				VGDLScript << " ";
-			}
-			VGDLScript << "\n";
-
+			writeTermination(terminationList[i]);
 		}
 
 		//TODO:leave LevelMapping for last

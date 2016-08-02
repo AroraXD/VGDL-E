@@ -7,16 +7,12 @@
 
 #include "Sprite.h"
 
-//Sprite::Sprite() {
-//	// TODO Auto-generated constructor stub
-//
-//}
 
 Sprite::Sprite()
 {
 }
 
-Sprite::Sprite(std::string newName, std::string stype, bool hasParent, std::string parent)
+Sprite::Sprite(std::string newName, std::string stype, bool hasParent, Sprite* parent)
 {
 	name = newName;
 	spriteType = stype;
@@ -24,7 +20,7 @@ Sprite::Sprite(std::string newName, std::string stype, bool hasParent, std::stri
 	this->parent = parent;
 }
 
-Sprite::Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent, std::string parent)
+Sprite::Sprite(std::string newName, std::string stype, std::vector<Parameter> paramList, bool hasParent, Sprite* parent)
 {
 	name = newName;
 	spriteType = stype;
@@ -68,20 +64,59 @@ void Sprite::addParameter(Parameter newParameter)
 	parameterList.push_back(newParameter);
 }
 
-std::string Sprite::getParent()
+Sprite* Sprite::getParent()
 {
 	return parent;
 }
 
-void Sprite::setParent(std::string newParent)
+void Sprite::setParent(Sprite* newParent)
 {
 	parent = newParent;
+	if (newParent == NULL)
+		hasParent = false;
+	else
+		hasParent = true;
 }
 
 bool Sprite::spriteHasParent()
 {
 	return hasParent;
 }
+
+void Sprite::setHasParent(bool hasP)
+{
+	hasParent = hasP;
+}
+
+bool Sprite::isAChildOf(Sprite * possibleParent)
+{
+	return possibleParent==this->parent;
+}
+
+std::vector<Sprite*> Sprite::getChildren()
+{
+	return children;
+}
+
+void Sprite::addChild(Sprite * newChild)
+{
+	children.push_back(newChild);
+}
+
+bool Sprite::deleteChild(Sprite * childToDelete)
+{
+	for (int i = 0; i < getChildren().size();i++)
+	if (children[i] == childToDelete)
+	{
+		//if found, deletes that child from the list
+		children.erase(children.begin() + i);
+		return true;
+	}
+	//didn't find child
+	return false;
+}
+
+
 
 bool Sprite::operator==(Sprite s)
 {

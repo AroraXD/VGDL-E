@@ -12,18 +12,21 @@
 /*For organization's sake, every TODO of the program shall be put in this file, to organize what needs to be done and 
 * decently track what has already been accomplished.
 
-TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction and Termination sets(DONE, NEEDS TESTING)
-TODO: create 'deleteByName' methods for the vectors of objs in the 3 sets above(make it a boolean)(DONE, NEEDS TESTING)
-TODO: create 'add' and 'delete' methods in scriptTester and fill them out(DONE, need tests with Interaction)
+TODO: create 'delete' methods for the vectors of objs in the Sprite, Interaction and Termination sets(DONE)
+TODO: create 'deleteByName' methods for the vectors of objs in the Sprite(make it a boolean)(DONE)
+TODO: create 'add' and 'delete' methods in scriptTester and fill them out(DONE, need tests)
 TODO: fix fstream VGDL builder that's not creating the document for some reason(DONE)
-TODO: add a "modify object" option to the Sprite, Termination, Interaction menus(to add/remove parameters and etc after creation)(STARTED, FINISH IT)
+TODO: add a "modify object" option to the Sprite, Termination, Interaction menus(to add/remove parameters and etc after creation)(DONE)
 TODO: make operator= for all 3 main objects, to make life easier(OPERATOR= DONE)
-TODO: Finish 'modify' methods in script tester
+TODO: Finish 'modify' methods in script tester(DONE, NEEDS TESTING)
+
+
+TODO: start thinking about Sprite parenting(DOING, NEED TO FINISH NEW VGDL PARSER METHODS AND TEST, TEST, TEST A LOT)(FIX RUNTIME ERRORS)
+TODO: Look for an optimized way of working with the ofstreams in the Parser
 
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk
 
 //for later on...
-TODO: start thinking about Sprite parenting
 TODO: check syntax rules for capitalized letters, create method for that in Manager script to (de)capitalize an input when needed.(METHODS CREATED, NEED TO PUT THEM IN CORRECT PLACES)
 */
 

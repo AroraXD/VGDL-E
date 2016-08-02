@@ -28,5 +28,5 @@ void ParameterizableObj::addParameter(Parameter newParameter)
 
 void ParameterizableObj::deleteParameterAtPosition(int i)
 {
-	parameterList.erase(parameterList.begin + i);
+	parameterList.erase(parameterList.begin() + i);
 }

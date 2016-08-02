@@ -4,6 +4,7 @@
 #include "SpriteSet.h"
 #include "InteractionSet.h"
 #include "TerminationSet.h"
+#include <fstream>
 
 
 
@@ -20,7 +21,10 @@ public:
 	std::string getLevelPath();
 	void setLevelPath(std::string newLevelPath);
 
-
+	void writeSpriteAndChildren(Sprite* s);
+	void writeTermination(Termination t);
+	void writeInteraction(Interaction i);
+	//but.ly/2aL6GHd
 
 	bool reloadFile(std::string filePath);
 	bool writeVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);
