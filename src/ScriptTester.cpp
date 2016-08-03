@@ -66,7 +66,7 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 	while(loop)
 	{ 
 		cout << "\nWhat do you want to do?\n1)Add Sprite to list\n2)Modify sprite\n3)Delete sprite from list\n" <<
-				"4)Show list of Sprites\n5)Show parent tree\n6)Return to main menu\nChoice: ";
+				"4)Show list of Sprites\n5)Show parent tree\n6)Show root sprite list\n7)Return to main menu\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
@@ -90,6 +90,9 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 			showSpriteParentTree(ss);
 			break;
 		case 6:
+			showRootSprites(ss);
+			break;
+		case 7:
 			cout << "\nReturning to main menu...\n" << endl;
 			loop = false;
 			break;
@@ -177,7 +180,7 @@ void ScriptTester::workWithTerminationSet(TerminationSet* ts)
 void ScriptTester::workWithVGDLCreator(VGDLParser * vgdl, SpriteSet * ss, InteractionSet * is, TerminationSet * ts)
 {
 	cout << "Creating a VGDL script in the root directory of the program, named " << vgdl->getPath() << endl;
-	if (vgdl->createVGDLScript(*ss, *is, *ts))
+	if (vgdl->createVGDLScript(ss, *is, *ts))
 		cout << "Script created!\n" << endl;
 	else
 		cout << "Failed to create script...for some reason" << endl;
@@ -710,10 +713,20 @@ void ScriptTester::showSpriteAndChildren(SpriteSet* ss, Sprite * s)
 
 void ScriptTester::showSpriteParentTree(SpriteSet * ss)
 {
-	for (int i = 0; i < ss->getRootSpriteList().size(); i++)
+	for (int i = 0; i < ss->getSpriteList().size(); i++)
 	{
 		//shows sprites and their children, one by one
-		showSpriteAndChildren(ss, ss->getRootSpriteList()[i]);
+		showSpriteAndChildren(ss, ss->getSpriteList()[i]);
+	}
+}
+
+void ScriptTester::showRootSprites(SpriteSet * ss)
+{
+	cout << "\nRoot Sprite list: " << endl;
+	for (int i = 0; i < ss->getRootSpriteList().size(); i++)
+	{
+		cout << ss->getRootSpriteList()[i]->getName() << endl;
+
 	}
 }
 

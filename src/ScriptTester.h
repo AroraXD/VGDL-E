@@ -51,6 +51,7 @@ public:
 	void showSprite(Sprite* s);//displays selected sprite on screen
 	void showSpriteList(SpriteSet* ss);
 	void showSpriteParentTree(SpriteSet* ss);//shows children of spriteList
+	void showRootSprites(SpriteSet* ss);
 	void showSpriteAndChildren(SpriteSet* ss, Sprite* s);//shows children of s
 
 	void showTermination(TerminationSet* ts, int index);

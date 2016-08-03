@@ -21,8 +21,8 @@ TODO: make operator= for all 3 main objects, to make life easier(OPERATOR= DONE)
 TODO: Finish 'modify' methods in script tester(DONE, NEEDS TESTING)
 
 TODO: make a method to display all parenting and children(DONE)
-TODO: fix possible problem with ofstream giving runtime error
-TODO: start thinking about Sprite parenting(DOING, NEED TO FINISH NEW VGDL PARSER METHODS AND TEST, TEST, TEST A LOT)(FIX RUNTIME ERRORS)
+TODO: fix possible problem with ofstream giving runtime error(fixed it)
+TODO: start thinking about Sprite parenting(DOING, NEED TO FINISH NEW VGDL PARSER METHODS AND TEST, TEST, TEST A LOT)(FIX ROOT SPRITE LIST, IT'S ADDING EVERY SPRITE TO IT)
 
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk
 

@@ -15,9 +15,9 @@ SpriteSet::SpriteSet() {
 SpriteSet::~SpriteSet() {
 	// TODO Auto-generated destructor stub
 	//since the spriteList vector is now a list of POINTERS, needs to delete all objects 
-	for (auto it = spriteList.begin(); it != spriteList.end(); ++it)
+	for (int i = 0; i<spriteList.size(); i++)
 	{
-		delete *it;
+		delete spriteList[i];
 	}
 }
 
@@ -34,7 +34,7 @@ std::vector<Sprite*>* SpriteSet::getSpriteListReference()
 void SpriteSet::addSprite(Sprite* newSprite)
 {
 	spriteList.push_back(newSprite);
-	if (newSprite->getParent() == NULL)
+	if (!newSprite->spriteHasParent())
 	{
 		//also add it to root sprite list
 		rootSpriteList.push_back(newSprite);

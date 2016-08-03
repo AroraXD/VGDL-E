@@ -1,0 +1,13 @@
+BasicGame
+	SpriteSet
+		water > immovable img=water 
+		fireStart > Spreader 
+		fire >  
+
+			fireStart > Spreader 
+
+			fireEnd > Immovable img=fir 
+
+	InteractionSet
+
+	TerminationSet

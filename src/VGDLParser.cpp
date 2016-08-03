@@ -42,11 +42,33 @@ void VGDLParser::setLevelPath(std::string newLevelPath)
 	levelScriptPath = newLevelPath;
 }
 
+void VGDLParser::writeSpriteSet(SpriteSet* ss)
+{
+	std::fstream VGDLScript(getPath(), std::fstream::app);
+	if (VGDLScript.is_open())
+	{
+
+		std::cout << "Writing SpriteSet " << std::endl;
+		VGDLScript << "\tSpriteSet\n";
+		VGDLScript.close();
+		//now fill up all the sprites in sprite set following the syntax:
+		//	sprite > type ListOfVariables
+		//for now we'll ignore parent sprites, as that will put another layer of complexity in the for loops
+		std::vector<Sprite*> rootSpriteList = ss->getRootSpriteList();
+		for (int i = 0; i < rootSpriteList.size(); i++)
+		{
+			writeSpriteAndChildren(rootSpriteList[i]);
+		}
+		//APART FROM PARENT SPRITES, SPRITESET CONSTRUCTION IS COMPLETE 
+	}
+	else
+		std::cout << "Could not open file, could not write SpriteSet!" << std::endl;
+}
+
 void VGDLParser::writeSpriteAndChildren(Sprite* s)
 {
 	//following the syntax, put two tabs to correctly indent the script
-	std::ofstream fileToWrite;
-	fileToWrite.open(getPath());
+	std::ofstream fileToWrite(getPath(),std::fstream::app);
 	if (fileToWrite.is_open())
 		std::cout << "Writing sprites..." << std::endl;
 	fileToWrite << "\t";
@@ -62,18 +84,39 @@ void VGDLParser::writeSpriteAndChildren(Sprite* s)
 	std::cout << "Adding possible children of " << s->getName() << std::endl;
 	for (int i = 0; i < s->getChildren().size(); i++)
 	{
-		fileToWrite << "\t";
-		writeSpriteAndChildren(s->getChildren()[i]);//wtf?
-		fileToWrite << "\n";
+		fileToWrite << "\n\t";
+		fileToWrite.flush();//saves what was written until now before it starts putting the children in
+		writeSpriteAndChildren(s->getChildren()[i]);
+		
 	}
 	//sprite is over, jump line and go to next sprite
-	fileToWrite<< "\n";
 	fileToWrite.close();
+}
+
+void VGDLParser::writeTerminationSet(TerminationSet ts)
+{
+	std::fstream VGDLScript(getPath(), std::fstream::app);
+	if (VGDLScript.is_open())
+	{
+		std::cout << "Writing TerminationSet..." << std::endl;
+		VGDLScript << "\n\tTerminationSet\n";
+		VGDLScript.close();
+
+
+		std::vector<Termination> terminationList = ts.getTerminationList();
+		for (int i = 0; i < terminationList.size(); i++)
+		{
+			writeTermination(terminationList[i]);
+		}
+
+	}
+	else
+		std::cout << "Could not open file, could not write TerminationSet!" << std::endl;
 }
 
 void VGDLParser::writeTermination(Termination t)
 {
-	std::ofstream VGDLScript(getPath());
+	std::fstream VGDLScript(getPath(), std::fstream::app);
 	if (VGDLScript.is_open())
 		std::cout << "Writing terminations..." << std::endl;
 
@@ -87,12 +130,37 @@ void VGDLParser::writeTermination(Termination t)
 		VGDLScript << " ";
 	}
 	VGDLScript << "\n";
+	VGDLScript.close();
 
+}
+
+void VGDLParser::writeInteractionSet(InteractionSet is)
+{
+	std::fstream VGDLScript(getPath(), std::fstream::app);
+	if (VGDLScript.is_open())
+	{
+		std::cout << "Writing InteractionSet..." << std::endl;
+		VGDLScript << "\n\tInteractionSet\n";
+		VGDLScript.close();//just needed that line above
+
+		//now we fill the interactions with the following syntax:
+		//	sprite ListOfInteractorSprites > consequence PossibleParameterList
+		std::vector<Interaction> interactionList = is.getInteractionList();
+
+		//for each interaction, write a line
+		for (int i = 0; i < interactionList.size(); i++)
+		{
+			writeInteraction(interactionList[i]);
+		}
+		//believe InteractionSet is complete as well 
+	}
+	else
+		std::cout << "Could not open file, could not write InteractionSet!" << std::endl;
 }
 
 void VGDLParser::writeInteraction(Interaction i)
 {
-	std::ofstream VGDLScript(getPath());
+	std::fstream VGDLScript(getPath(), std::fstream::app);
 	if (VGDLScript.is_open())
 		std::cout << "Writing interactions..." << std::endl;
 
@@ -137,7 +205,7 @@ bool VGDLParser::reloadFile(std::string filePath)
 		return false;
 }
 
-bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
 {
 	//here is where the action happens
 	//The method writes the VGDL script from scratch, so it must place ALL of the necessary things in it
@@ -149,45 +217,20 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 	{
 		//does everything
 		std::cout << "File Open. Begin writing..." << std::endl;
-		VGDLScript << "BasicGame\n";
-		VGDLScript << "\tSpriteSet\n";
-		//now fill up all the sprites in sprite set following the syntax:
-		//	sprite > type ListOfVariables
-		//for now we'll ignore parent sprites, as that will put another layer of complexity in the for loops
-		std::vector<Sprite*> rootSpriteList = spriteSet.getRootSpriteList();
-		for (int i = 0; i < rootSpriteList.size(); i++)
-		{
-			writeSpriteAndChildren(rootSpriteList[i]);
-		}
-		//APART FROM PARENT SPRITES, SPRITESET CONSTRUCTION IS COMPLETE
+		VGDLScript << "BasicGame\n";//TODO: need possible game parameters
+		VGDLScript.close();//can close here, I guess
+
+		writeSpriteSet(spriteSet);
+
+		writeInteractionSet(interactionSet);
 
 
 
-		VGDLScript << "\n\tInteractionSet\n";
-
-		//now we fill the interactions with the following syntax:
-		//	sprite ListOfInteractorSprites > consequence PossibleParameterList
-		std::vector<Interaction> interactionList = interactionSet.getInteractionList();
-
-		//for each interaction, write a line
-		for (int i = 0; i < interactionList.size(); i++)
-		{
-			writeInteraction(interactionList[i]);
-		}
-		//believe InteractionSet is complete as well
-
-
-
-		VGDLScript << "\n\tTerminationSet\n";
-		std::vector<Termination> terminationList = terminationSet.getTerminationList();
-		for (int i = 0; i < terminationList.size(); i++)
-		{
-			writeTermination(terminationList[i]);
-		}
+		writeTerminationSet(terminationSet);
 
 		//TODO:leave LevelMapping for last
 
-		VGDLScript << "\n\tLevelMapping\n";
+		//VGDLScript << "\n\tLevelMapping\n";
 
 
 
@@ -195,8 +238,9 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 		//closes it to save it
 		std::cout << "Writing complete." << std::endl;
-		VGDLScript.close();
+		//VGDLScript.close();//is this what's breaking it? Could it perhaps be already closed?
 		//returns true at the very end
+		std::cout << "Returning..." << std::endl;
 		return true;
 	}
 
@@ -206,7 +250,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet spriteSet, InteractionSet interaction
 
 }
 
-bool VGDLParser::createVGDLScript(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::createVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
 {
 	//first, we must open the files
 
