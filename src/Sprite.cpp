@@ -106,7 +106,7 @@ void Sprite::addChild(Sprite * newChild)
 bool Sprite::deleteChild(Sprite * childToDelete)
 {
 	for (int i = 0; i < getChildren().size();i++)
-	if (children[i] == childToDelete)
+	if (children[i]->getName() == childToDelete->getName())
 	{
 		//if found, deletes that child from the list
 		children.erase(children.begin() + i);

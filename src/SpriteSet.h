@@ -33,6 +33,7 @@ public:
 	void modifySprite(Sprite* newSprite, int index);//puts newSprite in the position index of the spriteSet
 
 	void addRootSprite(Sprite* rSprite);//adds a root sprite to the root sprite list
+	bool removeRootSprite(Sprite* rSprite);//removes a root sprite from the root sprite list
 	std::vector<Sprite*> getRootSpriteList();
 
 

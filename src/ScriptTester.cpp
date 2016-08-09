@@ -17,16 +17,20 @@ ScriptTester::~ScriptTester()
 {
 }
 
+
+//=================================================== MENU METHODS ========================================================
+
+
 void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
 {
 	//gets the 3 parameters, creates an instance of the VGDL Parser, and goes into a loop to fill out the values to use for the build
 	VGDLParser vgdlP("test");//creates a VGDL script at this location
-
 	bool loop = true;
 	int choice = 0;
 	while (loop)
 	{
-		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet \n2)InteractionSet \n3)TerminationSet\n4)VGDL Creator \n5)Close program\n";
+		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet" <<
+				"\n2)InteractionSet \n3)TerminationSet\n4)Write VGDL file \n5)Read VGDL File \n6)Close program\n";
 		cin >> choice;
 		switch (choice)
 		{
@@ -44,6 +48,9 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 			workWithVGDLCreator(&vgdlP, &spriteSet,&interactionSet, &terminationSet);
 			break;
 		case 5:
+			//loadVGDLFile(placeholder);
+			break;
+		case 6:
 			cout << "Closing program..." << endl;
 			loop = false;
 			break;
@@ -184,6 +191,12 @@ void ScriptTester::workWithVGDLCreator(VGDLParser * vgdl, SpriteSet * ss, Intera
 		cout << "Script created!\n" << endl;
 	else
 		cout << "Failed to create script...for some reason" << endl;
+}
+
+void ScriptTester::loadVGDLFile(std::ofstream fileToRead)
+{
+	//TODO
+	cout << "To be implemented" << endl;
 }
 
 
@@ -413,8 +426,10 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 	//temp variables to use while modifying the object
 	string str;//used for anything string-related inside switch
 	int i;
-	Sprite* modifiedSprite = new Sprite();
 	Parameter newParam;//will be used to add any parameters
+
+	//just get the sprite-to-be-modified's pointer and modify it on the fly
+	Sprite* modifiedSprite = new Sprite();
 	*modifiedSprite = *(ss->getSpriteList()[spriteIndex - 1]);
 	bool loop = true;
 	while (loop)
@@ -450,18 +465,15 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 			cin >> i;
 			modifiedSprite->deleteParameterAtPosition(i - 1);
 			break;
-		case 5://change parent's name
-			//cout << "Not implemented yet" << endl;
-			showSpriteList(ss);
-			cout << "What's the sprite's parent's index?\nParent's index: ";
-			cin >> index;
-			ss->changeParentHood(modifiedSprite->getParent(), index, modifiedSprite);
-			modifiedSprite;//TODO: fix since it doesn't get a string anymore, gets the sprite pointer for parent!!
+		case 5://change parent
+			changeSpriteParent(modifiedSprite, ss);
 			break;
+
 		case 6:
 			//returns to menu, so leave loop
 			cout << "Returning to previous menu, saving changes..." << endl;
 			loop = false;
+			//save new sprite's position, replacing old one
 			ss->modifySprite(modifiedSprite, spriteIndex - 1);
 			break;
 		default:
@@ -472,6 +484,54 @@ void ScriptTester::modifySprite(SpriteSet * ss)
 		}
 	}
 }
+
+void ScriptTester::changeSpriteParent(Sprite * s, SpriteSet* ss)
+{
+	//cout << "Not implemented yet" << endl;
+	int index;
+	showSpriteList(ss);
+	cout << "What's the sprite's parent's index?\nParent's index(if sprite has no parent anymore, type '0'): ";
+	cin >> index;
+
+	//test couts
+	cout << "Sprite: " << s << endl;
+	cout << "Sprite's current parent: " << s->getParent() << endl;
+
+
+	if (index == 0)
+	{
+		cout << "Deleting current parent and adding NULL" << endl;
+		cout << "Sprite's new parent(before change): " << NULL << endl;
+
+		//new parent sprite is NULL(BROKEN, FIX)
+		if (ss->changeParenthood(s->getParent(), NULL, s))//BROKEN LINE
+		{
+			cout << "Sprite parent succesfully erased." << endl;
+			cout << "Sprite's new parent(after change): " << s->getParent() << endl;
+
+			cout << "Sprite: " << s << endl;
+
+		}
+
+	}
+
+
+	else if (ss->changeParentHood(s->getParent(), index - 1, s))//bugging for some reason
+	{
+		cout << "Sprite's new parent(before change): " << ss->getSpriteList()[index - 1] << endl;
+
+		cout << "Sprite parent changed succesfully" << endl;
+
+		cout << "Sprite's new parent(after change): " << s->getParent() << endl;
+		cout << "Sprite: " << s << endl;
+	}
+
+	else
+		cout << "Error: could not change sprite's parent" << endl;
+}
+
+
+
 
 void ScriptTester::modifyTermination(TerminationSet* ts)
 {
@@ -689,6 +749,8 @@ void ScriptTester::showSprite(Sprite* s)
 void ScriptTester::showSpriteList(SpriteSet * ss)
 {
 	cout << "\nShowing all sprites in sprite list..." << endl;
+	cout << "Number of sprites: " << ss->getSpriteList().size() << endl;
+	cout << "Number of root sprites: " << ss->getRootSpriteList().size() << endl;
 	for (int i = 0; i < ss->getSpriteList().size(); i++)
 	{
 		showSprite(ss, i);

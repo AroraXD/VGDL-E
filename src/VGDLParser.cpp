@@ -49,6 +49,7 @@ void VGDLParser::writeSpriteSet(SpriteSet* ss)
 	{
 
 		std::cout << "Writing SpriteSet " << std::endl;
+		std::cout << "Sprites to write: " << ss->getSpriteList().size() << std::endl;
 		VGDLScript << "\tSpriteSet\n";
 		VGDLScript.close();
 		//now fill up all the sprites in sprite set following the syntax:
@@ -84,12 +85,13 @@ void VGDLParser::writeSpriteAndChildren(Sprite* s)
 	std::cout << "Adding possible children of " << s->getName() << std::endl;
 	for (int i = 0; i < s->getChildren().size(); i++)
 	{
-		fileToWrite << "\n\t";
+		fileToWrite << "\t";
 		fileToWrite.flush();//saves what was written until now before it starts putting the children in
 		writeSpriteAndChildren(s->getChildren()[i]);
 		
 	}
 	//sprite is over, jump line and go to next sprite
+	std::cout << "FInishing SpriteSet..." << std::endl;
 	fileToWrite.close();
 }
 

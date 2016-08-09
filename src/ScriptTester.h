@@ -22,7 +22,7 @@ public:
 	void workWithTerminationSet(TerminationSet* ts);
 
 	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts);
-
+	void loadVGDLFile(std::ofstream fileToRead);
 	//methods for each of the possible options when choosing one of the 3 main categories(not working with level mapping now
 
 	//Option 1: Add methods, gets all the possible values and parameters of a Sprite/Termination/Interaction, and at the end saves a new obj to the list
@@ -35,6 +35,7 @@ public:
 
 	//Option 2: Modify methods, shows user a list of objects, asks them to pick one, modify all atributes to their heart's content
 	void modifySprite(SpriteSet* ss);
+	void changeSpriteParent(Sprite* s, SpriteSet* ss);
 	void modifyTermination(TerminationSet* ts);
 	void modifyInteraction(InteractionSet* is);
 
@@ -65,6 +66,8 @@ public:
 	void showParameters(Sprite* s);
 	void showParameters(Termination t);
 	void showParameters(Interaction i);
+
+private:
 
 
 };

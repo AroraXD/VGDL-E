@@ -2,7 +2,10 @@
 
 #include <string>
 
-//The manager class will be used for miscellaneous functions, like transforming diferent variables into strings so they can be more easily placed in the VGDL script
+/*The manager class will be used for miscellaneous functions, like transforming diferent variables into strings so they can be more easily placed in the VGDL script
+* It will also be used for compatibility check between sprite types and parameters, whether a parameter has an acceptable value, whether the given sprite type demands specific params, etc
+
+*/
 
 
 class Manager
