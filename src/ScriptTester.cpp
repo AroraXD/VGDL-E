@@ -497,6 +497,7 @@ void ScriptTester::changeSpriteParent(Sprite * s, SpriteSet* ss)
 	cout << "Sprite: " << s << endl;
 	cout << "Sprite's current parent: " << s->getParent() << endl;
 
+	cout << index << endl;
 
 	if (index == 0)
 	{

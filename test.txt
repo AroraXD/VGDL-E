@@ -1,0 +1,10 @@
+BasicGame
+	SpriteSet
+		carcass > Immovable 
+		goat >  stype=avatar 
+			scared > Fleeing 
+		angry > Chaser 
+
+	InteractionSet
+
+	TerminationSet

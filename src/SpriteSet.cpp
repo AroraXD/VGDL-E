@@ -206,28 +206,38 @@ bool SpriteSet::addChildToSprite(int parentIndex, Sprite * childSprite)
 bool SpriteSet::addChildToSprite(Sprite * parentSprite, Sprite * childSprite)
 {
 	//adds childSprite as a child of parent(if it's not already) and adds parent as parent of childSprite
-	//checks if they are already related
-	if (childSprite->isAChildOf(parentSprite))
-		return false;//failed to add child because it was already a child of the parent
+
 
 	//if new parent is null, sprite has no more parent
 	if (parentSprite == NULL)
 	{
+		std::cout << "Null New Parent" << std::endl;
+		//this means child sprite is a root sprite; if it's not already on the root list, add it there
+		if (childSprite->spriteHasParent())//had a parent before, that means it has to become a root sprite
+			addRootSprite(childSprite);
 		childSprite->setHasParent(false);
 	}
 	else
 	{
+		//checks if they are already related
+		if (childSprite->isAChildOf(parentSprite))
+			return false;//failed to add child because it was already a child of the parent
+
 		childSprite->setHasParent(true);
 		//new parent isn't null, so must take away childSprite from rootSpriteList
 		std::cout << "Sprite now has parent, removing from root sprite list " << std::endl;
 		removeRootSprite(childSprite);
+
 	}
 
 
 	//proceeds to add child to parent(if child ain't null)
 	if (childSprite != NULL)
 	{
-		parentSprite->addChild(childSprite);
+		//parent sprite can only receive a child if parent sprite exists;
+		//otherwise, just add(null)parent to child
+		if(parentSprite!=NULL)
+			parentSprite->addChild(childSprite);
 		//now, adds parent to child
 		childSprite->setParent(parentSprite);
 		return true;
@@ -237,6 +247,8 @@ bool SpriteSet::addChildToSprite(Sprite * parentSprite, Sprite * childSprite)
 
 bool SpriteSet::changeParenthood(Sprite * oldParent, Sprite * newParent, Sprite * childSprite)
 {
+	std::cout << "Entering on pointer change" << std::endl;
+
 	//basically, delete the child in the old sprite(if it isn't null parent) and add it to new parent
 	if (oldParent != NULL && deleteChild(oldParent, childSprite) && addChildToSprite(newParent, childSprite))
 	{
@@ -259,7 +271,7 @@ bool SpriteSet::changeParenthood(Sprite * oldParent, Sprite * newParent, Sprite 
 
 bool SpriteSet::changeParentHood(Sprite * oldParent, int newParentIndex, Sprite * childSprite)
 {
-	//NOT WORKING ON COPY OF SPRITE, FIXXXXXX
+
 	//basically, delete the child in the old sprite(if it isn't null parent) and add it to new parent
 	if (oldParent != NULL && deleteChild(oldParent, childSprite) && addChildToSprite(newParentIndex, childSprite))
 		return true;
