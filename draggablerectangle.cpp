@@ -10,3 +10,4 @@ draggablerectangle::draggablerectangle()
 draggablerectangle::~draggablerectangle()
 {
 }
+
