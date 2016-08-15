@@ -320,18 +320,5 @@ bool SpriteSet::deleteChild(Sprite * parentSprite, Sprite * childSprite)
 }
 
 
-std::vector<std::string> SpriteSet::getSpriteTypeList()
-{
-	return spriteTypeList;
-}
 
-std::vector<std::string> SpriteSet::getColorList()
-{
-	return colorList;
-}
-
-std::vector<std::string> SpriteSet::getSpriteParameterList()
-{
-	return spriteParameterList;
-}
 

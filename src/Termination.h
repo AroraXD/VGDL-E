@@ -17,6 +17,8 @@ public:
 	void setTerminationType(std::string newType);
 	std::string getTerminationType();
 
+
+	//aux functions
 	bool operator==(Termination t);
 	void operator=(Termination t);
 	bool haveSameParameterList(Termination t1, Termination t2);//check if the two sprite's parameter lists are the same; to be used with delete method
