@@ -12,10 +12,13 @@ void ofApp::setup(){
 
 
 	text = "code goes here";
+
+	testSprite.loadDraggableImage("test.jpg");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
 }
 
 //--------------------------------------------------------------wwwwwwwwwww
@@ -43,8 +46,8 @@ void ofApp::draw(){
 	int gridHeight = ofGetHeight()*0.6;
 	ofDrawRectangle(gridPosX, gridPosY, gridWidth, gridHeight);
 
-	int gridsquarewidth = gridWidth / mapWidth/2;
-	int gridsquareheight = gridHeight / mapHeight/2;
+	 gridsquarewidth = gridWidth / mapWidth/2;
+	 gridsquareheight = gridHeight / mapHeight/2;
 	for (int i = 0; i < mapWidth; i++)
 	{
 		for (int j = 0; j < mapHeight; j++)
@@ -56,9 +59,13 @@ void ofApp::draw(){
 	}
 
 	//code/flowchart stuff
+	ofPushMatrix();
 	ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
 	drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);
+	ofPopMatrix();
 
+	ofSetColor(255);
+	testSprite.draw();
 
 }
 
@@ -142,11 +149,12 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 
+	testSprite.mouseDragged(x,y, gridsquarewidth*2, gridsquareheight*2);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	testSprite.mousePressed(x,y, button);
 }
 
 //--------------------------------------------------------------

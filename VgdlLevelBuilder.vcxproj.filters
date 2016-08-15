@@ -64,7 +64,10 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
-    <ClCompile Include="draggableRectangle.cpp">
+    <ClCompile Include="src\draggableRectangle.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\draggableSprite.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,11 +155,18 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src\Frontend</Filter>
     </ClInclude>
-    <ClInclude Include="draggableRectangle.h">
+    <ClInclude Include="ofxTextBox.h" />
+    <ClInclude Include="src\draggableRectangle.h">
+      <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draggableSprite.h">
       <Filter>src\Frontend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

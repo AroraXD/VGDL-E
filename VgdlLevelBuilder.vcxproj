@@ -78,6 +78,7 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
     <IncludePath>C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
@@ -188,9 +189,8 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
-    <ClCompile Include="draggableRectangle.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="src\draggableRectangle.cpp" />
+    <ClCompile Include="src\draggableSprite.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
     <ClCompile Include="src\InteractionSet.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -215,9 +215,9 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
-    <ClInclude Include="draggableRectangle.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="ofxTextBox.h" />
+    <ClInclude Include="src\draggableRectangle.h" />
+    <ClInclude Include="src\draggableSprite.h" />
     <ClInclude Include="src\Interaction.h" />
     <ClInclude Include="src\InteractionSet.h" />
     <ClInclude Include="src\Manager.h" />
@@ -244,6 +244,9 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

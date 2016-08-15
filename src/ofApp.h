@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include <draggableSprite.h>
 
 
 
@@ -34,9 +35,11 @@ class ofApp : public ofBaseApp{
 		int		cursorx, cursory;
 		void	drawText(int x, int y);
 
-		//int mapWidth = 11;
-		//int mapHeight = 12;
+		int gridsquarewidth;
+		int gridsquareheight;
+
 		ofxIntSlider mapWidth;
 		ofxIntSlider mapHeight;
 
+		draggableSprite testSprite = draggableSprite(20,620);
 };
