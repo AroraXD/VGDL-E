@@ -70,6 +70,9 @@
     <ClCompile Include="src\draggableSprite.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -160,6 +163,9 @@
       <Filter>src\Frontend</Filter>
     </ClInclude>
     <ClInclude Include="src\draggableSprite.h">
+      <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
       <Filter>src\Frontend</Filter>
     </ClInclude>
   </ItemGroup>
