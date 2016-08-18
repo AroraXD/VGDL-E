@@ -189,13 +189,13 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
-    <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="src\draggableRectangle.cpp" />
     <ClCompile Include="src\draggableSprite.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
     <ClCompile Include="src\InteractionSet.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\MapTile.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParameterizableObj.cpp" />
     <ClCompile Include="src\ScriptTester.cpp" />

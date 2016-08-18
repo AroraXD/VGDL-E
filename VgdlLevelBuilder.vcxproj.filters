@@ -70,7 +70,7 @@
     <ClCompile Include="src\draggableSprite.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
-    <ClCompile Include="MapTile.cpp">
+    <ClCompile Include="src\MapTile.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
   </ItemGroup>
