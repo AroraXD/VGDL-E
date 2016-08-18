@@ -13,7 +13,7 @@ void ofApp::setup(){
 
 	text = "code goes here";
 
-	testSprite.loadDraggableImage("test.jpg");
+	testSprite.loadDraggableImage("test.png");
 }
 
 //--------------------------------------------------------------
