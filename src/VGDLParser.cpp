@@ -4,6 +4,7 @@
 VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
 {
 	//for now, sets the script paths to default(save on C:/)
+	SetCurrentDirectoryA("C:\\");
 	setPath(fileName + ".txt");
 	setLevelPath(fileName + "Map.txt");
 
@@ -27,8 +28,10 @@ std::string VGDLParser::getPath()
 	return scriptPath;
 }
 
+//PPRETTY SURE I BROKE THIS, SO...FIX IT TOMORROW
 void VGDLParser::setPath(std::string newPath)
 {
+	SetCurrentDirectoryA(newPath.c_str());
 	scriptPath = newPath;
 }
 
@@ -40,6 +43,16 @@ std::string VGDLParser::getLevelPath()
 void VGDLParser::setLevelPath(std::string newLevelPath)
 {
 	levelScriptPath = newLevelPath;
+}
+
+std::string VGDLParser::getFileName()
+{
+	return fileName;
+}
+
+void VGDLParser::setFileName(std::string newFName)
+{
+	fileName = newFName;
 }
 
 void VGDLParser::writeSpriteSet(SpriteSet* ss)

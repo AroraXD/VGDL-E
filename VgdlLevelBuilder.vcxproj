@@ -189,6 +189,7 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="src\DataSet.cpp" />
     <ClCompile Include="src\draggableRectangle.cpp" />
     <ClCompile Include="src\draggableSprite.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
     <ClInclude Include="ofxTextBox.h" />
+    <ClInclude Include="src\DataSet.h" />
     <ClInclude Include="src\draggableRectangle.h" />
     <ClInclude Include="src\draggableSprite.h" />
     <ClInclude Include="src\Interaction.h" />

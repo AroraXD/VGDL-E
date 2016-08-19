@@ -5,6 +5,7 @@
 #include "InteractionSet.h"
 #include "TerminationSet.h"
 #include <fstream>
+#include <windows.h>
 
 /*
  *This class is used to read and write VGDL files; information can be written to a VGDL
@@ -24,6 +25,10 @@ public:
 
 	std::string getLevelPath();
 	void setLevelPath(std::string newLevelPath);
+
+	std::string getFileName();
+	void setFileName(std::string newFName);
+
 
 	//VGDL Write methods
 	void writeSpriteSet(SpriteSet* ss);
@@ -46,6 +51,7 @@ public:
 
 private:
 	std::string scriptPath;//holds the path to the VGDL script
+	std::string fileName;
 	std::string levelScriptPath;//holds the path to the VGDL level script
 
 

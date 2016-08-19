@@ -70,6 +70,9 @@
     <ClCompile Include="src\draggableSprite.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="src\DataSet.cpp">
+      <Filter>src\Backend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -161,6 +164,9 @@
     </ClInclude>
     <ClInclude Include="src\draggableSprite.h">
       <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataSet.h">
+      <Filter>src\Backend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
