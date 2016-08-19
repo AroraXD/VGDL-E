@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include <draggableSprite.h>
+#include "MapTile.h"
 
 
 

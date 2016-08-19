@@ -196,6 +196,7 @@
     <ClCompile Include="src\InteractionSet.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\MapTile.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParameterizableObj.cpp" />
     <ClCompile Include="src\ScriptTester.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="MapTile.h" />
     <ClInclude Include="ofxTextBox.h" />
     <ClInclude Include="src\DataSet.h" />
     <ClInclude Include="src\draggableRectangle.h" />
