@@ -27,7 +27,12 @@ void draggableSprite::draw()
 
 bool draggableSprite::mouseDragged(float x, float y, float width, float height) {
 
-	ofImage::resize(int(width),int(height));
+	if (isBeingDragged)
+	{
+		ofImage::resize(int(width), int(height));
 
-	return draggablerectangle::mouseDragged(x,y);
+		return draggablerectangle::mouseDragged(x, y);
+	}
+	else
+		return false;
 }
