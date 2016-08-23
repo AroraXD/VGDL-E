@@ -8,10 +8,13 @@ public:
 	~MapTile();
 
 	MapTile(int x, int y, ofImage* s);
-	MapTile(int x, int y);
+	MapTile(int x, int y, int w, int h);
 
 	int posX;
 	int posY;
+
+	int height =15;
+	int width = 15;
 
 	ofImage* sprite;
 
@@ -20,5 +23,7 @@ public:
 	void setSprite(ofImage* s);
 
 	bool SpriteLoaded; //if the tile currently has a sprite or not
+
+	void resize(int w, int h);
 };
 

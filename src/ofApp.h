@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include <draggableSprite.h>
-#include "MapTile.h"
+#include <gridManager.h>
 
 
 
@@ -27,7 +27,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		ofTrueTypeFont font;
-		//ofxIntSlider game;
 		ofxPanel gui;
 
 		string	text;
@@ -43,4 +42,6 @@ class ofApp : public ofBaseApp{
 		ofxIntSlider mapHeight;
 
 		draggableSprite testSprite = draggableSprite(20,620);
+
+		gridManager grid;
 };

@@ -14,6 +14,7 @@ void ofApp::setup(){
 	text = "code goes here";
 
 	testSprite.loadDraggableImage("test.png");
+	testSprite.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 }
 
 //--------------------------------------------------------------
@@ -40,6 +41,8 @@ void ofApp::draw(){
 	ofDrawRectangle(10, 650, 50, 50);
 
 	//game map/grid
+	grid.draw();
+	/*
 	int gridPosX = ofGetWidth()*0.5;
 	int gridPosY = ofGetHeight()*0.1;
 	int gridWidth= ofGetWidth()*0.49;
@@ -57,6 +60,7 @@ void ofApp::draw(){
 			ofDrawCircle(tempx+gridsquarewidth,tempy+gridsquareheight,MIN(gridsquarewidth,gridsquareheight));
 		}
 	}
+	*/
 
 	//code/flowchart stuff
 	ofPushMatrix();
