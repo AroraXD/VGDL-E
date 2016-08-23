@@ -153,7 +153,7 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 
-	testSprite.mouseDragged(x,y, gridsquarewidth*2, gridsquareheight*2);
+	testSprite.mouseDragged(x,y, 50, 50);
 }
 
 //--------------------------------------------------------------

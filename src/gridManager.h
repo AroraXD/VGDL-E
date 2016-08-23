@@ -10,7 +10,7 @@ public:
 
 	void draw();
 
-	vector<MapTile> gridtiles;
+	vector<MapTile> gridTiles;
 
 	int mapWidth = 10;
 	int mapHeight = 10;
