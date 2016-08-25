@@ -23,8 +23,7 @@ public:
 private:
 	std::vector<Termination> terminationList;
 
-	std::vector<std::string> terminationTypeList = { "SpriteCounter","MultiSpriteCounter","TimeoutScoreCount" };
-	std::vector<std::string> terminationParameterList = { "stype","limit","stype1","stype2" };
+
 
 };
 
