@@ -26,7 +26,24 @@ public:
 	std::vector<std::string> getInteractionTypeList();//gets interaction type list; used for drop down menus in GUI
 	std::vector<std::string> getInteractionParametersList();//gets possible parameters list; used for drop down menus in GUI
 
+	//Termination methods
+	std::vector<std::string> getTerminationTypeList();
+	std::vector<std::string> getTerminationParameterList();
 
+
+	//validation methods 
+	//these methods will run the parameter against a list to see whether the parameter is inside that list
+
+	bool isValidSpriteType(std::string sType);//compares sType to every sprite type to see if it's valid
+	bool isValidAvatar(std::string av);//checks if string is a type of avatar sprite
+	bool isvalidSpriteParameter(std::string sParameter);
+	bool isValidColor(std::string color);
+
+	bool isValidInteractionType(std::string iType);
+	bool isValidInteractionParameter(std::string iParam);
+
+	bool isValidTerminationType(std::string tType);
+	bool isValidTerminationParameter(std::string tParam);
 
 private:
 	//Sprite variables
@@ -61,6 +78,7 @@ private:
 
 
 	//Termination variables
-
+	std::vector<std::string> terminationTypeList = { "SpriteCounter","MultiSpriteCounter","TimeoutScoreCount" };
+	std::vector<std::string> terminationParameterList = { "stype","limit","stype1","stype2" };
 };
 
