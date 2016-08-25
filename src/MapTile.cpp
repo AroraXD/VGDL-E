@@ -35,7 +35,8 @@ void MapTile::draw()
 	}
 	else
 	{
-		ofDrawCircle(posX,posY,width,height);
+		//ofDrawCircle(posX,posY,width,height);
+		ofDrawCircle(posX, posY, MIN(width, height));
 	}
 }
 
