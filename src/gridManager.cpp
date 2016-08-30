@@ -31,8 +31,45 @@ void gridManager::draw()
 		gridTiles[i].draw();
 	}
 }
-
+/*
 vector<MapTile>* gridManager::getTiles() {
 
 	return &gridTiles ;
 }
+*/
+
+void gridManager::setNearestTile(int x,int y,  ofImage image)
+{
+	int nearestTile = NULL;
+	float nearestTileDist = 999;
+
+	for (int i = 0; i < gridTiles.size(); i++)
+	{
+		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist && !gridTiles[i].SpriteLoaded)
+		{
+			nearestTile = i;
+			nearestTileDist = ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY);
+		}
+	}
+
+	gridTiles[nearestTile].setSprite(&image);
+	gridTiles[nearestTile].SpriteLoaded = true;
+}
+
+void gridManager::highlightNearestTile(int x, int y)
+{
+	int nearestTile = NULL;
+	float nearestTileDist = 999;
+
+	for (int i = 0; i < gridTiles.size(); i++)
+	{
+		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist && !gridTiles[i].SpriteLoaded)
+		{
+			nearestTile = i;
+			nearestTileDist = ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY);
+		}
+	}
+
+	ofDrawCircle(gridTiles[nearestTile].posX, gridTiles[nearestTile].posY, 20);
+}
+

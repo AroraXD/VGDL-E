@@ -25,6 +25,10 @@ public:
 	int gridsquarewidth = gridWidth / mapWidth / 2;
 	int gridsquareheight = gridHeight / mapHeight / 2;
 	
-	vector<MapTile>* getTiles();
+	//vector<MapTile>* getTiles();
+
+	void setNearestTile(int x, int y, ofImage image);
+
+	void highlightNearestTile(int x, int y);
 
 };

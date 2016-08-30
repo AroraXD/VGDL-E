@@ -14,7 +14,7 @@ void ofApp::setup(){
 	text = "code goes here";
 
 	testSprite.loadDraggableImage("test.png");
-	testSprite.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	//testSprite.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 }
 
 //--------------------------------------------------------------
@@ -50,13 +50,18 @@ void ofApp::draw(){
 	drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);
 	ofPopMatrix();
 
+
+	//highlights closest gridtile to the mouse
+	grid.highlightNearestTile(mouseX, mouseY);
+
+
 	ofSetColor(255);
 	testSprite.draw();
 
 	//todo turn thsi into a sprite manager class
 	//sprite test
-
 	 //grid.getTiles()[1]->posX++; //test to see if i can change the tiles
+
 
 }
 
@@ -141,6 +146,7 @@ void ofApp::mouseMoved(int x, int y ){
 void ofApp::mouseDragged(int x, int y, int button){
 
 	testSprite.mouseDragged(x,y, 50, 50);
+
 }
 
 //--------------------------------------------------------------
@@ -150,6 +156,8 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+
+	//grid.setNearestTile(x, y, testSprite.img);
 
 }
 
