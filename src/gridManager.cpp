@@ -4,8 +4,6 @@
 
 gridManager::gridManager()
 {
-
-
 	for (int i = 0; i < mapWidth; i++)
 	{
 		for (int j = 0; j < mapHeight; j++)
@@ -20,6 +18,7 @@ gridManager::gridManager()
 
 gridManager::~gridManager()
 {
+
 }
 
 void gridManager::draw()
@@ -31,16 +30,9 @@ void gridManager::draw()
 	{
 		gridTiles[i].draw();
 	}
+}
 
-	/*
-	for (int i = 0; i < mapWidth; i++)
-	{
-		for (int j = 0; j < mapHeight; j++)
-		{
-			int tempx = gridPosX + i * (gridWidth / mapWidth);
-			int tempy = gridPosY + j * (gridHeight / mapHeight);
-			ofDrawCircle(tempx + gridsquarewidth, tempy + gridsquareheight, MIN(gridsquarewidth, gridsquareheight));
-		}
-	}
-	*/
+vector<MapTile>* gridManager::getTiles() {
+
+	return &gridTiles ;
 }

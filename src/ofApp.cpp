@@ -42,25 +42,7 @@ void ofApp::draw(){
 
 	//game map/grid
 	grid.draw();
-	/*
-	int gridPosX = ofGetWidth()*0.5;
-	int gridPosY = ofGetHeight()*0.1;
-	int gridWidth= ofGetWidth()*0.49;
-	int gridHeight = ofGetHeight()*0.6;
-	ofDrawRectangle(gridPosX, gridPosY, gridWidth, gridHeight);
-
-	 gridsquarewidth = gridWidth / mapWidth/2;
-	 gridsquareheight = gridHeight / mapHeight/2;
-	for (int i = 0; i < mapWidth; i++)
-	{
-		for (int j = 0; j < mapHeight; j++)
-		{ 
-			int tempx = gridPosX + i * (gridWidth/mapWidth);
-			int tempy = gridPosY + j * (gridHeight/mapHeight);
-			ofDrawCircle(tempx+gridsquarewidth,tempy+gridsquareheight,MIN(gridsquarewidth,gridsquareheight));
-		}
-	}
-	*/
+	
 
 	//code/flowchart stuff
 	ofPushMatrix();
@@ -70,6 +52,11 @@ void ofApp::draw(){
 
 	ofSetColor(255);
 	testSprite.draw();
+
+	//todo turn thsi into a sprite manager class
+	//sprite test
+
+	 //grid.getTiles()[1]->posX++; //test to see if i can change the tiles
 
 }
 

@@ -12,6 +12,8 @@ public:
 
 	vector<MapTile> gridTiles;
 
+
+	//todo make these not hard coded
 	int mapWidth = 10;
 	int mapHeight = 10;
 
@@ -23,5 +25,6 @@ public:
 	int gridsquarewidth = gridWidth / mapWidth / 2;
 	int gridsquareheight = gridHeight / mapHeight / 2;
 	
-};
+	vector<MapTile>* getTiles();
 
+};

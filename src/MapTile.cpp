@@ -35,7 +35,6 @@ void MapTile::draw()
 	}
 	else
 	{
-		//ofDrawCircle(posX,posY,width,height);
 		ofDrawCircle(posX, posY, MIN(width, height));
 	}
 }
@@ -45,7 +44,6 @@ void MapTile::setSprite(ofImage* s)
 	sprite = s;
 	sprite->getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 	sprite->resize(width,height);
-
 }
 
 void MapTile::resize(int w, int h)
