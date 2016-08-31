@@ -291,3 +291,16 @@ bool VGDLParser::createVGDLScript(SpriteSet* spriteSet, InteractionSet interacti
 
 
 }
+
+bool VGDLParser::readVGDLFile(std::string filePath)
+{
+	//first open file and check if it was properly opened
+
+	std::ifstream fileToRead(filePath);
+	if (!fileToRead.is_open())//file wasn't found/didn't open
+		return false;
+
+	//from here, start reading
+	//TODO
+
+}

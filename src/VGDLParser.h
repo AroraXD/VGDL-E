@@ -46,7 +46,7 @@ public:
 	void readIntoSpriteSet(std::string filePath, SpriteSet* ss);//reads file and writes a SpriteSet based on the contents of it
 	void readIntoTerminationSet(std::string filePath, TerminationSet* ts);//same as above, for TerminationSet
 	void readIntoInteractionSet(std::string filePath, InteractionSet* is);//same as two above, for InteractionSet
-	void readVGDLFile(std::string filePath);
+	bool readVGDLFile(std::string filePath);
 
 
 private:

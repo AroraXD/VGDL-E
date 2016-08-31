@@ -79,6 +79,12 @@
     <ClCompile Include="src\gridManager.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="src\GlobalGameParameters.cpp">
+      <Filter>src\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LevelMapping.cpp">
+      <Filter>src\Backend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -179,6 +185,12 @@
     </ClInclude>
     <ClInclude Include="src\gridManager.h">
       <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GlobalGameParameters.h">
+      <Filter>src\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LevelMapping.h">
+      <Filter>src\Backend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
