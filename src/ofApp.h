@@ -2,8 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include <draggableSprite.h>
-#include <gridManager.h>
+#include "draggableSprite.h"
+#include "gridManager.h"
 
 
 

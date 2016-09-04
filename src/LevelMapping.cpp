@@ -27,6 +27,21 @@ void LevelMapping::setCharacterList(std::vector<MapCharacter> objList)
 	characters = objList;
 }
 
+bool LevelMapping::characterIsInList(char characterToCheck)
+{
+	for (int i = 0; i < characters.size(); i++)
+	{
+		if (characters[i].getMapChar() == characterToCheck)
+		{
+			//means it's in list, returns true
+			return true;
+		}
+
+	}
+	//gone through whole list, didn't find it
+	return false;
+}
+
 bool LevelMapping::addCharacterToList(MapCharacter newChar)
 {
 	//goes through list, checks if character doesn't exist already, if it does return false
@@ -70,6 +85,16 @@ bool LevelMapping::deleteCharacterFromList(char charToDelete)
 	return false;
 }
 
+bool LevelMapping::deleteCharacterFromList(int charIndex)
+{
+	//check if index is valid
+	if(charIndex>=characters.size())
+		return false;
+	//delete character by its index
+	characters.erase(characters.begin() + charIndex);
+	return true;
+}
+
 
 
 bool LevelMapping::deleteCharacterFromList(MapCharacter charToDelete)
@@ -85,6 +110,14 @@ bool LevelMapping::deleteCharacterFromList(MapCharacter charToDelete)
 	}
 	//if it got to here, doesn't exist in list, return false
 	return false;
+}
+
+bool LevelMapping::modifyWholeObj(int objIndex, MapCharacter newMapChar)
+{
+	if(objIndex>=characters.size())
+		return false;
+	characters[objIndex] = newMapChar;
+	return true;
 }
 
 bool LevelMapping::modifyCharacterFromObj(int objIndex, char newChar)
@@ -155,9 +188,34 @@ void LevelMapping::setHeight(int h)
 	height = h;
 }
 
-void LevelMapping::createMap()
+void LevelMapping::setMap(std::vector<std::string> newMap)
 {
+	//erases current map and saves a new one
+	clearMap();
+	map = newMap;
 }
+
+std::vector<std::string> LevelMapping::getMap()
+{
+	return map;
+}
+
+bool LevelMapping::modifyMapLine(int line, std::string newMapLine)
+{
+	//checks if the new line has the acceptable size, and if the position to be changed is accepable
+	if(line>height || newMapLine.size() >= width)
+		return false;
+	//otherwise, replaces line with new line
+	map[line - 1] = newMapLine;
+	return true;
+}
+
+void LevelMapping::clearMap()
+{
+	map.clear();
+}
+
+
 
 void LevelMapping::resizeMap(int newWidth, int newHeight)
 {

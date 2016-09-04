@@ -31,7 +31,7 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 	{
 		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet\n" <<
 				"2)InteractionSet \n3)TerminationSet\n"<<
-				"4)LevelMapping\n5Global Game Parameters \n6)Write VGDL file \n7)Read VGDL File \n8)Close program\n";
+				"4)LevelMapping\n5)Global Game Parameters \n6)Write VGDL file \n7)Read VGDL File \n8)Close program\n";
 		cin >> choice;
 		switch (choice)
 		{
@@ -199,27 +199,30 @@ void ScriptTester::workWithLevelMapping(LevelMapping * lm)
 	int choice = 0;
 	while (loop)
 	{
-		cout << "What do you want to do?\n1)Add a character map(assign a sprite to a character)\n" <<
+		cout << "\nWhat do you want to do?\n1)Add a character map(assign a sprite to a character)\n" <<
 			"2)Modify a character map\n" <<
 			"3)Delete a character map\n" <<
 			"4)Create an ASCII map(based on current size of " << lm->getWidth() << "x" << lm->getHeight() <<")\n"<<
 			"5)Resize map\n" <<
-			"6)Exit\nChoice: "
+			"6)Show map characters\n"<<
+			"7)Show map\n"<<
+			"8)Exit\nChoice: "
 			<<endl;
 		cin >>choice;
 		switch (choice)
 		{
 		case 1:
-			addCharacterMapInList(lm);
+			addMapCharacterInList(lm);
 			break;
 		case 2:
-			modifyCharacterMap(lm);
+			modifyMapCharacter(lm);
 			break;
 		case 3:
-			deleteCharacterMapFromList(lm);
+			deleteMapCharacterFromList(lm);
 			break;
 		case 4:
 			//todo
+			cout << "To be implemented" << endl;
 			break;
 		case 5:
 			cout << "Enter new map width: ";
@@ -229,6 +232,12 @@ void ScriptTester::workWithLevelMapping(LevelMapping * lm)
 			lm->resizeMap(newW, newH);
 			break;
 		case 6:
+			break;
+		case 7:
+			//TODO: to implement
+			cout << "To be implemented" << endl;
+			break;
+		case 8:
 			loop = false;
 			break;
 		default:
@@ -245,7 +254,7 @@ void ScriptTester::workWithGlobalGameParameters(GlobalGameParameters * ggp)
 	int choice = 0;
 	while (loop)
 	{
-		cout << "What do you want to do?\n1)Add a game parameter\n" <<
+		cout << "\nWhat do you want to do?\n1)Add a game parameter\n" <<
 			"2)Modify a game parameter\n" <<
 			"3)Delete a game parameter\n" <<
 			"4)Exit\nChoice: "
@@ -352,7 +361,7 @@ void ScriptTester::addSpriteInList(SpriteSet * ss)
 	if (spriteHasParent)
 	{
 		cout << "Fixing child-parent relationships for " << newSprite->getName() << endl;
-		ss->addChildToSprite(ss->getSpriteList()[pIndex - 1], newSprite);//TODO: probably gives error
+		ss->addChildToSprite(ss->getSpriteList()[pIndex - 1], newSprite);
 	}
 	
 	cout << "\nSprite added.\n\n";
@@ -502,7 +511,7 @@ void ScriptTester::addParameter(Interaction * i)
 	}
 }
 
-void ScriptTester::addCharacterMapInList(LevelMapping * lm)
+void ScriptTester::addMapCharacterInList(LevelMapping * lm)
 {
 	cout << "Enter the character that will be associated with the sprite(s): ";
 	char newChar;
@@ -512,6 +521,14 @@ void ScriptTester::addCharacterMapInList(LevelMapping * lm)
 	vector<string> sprites;
 
 	cin >> newChar;
+	//checks if character isn't already in the list, to avoid duplicates
+	if (lm->characterIsInList(newChar))
+	{
+		cout << "Character already exists in list!";
+		return;
+	}
+
+
 	//gets all the sprites 
 	while (loop)
 	{
@@ -524,7 +541,7 @@ void ScriptTester::addCharacterMapInList(LevelMapping * lm)
 
 	}
 	//with all the info, create a character map
-
+	lm->addCharacterToList(newChar, sprites);
 }
 
 void ScriptTester::addGlobalParameter(GlobalGameParameters * ggp)
@@ -795,6 +812,109 @@ void ScriptTester::modifyInteraction(InteractionSet * is)
 	}
 }
 
+void ScriptTester::modifyMapCharacter(LevelMapping * lm)
+{
+	//shows a list of the character maps, asks user to pick 1 by index, modifies it
+	showLevelMapping(lm);
+	int index = 0;
+	int choice = 0;
+	char newChar;
+	string newSprite;
+	bool loop = true;
+
+	cout << "Pick a map character by its index: ";
+	cin >> index;
+	MapCharacter modifiedMapChar = lm->getCharacterList()[index];
+
+	while (loop)
+	{
+		showMapCharacter(modifiedMapChar);
+		cout << "\nWhat do you want to do?/n1)Change its character\n2)Add a sprite\n" <<
+				"3)Delete a sprite\n4)Exit\nChoice:";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Enter the new character for this map character: ";
+			cin >> newChar;
+			lm->modifyCharacterFromObj(index, newChar);
+			break;
+		case 2:
+			//adds a new sprite
+			cout << "Type the name of the sprite to be added: ";
+			cin >> newSprite;
+			if (lm->addSpriteToObj(index, newSprite))
+				cout << "Sprite added succesfully";
+			else
+				cout << "Error: could not add sprite";
+			break;
+		case 3:
+			//deletes a sprite
+			cout << "Type the name of the sprite to be deleted: ";
+			cin >> newSprite;
+			if (lm->deleteSpriteFromObj(index, newSprite))
+				cout << "Sprite deleted successfully";
+			else
+				cout << "Error: Could not delete sprite(not found, probably). Maybe you typed it wrong?";
+
+			break;
+		case 4:
+			//saves modified mapChar, breaks loop
+			lm->modifyWholeObj(index, modifiedMapChar);
+			loop = false;
+			break;
+		default:
+			cout << "Invalid character, input another one.";
+			break;
+
+		}
+	}
+
+
+}
+
+void ScriptTester::modifyGlobalParameter(GlobalGameParameters * ggp)
+{
+	//shows parameters, asks for user to choose one, asks what they want to modify, do it, return
+	showGlobalParameters(ggp);
+	cout << "Choose a parameter to modify: ";
+	int index = 0;
+	int choice = 0;
+	string typeValue;
+	cin >> index;
+	Parameter newGlobalParameter = ggp->getParameterList()[index];
+	bool loop = true;
+	while (loop)
+	{
+		cout << "\nWhat do you want to change?\n1)Parameter type\n2)Parameter value\n3)Save and exit\nChoice: ";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Enter new parameter type: ";
+			cin >> typeValue;
+			newGlobalParameter.setParameterName(typeValue);
+			break;
+		case 2:
+			cout << "Enter new parameter value: ";
+			cin >> typeValue;
+			newGlobalParameter.setParameterValue(typeValue);
+			break;
+		case 3:
+			//deletes old parameter, saves new parameter and exit
+			ggp->deleteParameterAtPosition(index-1);
+			ggp->addParameter(newGlobalParameter);
+			loop = false;
+			break;
+
+		default:
+			cout << "Invalid choice, please choose again.";
+			break;
+
+		}
+	}
+}
+
 //=========================================================================== DELETE METHODS ==============================================================================================
 
 
@@ -836,6 +956,31 @@ void ScriptTester::deleteInteractionFromList(InteractionSet * is)
 		cout << "Interation successfully deleted";
 	else
 		cout << "Error: interaction deletion failed.\n" << endl;
+}
+
+void ScriptTester::deleteMapCharacterFromList(LevelMapping * lm)
+{
+	//shows all characters, choose to delete one based on index
+	showLevelMapping(lm);
+	int index = 0;
+	cout << "Choose index of mapCharacter to be deleted: ";
+	cin >> index;
+	if (lm->deleteCharacterFromList(index-1))
+		cout << "Character deleted successfully";
+	else
+		cout << "Error: could not delete character";
+
+}
+
+void ScriptTester::deleteGlobalParameters(GlobalGameParameters * ggp)
+{
+	//shows parameters, asks to delete one based on index
+	showGlobalParameters(ggp);
+	int index = 0;
+	cout << "Choose which parameter you will delete: ";
+	cin >> index;
+	ggp->deleteParameterAtPosition(index-1);
+
 }
 
 
@@ -990,6 +1135,29 @@ void ScriptTester::showInteractionList(InteractionSet * is)
 
 }
 
+void ScriptTester::showMapCharacter(MapCharacter mc)
+{
+	cout << "Character: " << mc.getMapChar() << endl;
+	cout << "Associated sprites: ";
+	for (int i = 0; i < mc.getAssociatedSprites().size(); i++)
+	{
+		cout << mc.getAssociatedSprites()[i] << " ";
+	}
+	cout << endl;
+}
+
+void ScriptTester::showLevelMapping(LevelMapping * lm)
+{
+	//shows all existing map characters in the levelMapping
+	cout << "Characters: " << endl;
+	for (int i = 0; i < lm->getCharacterList().size(); i++)
+	{
+		showMapCharacter(lm->getCharacterList()[i]);
+	}
+	cout << "\n\n";
+
+}
+
 void ScriptTester::showParameters(Sprite* s)
 {
 	for (int j = 0; j < s->getParameterList().size(); j++)
@@ -1019,6 +1187,17 @@ void ScriptTester::showParameters(Interaction i)
 		cout << "Parameter " << (j + 1) << endl;
 		cout << "Name: " << i.getParameterList()[j].getParameterName() << endl;
 		cout << "Value: " << i.getParameterList()[j].getParameterValue() << endl;
+
+	}
+}
+
+void ScriptTester::showGlobalParameters(GlobalGameParameters * ggp)
+{
+	for (int j = 0; j < ggp->getParameterList().size(); j++)
+	{
+		cout << "Parameter " << (j + 1) << endl;
+		cout << "Name: " << ggp->getParameterList()[j].getParameterName() << endl;
+		cout << "Value: " << ggp->getParameterList()[j].getParameterValue() << endl;
 
 	}
 }

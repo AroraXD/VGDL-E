@@ -36,7 +36,7 @@ public:
 	void addParameter(Termination* t);
 	void addInteractionInList(InteractionSet* is);
 	void addParameter(Interaction* i);
-	void addCharacterMapInList(LevelMapping* lm);
+	void addMapCharacterInList(LevelMapping* lm);
 	void addGlobalParameter(GlobalGameParameters* ggp);
 
 	//Option 2: Modify methods, shows user a list of objects, asks them to pick one, modify all atributes to their heart's content
@@ -44,7 +44,7 @@ public:
 	void changeSpriteParent(Sprite* s, SpriteSet* ss);
 	void modifyTermination(TerminationSet* ts);
 	void modifyInteraction(InteractionSet* is);
-	void modifyCharacterMap(LevelMapping* lm);
+	void modifyMapCharacter(LevelMapping* lm);
 	void modifyGlobalParameter(GlobalGameParameters* ggp);
 
 
@@ -52,7 +52,7 @@ public:
 	void deleteSpriteFromList(SpriteSet* ss);
 	void deleteTerminationFromList(TerminationSet* ts);
 	void deleteInteractionFromList(InteractionSet* is);
-	void deleteCharacterMapFromList(LevelMapping* lm);
+	void deleteMapCharacterFromList(LevelMapping* lm);
 	void deleteGlobalParameters(GlobalGameParameters* ggp);
 
 
@@ -70,11 +70,14 @@ public:
 	void showInteraction(InteractionSet* is, int index);
 	void showInteraction(Interaction i);
 	void showInteractionList(InteractionSet* is);
+	void showMapCharacter(MapCharacter mc);
+	void showLevelMapping(LevelMapping* lm);
 
 	//parameter-handling methods
 	void showParameters(Sprite* s);
 	void showParameters(Termination t);
 	void showParameters(Interaction i);
+	void showGlobalParameters(GlobalGameParameters* ggp);
 
 private:
 

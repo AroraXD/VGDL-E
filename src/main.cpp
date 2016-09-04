@@ -4,6 +4,8 @@
 #include "InteractionSet.h"
 #include "SpriteSet.h"
 #include "TerminationSet.h"
+#include "LevelMapping.h"
+#include "GlobalGameParameters.h"
 #include "VGDLParser.h"
 
 
@@ -44,14 +46,16 @@ int main() {
 	TerminationSet ts;
 	SpriteSet ss;
 	InteractionSet is;
+	LevelMapping lm(0,0);
+	GlobalGameParameters ggp;
 
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
 	// pass in width and height too:
 
-	//uncomment the following two lines if you wish to open the OF windows
-	ofSetupOpenGL(1024, 768, OF_WINDOW);			// <-------- setup the GL context
-	ofRunApp(new ofApp());
+	//uncomment the following two lines if you wish to open the OpenFrameworks windows
+	//ofSetupOpenGL(1024, 768, OF_WINDOW);			// <-------- setup the GL context
+	//ofRunApp(new ofApp());
 
 
 	//this will eventually be used as a text-based tester for the VDGL script builder
@@ -59,7 +63,7 @@ int main() {
 
 
 	ScriptTester scriptTester;
-	scriptTester.runScriptTest(ss, is, ts);
+	scriptTester.runScriptTest(ss, is, ts,lm,ggp);
 	
 
 }

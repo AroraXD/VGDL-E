@@ -63,7 +63,7 @@ bool MapCharacter::modifyAssociatedSprite(int spriteIndex, std::string newSprite
 bool MapCharacter::deleteAssociatedSprite(std::string spriteToDelete)
 {
 	//goes through list until it finds sprite, deletes it; returns false if it does not find the sprite
-	for (int i = 0; i < sprites.size; i++)
+	for (int i = 0; i < sprites.size(); i++)
 	{
 		if (sprites[i] == spriteToDelete)
 		{
