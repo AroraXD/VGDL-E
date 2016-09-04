@@ -199,6 +199,7 @@
     <ClCompile Include="src\LevelMapping.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\mapCharacter.cpp" />
     <ClCompile Include="src\MapTile.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParameterizableObj.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="src\InteractionSet.h" />
     <ClInclude Include="src\LevelMapping.h" />
     <ClInclude Include="src\Manager.h" />
+    <ClInclude Include="src\mapCharacter.h" />
     <ClInclude Include="src\MapTile.h" />
     <ClInclude Include="src\ofApp.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

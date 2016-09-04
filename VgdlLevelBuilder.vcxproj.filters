@@ -85,6 +85,9 @@
     <ClCompile Include="src\LevelMapping.cpp">
       <Filter>src\Backend</Filter>
     </ClCompile>
+    <ClCompile Include="src\mapCharacter.cpp">
+      <Filter>src\Backend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -190,6 +193,9 @@
       <Filter>src\Backend</Filter>
     </ClInclude>
     <ClInclude Include="src\LevelMapping.h">
+      <Filter>src\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mapCharacter.h">
       <Filter>src\Backend</Filter>
     </ClInclude>
   </ItemGroup>

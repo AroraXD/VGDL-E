@@ -21,7 +21,7 @@ ScriptTester::~ScriptTester()
 //=================================================== MENU METHODS ========================================================
 
 
-void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters globalGameParameters)
 {
 	//gets the 3 parameters, creates an instance of the VGDL Parser, and goes into a loop to fill out the values to use for the build
 	VGDLParser vgdlP("test");//creates a VGDL script at this location
@@ -29,8 +29,9 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 	int choice = 0;
 	while (loop)
 	{
-		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet" <<
-				"\n2)InteractionSet \n3)TerminationSet\n4)Write VGDL file \n5)Read VGDL File \n6)Close program\n";
+		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet\n" <<
+				"2)InteractionSet \n3)TerminationSet\n"<<
+				"4)LevelMapping\n5Global Game Parameters \n6)Write VGDL file \n7)Read VGDL File \n8)Close program\n";
 		cin >> choice;
 		switch (choice)
 		{
@@ -45,12 +46,19 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 			break;
 
 		case 4:
-			workWithVGDLCreator(&vgdlP, &spriteSet,&interactionSet, &terminationSet);
+			workWithLevelMapping(&levelMapping);
 			break;
 		case 5:
+			workWithGlobalGameParameters(&globalGameParameters);
+			break;
+
+		case 6:
+			workWithVGDLCreator(&vgdlP, &spriteSet,&interactionSet, &terminationSet);
+			break;
+		case 7:
 			//loadVGDLFile(placeholder);
 			break;
-		case 6:
+		case 8:
 			cout << "Closing program..." << endl;
 			loop = false;
 			break;
@@ -181,6 +189,88 @@ void ScriptTester::workWithTerminationSet(TerminationSet* ts)
 			cout << "\nInvalid choice" << endl;
 			break;
 		}
+	}
+}
+
+void ScriptTester::workWithLevelMapping(LevelMapping * lm)
+{
+	bool loop = true;
+	int newW, newH;//receive values for the new width and height of the map
+	int choice = 0;
+	while (loop)
+	{
+		cout << "What do you want to do?\n1)Add a character map(assign a sprite to a character)\n" <<
+			"2)Modify a character map\n" <<
+			"3)Delete a character map\n" <<
+			"4)Create an ASCII map(based on current size of " << lm->getWidth() << "x" << lm->getHeight() <<")\n"<<
+			"5)Resize map\n" <<
+			"6)Exit\nChoice: "
+			<<endl;
+		cin >>choice;
+		switch (choice)
+		{
+		case 1:
+			addCharacterMapInList(lm);
+			break;
+		case 2:
+			modifyCharacterMap(lm);
+			break;
+		case 3:
+			deleteCharacterMapFromList(lm);
+			break;
+		case 4:
+			//todo
+			break;
+		case 5:
+			cout << "Enter new map width: ";
+			cin >> newW;
+			cout << "Enter new map height: ";
+			cin >> newH;
+			lm->resizeMap(newW, newH);
+			break;
+		case 6:
+			loop = false;
+			break;
+		default:
+			cout << "\nInvalid choice. " << endl;
+
+		}
+
+	}
+}
+
+void ScriptTester::workWithGlobalGameParameters(GlobalGameParameters * ggp)
+{
+	bool loop = true;
+	int choice = 0;
+	while (loop)
+	{
+		cout << "What do you want to do?\n1)Add a game parameter\n" <<
+			"2)Modify a game parameter\n" <<
+			"3)Delete a game parameter\n" <<
+			"4)Exit\nChoice: "
+			<< endl;
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		default:
+			cout << "\nInvalid choice. " << endl;
+
+
+		}
+
 	}
 }
 
@@ -410,6 +500,44 @@ void ScriptTester::addParameter(Interaction * i)
 		if (choice != 1)
 			loop = false;
 	}
+}
+
+void ScriptTester::addCharacterMapInList(LevelMapping * lm)
+{
+	cout << "Enter the character that will be associated with the sprite(s): ";
+	char newChar;
+	int choice = 0;
+	bool loop = true;
+	string newSprite;
+	vector<string> sprites;
+
+	cin >> newChar;
+	//gets all the sprites 
+	while (loop)
+	{
+		cout << "Enter new sprite to associate with character: ";
+		cin >> newSprite;
+		sprites.push_back(newSprite);
+		cout << "Sprite added. Add another one? 1: Yes / 2: No\n" << endl;
+		if (choice != 1)
+			loop = false;
+
+	}
+	//with all the info, create a character map
+
+}
+
+void ScriptTester::addGlobalParameter(GlobalGameParameters * ggp)
+{
+	cout << "\nEnter the name of the parameter: ";
+	string name;
+	cin >> name;
+	cout << "\nEnter the parameter's value: ";
+	string value;
+	cin >> value;
+	//creates a new parameter and adds it to the parameter Sprite
+	Parameter newP(name, value);
+	ggp->addParameter(newP);
 }
 
 //================================================================================ MODIFY METHODS ============================================================================

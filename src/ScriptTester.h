@@ -3,6 +3,8 @@
 #include "InteractionSet.h"
 #include "SpriteSet.h"
 #include "TerminationSet.h"
+#include "LevelMapping.h"
+#include "GlobalGameParameters.h"
 #include "VGDLParser.h"
 
 
@@ -13,17 +15,19 @@ public:
 	ScriptTester();
 	~ScriptTester();
 
-	void runScriptTest(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);
+	void runScriptTest(SpriteSet spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters globalGameParameters);
 
 
 	//needs to be pointers because they need to be modified 
 	void workWithSpriteSet(SpriteSet* ss);
 	void workWithInteractionSet(InteractionSet* is);
 	void workWithTerminationSet(TerminationSet* ts);
+	void workWithLevelMapping(LevelMapping* lm);
+	void workWithGlobalGameParameters(GlobalGameParameters* ggp);
 
 	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts);
 	void loadVGDLFile(std::ofstream fileToRead);
-	//methods for each of the possible options when choosing one of the 3 main categories(not working with level mapping now
+	//methods for each of the possible options when choosing one of the 5 main categories
 
 	//Option 1: Add methods, gets all the possible values and parameters of a Sprite/Termination/Interaction, and at the end saves a new obj to the list
 	void addSpriteInList(SpriteSet* ss);
@@ -32,19 +36,24 @@ public:
 	void addParameter(Termination* t);
 	void addInteractionInList(InteractionSet* is);
 	void addParameter(Interaction* i);
+	void addCharacterMapInList(LevelMapping* lm);
+	void addGlobalParameter(GlobalGameParameters* ggp);
 
 	//Option 2: Modify methods, shows user a list of objects, asks them to pick one, modify all atributes to their heart's content
 	void modifySprite(SpriteSet* ss);
 	void changeSpriteParent(Sprite* s, SpriteSet* ss);
 	void modifyTermination(TerminationSet* ts);
 	void modifyInteraction(InteractionSet* is);
+	void modifyCharacterMap(LevelMapping* lm);
+	void modifyGlobalParameter(GlobalGameParameters* ggp);
 
 
 	//Option 2: Delete methods, deletes objects based on name/position in list
 	void deleteSpriteFromList(SpriteSet* ss);
 	void deleteTerminationFromList(TerminationSet* ts);
 	void deleteInteractionFromList(InteractionSet* is);
-
+	void deleteCharacterMapFromList(LevelMapping* lm);
+	void deleteGlobalParameters(GlobalGameParameters* ggp);
 
 
 	//Option 4: Display methods, gets the list of sprites/terminations/interactions and shows it in a decent way to the user
