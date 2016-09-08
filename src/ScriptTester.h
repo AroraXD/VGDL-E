@@ -25,7 +25,7 @@ public:
 	void workWithLevelMapping(LevelMapping* lm);
 	void workWithGlobalGameParameters(GlobalGameParameters* ggp);
 
-	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts);
+	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts, LevelMapping* lm, GlobalGameParameters* ggp);
 	void loadVGDLFile(std::ofstream fileToRead);
 	//methods for each of the possible options when choosing one of the 5 main categories
 
@@ -38,6 +38,9 @@ public:
 	void addParameter(Interaction* i);
 	void addMapCharacterInList(LevelMapping* lm);
 	void addGlobalParameter(GlobalGameParameters* ggp);
+	void addMap(LevelMapping* lm);
+	void getMapFromLevelEditor();//gets the information from the level editor, dunno how yet
+
 
 	//Option 2: Modify methods, shows user a list of objects, asks them to pick one, modify all atributes to their heart's content
 	void modifySprite(SpriteSet* ss);
@@ -72,6 +75,8 @@ public:
 	void showInteractionList(InteractionSet* is);
 	void showMapCharacter(MapCharacter mc);
 	void showLevelMapping(LevelMapping* lm);
+	void showMap(LevelMapping* lm);
+
 
 	//parameter-handling methods
 	void showParameters(Sprite* s);

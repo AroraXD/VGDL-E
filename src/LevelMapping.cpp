@@ -1,5 +1,5 @@
 #include "LevelMapping.h"
-
+#include <iostream>
 
 
 LevelMapping::LevelMapping()
@@ -166,6 +166,41 @@ bool LevelMapping::deleteSpriteFromObj(int objIndex, int spriteIndex)
 		return true;
 	}
 	return false;
+}
+
+bool LevelMapping::isValidMapLine(std::string line)
+{
+	bool isInList = false;
+	std::cout << "analyzing line " << line << std::endl;
+	//heavy operation, O(mn) as far as I noticed, but what other way is there?
+	for (int i = 0; i < line.size(); i++)
+	{
+		std::cout << "Checking letter " << line[i];
+		//checks every character of the string against 
+		for (int j = 0; j < characters.size(); j++)
+		{
+			std::cout << " against " << characters[j].getMapChar() << std::endl;
+			//if character found, turn isInList bool to true, break from inner for
+			if (line[i] == characters[j].getMapChar())
+			{
+				isInList = true;
+				break;
+			}
+		}
+		//after checking character against all(or less) of the map characters, check it it had a hit.
+		if (isInList)
+		{
+			isInList = false;
+			continue;
+		}
+		else
+		{
+			//didn't find current character in list, returns false
+			return false;
+		}
+	}
+	//if it got here, all characters are ok
+	return true;
 }
 
 int LevelMapping::getWidth()

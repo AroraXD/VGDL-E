@@ -4,7 +4,7 @@
 VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, map's name is filename + 'Map'
 {
 	//for now, sets the script paths to default(save on C:/)
-	SetCurrentDirectoryA("C:\\");
+	//SetCurrentDirectoryA("C:\\");
 	setPath(fileName + ".txt");
 	setLevelPath(fileName + "Map.txt");
 
@@ -28,10 +28,10 @@ std::string VGDLParser::getPath()
 	return scriptPath;
 }
 
-//PPRETTY SURE I BROKE THIS, SO...FIX IT TOMORROW
+//TODO: PREEEEETTY SURE I BROKE THIS, SO...FIX IT TOMORROW
 void VGDLParser::setPath(std::string newPath)
 {
-	SetCurrentDirectoryA(newPath.c_str());
+	//SetCurrentDirectoryA(newPath.c_str());
 	scriptPath = newPath;
 }
 
@@ -200,6 +200,64 @@ void VGDLParser::writeInteraction(Interaction i)
 
 }
 
+void VGDLParser::writeGlobalGameParameters(GlobalGameParameters ggp)
+{
+	std::fstream VGDLScript(getPath(), std::fstream::app);
+	if (VGDLScript.is_open())
+		std::cout << "Writing game parameters..." << std::endl;
+
+	//writes all parameters and their values
+	for (int j = 0; j < ggp.getParameterList().size(); j++)
+	{
+		VGDLScript << ggp.getParameterList()[j].getParameterName() + "=" + ggp.getParameterList()[j].getParameterValue();
+		VGDLScript << " ";
+	}
+}
+
+void VGDLParser::writeLevelMapping(LevelMapping lm)
+{
+	//writes map characters, then switch to map file and write the ASCII map
+
+	writeMapCharacters(lm);
+
+	WriteASCIIMap(lm);
+
+}
+
+void VGDLParser::writeMapCharacters(LevelMapping lm)
+{
+	std::fstream VGDLScript(getPath(), std::fstream::app);
+	if (VGDLScript.is_open())
+		std::cout << "Writing map characters..." << std::endl;
+
+	VGDLScript << "\tLevelMapping\n";
+
+	//writes the map characters, followed by their associated sprites
+	for (int i = 0; i < lm.getCharacterList().size(); i++)
+	{
+		VGDLScript << "\t\t" << lm.getCharacterList()[i].getMapChar() << " > ";
+		for (int j = 0; j < lm.getCharacterList()[i].getAssociatedSprites().size(); j++)
+		{
+			VGDLScript << lm.getCharacterList()[i].getAssociatedSprites()[j] << " ";
+		}
+		VGDLScript << "\n";
+	}
+
+}
+
+void VGDLParser::WriteASCIIMap(LevelMapping lm)
+{
+	//TODO: Implement
+	std::fstream VGDLScript(getLevelPath());
+	if (VGDLScript.is_open())
+		std::cout << "Writing map ..." << std::endl;
+	//write the ascii map
+	for (int i = 0; i < lm.getMap().size(); i++)
+	{
+		VGDLScript << lm.getMap()[i] << "\n";
+	}
+}
+
 
 
 
@@ -220,7 +278,7 @@ bool VGDLParser::reloadFile(std::string filePath)
 		return false;
 }
 
-bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters ggp)
 {
 	//here is where the action happens
 	//The method writes the VGDL script from scratch, so it must place ALL of the necessary things in it
@@ -239,11 +297,11 @@ bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactio
 
 		writeInteractionSet(interactionSet);
 
-
-
 		writeTerminationSet(terminationSet);
 
 		//TODO:leave LevelMapping for last
+		writeLevelMapping(levelMapping);
+		
 
 		//VGDLScript << "\n\tLevelMapping\n";
 
@@ -265,7 +323,7 @@ bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactio
 
 }
 
-bool VGDLParser::createVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet)
+bool VGDLParser::createVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters ggp)
 {
 	//first, we must open the files
 
@@ -279,7 +337,7 @@ bool VGDLParser::createVGDLScript(SpriteSet* spriteSet, InteractionSet interacti
 	if (reloadFile(getPath()) && reloadFile(getLevelPath()))
 	{
 		//reloaded, start writing
-		return writeVGDLScript(spriteSet, interactionSet, terminationSet);
+		return writeVGDLScript(spriteSet, interactionSet, terminationSet, levelMapping, ggp);
 	}
 
 

@@ -53,7 +53,7 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 			break;
 
 		case 6:
-			workWithVGDLCreator(&vgdlP, &spriteSet,&interactionSet, &terminationSet);
+			workWithVGDLCreator(&vgdlP, &spriteSet,&interactionSet, &terminationSet, &levelMapping, &globalGameParameters);
 			break;
 		case 7:
 			//loadVGDLFile(placeholder);
@@ -222,7 +222,7 @@ void ScriptTester::workWithLevelMapping(LevelMapping * lm)
 			break;
 		case 4:
 			//todo
-			cout << "To be implemented" << endl;
+			addMap(lm);
 			break;
 		case 5:
 			cout << "Enter new map width: ";
@@ -232,10 +232,11 @@ void ScriptTester::workWithLevelMapping(LevelMapping * lm)
 			lm->resizeMap(newW, newH);
 			break;
 		case 6:
+			showLevelMapping(lm);
 			break;
 		case 7:
 			//TODO: to implement
-			cout << "To be implemented" << endl;
+			showMap(lm);
 			break;
 		case 8:
 			loop = false;
@@ -257,36 +258,45 @@ void ScriptTester::workWithGlobalGameParameters(GlobalGameParameters * ggp)
 		cout << "\nWhat do you want to do?\n1)Add a game parameter\n" <<
 			"2)Modify a game parameter\n" <<
 			"3)Delete a game parameter\n" <<
-			"4)Exit\nChoice: "
+			"4)Show Parameters\n"<<
+			"5)Exit\nChoice: "
 			<< endl;
 		cin >> choice;
 		switch (choice)
 		{
 		case 1:
+			//add ggp
+			addGlobalParameter(ggp);
 			break;
 		case 2:
+			//modify a ggp
+			modifyGlobalParameter(ggp);
 			break;
 		case 3:
+			//delete a ggp
+			deleteGlobalParameters(ggp);
 			break;
 		case 4:
+			//show all ggps
+			showGlobalParameters(ggp);
 			break;
 		case 5:
-			break;
-		case 6:
+			//break out of loop
+			loop = false;
 			break;
 		default:
 			cout << "\nInvalid choice. " << endl;
-
+			break;
 
 		}
 
 	}
 }
 
-void ScriptTester::workWithVGDLCreator(VGDLParser * vgdl, SpriteSet * ss, InteractionSet * is, TerminationSet * ts)
+void ScriptTester::workWithVGDLCreator(VGDLParser * vgdl, SpriteSet * ss, InteractionSet * is, TerminationSet * ts, LevelMapping* lm, GlobalGameParameters* ggp)
 {
 	cout << "Creating a VGDL script in the root directory of the program, named " << vgdl->getPath() << endl;
-	if (vgdl->createVGDLScript(ss, *is, *ts))
+	if (vgdl->createVGDLScript(ss, *is, *ts, *lm, *ggp))
 		cout << "Script created!\n" << endl;
 	else
 		cout << "Failed to create script...for some reason" << endl;
@@ -557,6 +567,53 @@ void ScriptTester::addGlobalParameter(GlobalGameParameters * ggp)
 	ggp->addParameter(newP);
 }
 
+void ScriptTester::addMap(LevelMapping * lm)
+{
+	if (lm->getHeight() < 1 || lm->getWidth() < 1)
+	{
+		cout << "Cannot create map; map dimensions are too small" << endl;
+		return;
+	}
+	vector <string> mapLines;
+	string line;
+	cout << "Create " << lm->getHeight() << " lines of " << lm->getWidth() <<
+			" valid map characters to populate the map(or input \"CANCEL\" to cancel the map creation): " << endl;
+	for (int i = 0; i < lm->getHeight(); i++)
+	{
+		cout << "Line " << i + 1 << ": ";
+		cin >> line;
+		cout << "Line given: " << line << endl;
+		if (line == "CANCEL")
+		{
+			//cancelling line
+			cout << "Cancelling..." << endl;
+			return;
+		}
+		cout << "Not cancelled" << endl;
+		while (!lm->isValidMapLine(line)/*<<<----giving error*/|| line.size()!=lm->getWidth())
+		{
+			cout << "Error: invalid characters/unnaceptable amount of characters.\n"<<
+				"Please reinsert the line(or input \"CANCEL\" to cancel the map creation): ";
+			cin >> line;
+			if (line == "CANCEL")
+				return;
+		}
+		//if it got to here, means user input a valid line
+		mapLines.push_back(line);
+
+
+	}
+	//once all lines are added, add whole vector to map
+	lm->clearMap();
+	lm->setMap(mapLines);
+
+}
+
+void ScriptTester::getMapFromLevelEditor()
+{
+	//TO IMPLEMENT WHEN I HAVE ENOUGH INFO ABOUT THE FRONTEND
+}
+
 //================================================================================ MODIFY METHODS ============================================================================
 
 
@@ -824,26 +881,27 @@ void ScriptTester::modifyMapCharacter(LevelMapping * lm)
 
 	cout << "Pick a map character by its index: ";
 	cin >> index;
-	MapCharacter modifiedMapChar = lm->getCharacterList()[index];
+	MapCharacter modifiedMapChar = lm->getCharacterList()[index-1];
 
 	while (loop)
 	{
-		showMapCharacter(modifiedMapChar);
-		cout << "\nWhat do you want to do?/n1)Change its character\n2)Add a sprite\n" <<
-				"3)Delete a sprite\n4)Exit\nChoice:";
+		cout << endl;
+		showMapCharacter(lm->getCharacterList()[index - 1]);
+		cout << "\nWhat do you want to do?\n1)Change its character\n2)Add a sprite\n" <<
+				"3)Delete a sprite\n4)Exit\nChoice: ";
 		cin >> choice;
 		switch (choice)
 		{
 		case 1:
 			cout << "Enter the new character for this map character: ";
 			cin >> newChar;
-			lm->modifyCharacterFromObj(index, newChar);
+			lm->modifyCharacterFromObj(index-1, newChar);
 			break;
 		case 2:
 			//adds a new sprite
 			cout << "Type the name of the sprite to be added: ";
 			cin >> newSprite;
-			if (lm->addSpriteToObj(index, newSprite))
+			if (lm->addSpriteToObj(index-1, newSprite))
 				cout << "Sprite added succesfully";
 			else
 				cout << "Error: could not add sprite";
@@ -852,7 +910,7 @@ void ScriptTester::modifyMapCharacter(LevelMapping * lm)
 			//deletes a sprite
 			cout << "Type the name of the sprite to be deleted: ";
 			cin >> newSprite;
-			if (lm->deleteSpriteFromObj(index, newSprite))
+			if (lm->deleteSpriteFromObj(index-1, newSprite))
 				cout << "Sprite deleted successfully";
 			else
 				cout << "Error: Could not delete sprite(not found, probably). Maybe you typed it wrong?";
@@ -860,7 +918,7 @@ void ScriptTester::modifyMapCharacter(LevelMapping * lm)
 			break;
 		case 4:
 			//saves modified mapChar, breaks loop
-			lm->modifyWholeObj(index, modifiedMapChar);
+			//lm->modifyWholeObj(index-1, modifiedMapChar);
 			loop = false;
 			break;
 		default:
@@ -882,7 +940,7 @@ void ScriptTester::modifyGlobalParameter(GlobalGameParameters * ggp)
 	int choice = 0;
 	string typeValue;
 	cin >> index;
-	Parameter newGlobalParameter = ggp->getParameterList()[index];
+	Parameter newGlobalParameter = ggp->getParameterList()[index-1];
 	bool loop = true;
 	while (loop)
 	{
@@ -1152,10 +1210,20 @@ void ScriptTester::showLevelMapping(LevelMapping * lm)
 	cout << "Characters: " << endl;
 	for (int i = 0; i < lm->getCharacterList().size(); i++)
 	{
+		cout << "\nChar " << i + 1 << ": \n";
 		showMapCharacter(lm->getCharacterList()[i]);
 	}
 	cout << "\n\n";
 
+}
+
+void ScriptTester::showMap(LevelMapping * lm)
+{
+	cout << "Map: " << endl;
+	for (int i = 0; i < lm->getMap().size(); i++)
+	{
+		cout << "Line "<<i+1<<": "<< lm->getMap()[i] << endl;
+	}
 }
 
 void ScriptTester::showParameters(Sprite* s)

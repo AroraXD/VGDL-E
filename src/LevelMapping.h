@@ -52,6 +52,10 @@ public:
 	bool deleteSpriteFromObj(int objIndex, int spriteIndex);
 
 
+	//ASCII map methods
+
+	//Checks if the given line is a valid line(i.e., if all the symbols given are mapped)
+	bool isValidMapLine(std::string line);//checks all characters against 
 
 
 

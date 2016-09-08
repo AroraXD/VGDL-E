@@ -30,7 +30,8 @@ TODO: start thinking about Sprite parenting(DONE)
 TODO: fix Modify and Delete Sprite methods(DONE)
 
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk(BEING DONE, GOTTA FIX IT)
-TODO: Make LevelMapping and GlobalParameters classes
+TODO: Make LevelMapping and GlobalParameters classes(DONE)
+TODO: Create validation for avatar and non-avatar map character(check letter case)
 TODO: Start "read VGDL" method
 
 //for later on...

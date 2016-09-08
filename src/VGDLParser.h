@@ -4,6 +4,8 @@
 #include "SpriteSet.h"
 #include "InteractionSet.h"
 #include "TerminationSet.h"
+#include "LevelMapping.h"
+#include "GlobalGameParameters.h"
 #include <fstream>
 #include <windows.h>
 
@@ -37,10 +39,14 @@ public:
 	void writeTermination(Termination t);
 	void writeInteractionSet(InteractionSet is);
 	void writeInteraction(Interaction i);
+	void writeGlobalGameParameters(GlobalGameParameters ggp);
+	void writeLevelMapping(LevelMapping lm);
+	void writeMapCharacters(LevelMapping lm);
+	void WriteASCIIMap(LevelMapping lm);
 
 	bool reloadFile(std::string filePath);
-	bool writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);
-	bool createVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet);//creates a text file in the path indicated, and builds the VGDL script in it
+	bool writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters ggp);
+	bool createVGDLScript(SpriteSet* spriteSet, InteractionSet interactionSet, TerminationSet terminationSet, LevelMapping levelMapping, GlobalGameParameters ggp);//creates a text file in the path indicated, and builds the VGDL script in it
 
 	//VGDL Read methods
 	void readIntoSpriteSet(std::string filePath, SpriteSet* ss);//reads file and writes a SpriteSet based on the contents of it
