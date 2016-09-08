@@ -212,6 +212,7 @@ void VGDLParser::writeGlobalGameParameters(GlobalGameParameters ggp)
 		VGDLScript << ggp.getParameterList()[j].getParameterName() + "=" + ggp.getParameterList()[j].getParameterValue();
 		VGDLScript << " ";
 	}
+	VGDLScript << "\n";
 }
 
 void VGDLParser::writeLevelMapping(LevelMapping lm)
@@ -290,8 +291,10 @@ bool VGDLParser::writeVGDLScript(SpriteSet* spriteSet, InteractionSet interactio
 	{
 		//does everything
 		std::cout << "File Open. Begin writing..." << std::endl;
-		VGDLScript << "BasicGame\n";//TODO: need possible game parameters
+		VGDLScript << "BasicGame ";//TODO: need possible game parameters
 		VGDLScript.close();//can close here, I guess
+
+		writeGlobalGameParameters(ggp);
 
 		writeSpriteSet(spriteSet);
 

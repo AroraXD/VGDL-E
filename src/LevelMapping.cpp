@@ -171,15 +171,15 @@ bool LevelMapping::deleteSpriteFromObj(int objIndex, int spriteIndex)
 bool LevelMapping::isValidMapLine(std::string line)
 {
 	bool isInList = false;
-	std::cout << "analyzing line " << line << std::endl;
+	//std::cout << "analyzing line " << line << std::endl;
 	//heavy operation, O(mn) as far as I noticed, but what other way is there?
 	for (int i = 0; i < line.size(); i++)
 	{
-		std::cout << "Checking letter " << line[i];
+		//std::cout << "Checking letter " << line[i];
 		//checks every character of the string against 
 		for (int j = 0; j < characters.size(); j++)
 		{
-			std::cout << " against " << characters[j].getMapChar() << std::endl;
+			//std::cout << " against " << characters[j].getMapChar() << std::endl;
 			//if character found, turn isInList bool to true, break from inner for
 			if (line[i] == characters[j].getMapChar())
 			{

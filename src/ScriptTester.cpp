@@ -586,10 +586,8 @@ void ScriptTester::addMap(LevelMapping * lm)
 		if (line == "CANCEL")
 		{
 			//cancelling line
-			cout << "Cancelling..." << endl;
 			return;
 		}
-		cout << "Not cancelled" << endl;
 		while (!lm->isValidMapLine(line)/*<<<----giving error*/|| line.size()!=lm->getWidth())
 		{
 			cout << "Error: invalid characters/unnaceptable amount of characters.\n"<<

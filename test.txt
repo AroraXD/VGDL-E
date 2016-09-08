@@ -1,11 +1,6 @@
-BasicGame
-	SpriteSet
+BasicGame power=divine hellow=een 	SpriteSet
 
 	InteractionSet
 
 	TerminationSet
 	LevelMapping
-		m > monster 
-		w > wall 
-		f > floor 
-		a > avatar 
