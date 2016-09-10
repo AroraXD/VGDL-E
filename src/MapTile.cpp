@@ -12,12 +12,13 @@ MapTile::MapTile()
 MapTile::~MapTile()
 {
 }
+ 
 
-
-MapTile::MapTile(int x, int y, ofImage* s): posX(x), posY(y), sprite(s)
+MapTile::MapTile(int x, int y, ofImage s): posX(x), posY(y), sprite(s)
 {
 	SpriteLoaded = true;
-	sprite->getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	//sprite->getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	sprite.resize(width * 2, height * 2);
 }
 
 MapTile::MapTile(int x, int y, int w, int h) : posX(x), posY(y), width(w), height(h)
@@ -30,25 +31,26 @@ void MapTile::draw()
 	if(SpriteLoaded)
 	{ 
 		//todo make sure it is centered
-		sprite->draw(posX,posY);
-
+		ofSetColor(255);
+		sprite.draw(posX-width,posY-height);
 	}
 	else
 	{
+		ofSetColor(200,200);
 		ofDrawCircle(posX, posY, MIN(width, height));
 	}
 }
 
-void MapTile::setSprite(ofImage* s)
+void MapTile::setSprite(ofImage s)
 {
-	sprite = s;
-	sprite->getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
-	sprite->resize(width,height);
+	sprite = s; 
+	//sprite->getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+	sprite.resize(width*2,height*2);
 }
 
 void MapTile::resize(int w, int h)
 {
 	width = w;
 	height = h;
-	sprite->resize(width, height);
+	sprite.resize(width*2, height*2);
 }

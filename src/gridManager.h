@@ -18,7 +18,7 @@ public:
 	int mapHeight = 10;
 
 	int gridPosX = ofGetWidth()*0.5;
-	int gridPosY = ofGetHeight()*0.1;
+	int gridPosY = ofGetHeight()*0.15;
 	int gridWidth = ofGetWidth()*0.49;
 	int gridHeight = ofGetHeight()*0.6;
 

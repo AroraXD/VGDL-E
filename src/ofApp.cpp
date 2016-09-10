@@ -13,7 +13,6 @@ void ofApp::setup(){
 
 	text = "code goes here";
 
-	testSprite.loadDraggableImage("test.png");
 	//testSprite.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
 }
 
@@ -29,40 +28,29 @@ void ofApp::draw(){
 
 	ofSetColor(200,200,200,200);
 
-
-	//draws the gui in the top left
-	gui.draw();
+	//draws the of gui in the top left
+	//gui.draw();
 
 	//play button
 	ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
 
-	//asset select 
-	ofDrawRectangle(ofGetWidth()*0, ofGetHeight()*0.8, ofGetWidth(), ofGetHeight()*0.2);
-	ofDrawRectangle(10, 650, 50, 50);
-
 	//game map/grid
 	grid.draw();
 	
-
 	//code/flowchart stuff
+	//inspector
+	inspector.draw();
 	ofPushMatrix();
-	ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
-	drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);
+	//drawText(ofGetWidth()*0.01, ofGetHeight()*0.2);//todo move text input code into inspector class
 	ofPopMatrix();
-
 
 	//highlights closest gridtile to the mouse
 	grid.highlightNearestTile(mouseX, mouseY);
 
-
 	ofSetColor(255);
-	testSprite.draw();
 
-	//todo turn thsi into a sprite manager class
-	//sprite test
-	 //grid.getTiles()[1]->posX++; //test to see if i can change the tiles
-
-
+	//draws the sprites
+	sprites.draw();
 }
 
 //--------------------------------------------------------------
@@ -145,20 +133,22 @@ void ofApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
 
-	testSprite.mouseDragged(x,y, 50, 50);
-
+	sprites.mouseDragged(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	testSprite.mousePressed(x,y, button);
+	sprites.mousePressed(x,y,button);
+	inspector.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
 
-	//grid.setNearestTile(x, y, testSprite.img);
-
+	if (sprites.isASpriteSelected())
+	{
+		grid.setNearestTile(x, y, sprites.getCurrentSpriteImg());
+	}
 }
 
 //--------------------------------------------------------------
