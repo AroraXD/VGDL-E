@@ -1,6 +1,0 @@
-BasicGame power=divine hellow=een 	SpriteSet
-
-	InteractionSet
-
-	TerminationSet
-	LevelMapping

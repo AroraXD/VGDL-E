@@ -88,6 +88,12 @@
     <ClCompile Include="src\mapCharacter.cpp">
       <Filter>src\Backend</Filter>
     </ClCompile>
+    <ClCompile Include="src\Inspector.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpriteManager.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -197,6 +203,12 @@
     </ClInclude>
     <ClInclude Include="src\mapCharacter.h">
       <Filter>src\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Inspector.h">
+      <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpriteManager.h">
+      <Filter>src\Frontend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

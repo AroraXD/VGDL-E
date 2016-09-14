@@ -2,8 +2,9 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "draggableSprite.h"
-#include "gridManager.h"
+#include <gridManager.h>
+#include"SpriteManager.h"
+#include "Inspector.h"
 
 
 
@@ -41,7 +42,9 @@ class ofApp : public ofBaseApp{
 		ofxIntSlider mapWidth;
 		ofxIntSlider mapHeight;
 
-		draggableSprite testSprite = draggableSprite(20,620);
-
 		gridManager grid;
+
+		SpriteManager sprites;
+
+		Inspector inspector;
 };

@@ -7,13 +7,15 @@ class draggablerectangle
 	
 protected:
 	ofRectangle* draggableBounds;
-	bool isBeingDragged;
 
 	bool isHovered(float x, float y);
 
 public:
 	draggablerectangle();
 	~draggablerectangle();
+
+	bool isBeingDragged;
+
 
 	int posX;
 	int posY;

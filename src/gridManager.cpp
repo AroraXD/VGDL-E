@@ -45,14 +45,14 @@ void gridManager::setNearestTile(int x,int y,  ofImage image)
 
 	for (int i = 0; i < gridTiles.size(); i++)
 	{
-		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist && !gridTiles[i].SpriteLoaded)
+		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist)
 		{
 			nearestTile = i;
 			nearestTileDist = ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY);
 		}
 	}
 
-	gridTiles[nearestTile].setSprite(&image);
+	gridTiles[nearestTile].setSprite(image);
 	gridTiles[nearestTile].SpriteLoaded = true;
 }
 
@@ -63,13 +63,15 @@ void gridManager::highlightNearestTile(int x, int y)
 
 	for (int i = 0; i < gridTiles.size(); i++)
 	{
-		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist && !gridTiles[i].SpriteLoaded)
+		if (ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY) < nearestTileDist)
 		{
 			nearestTile = i;
 			nearestTileDist = ofDist(x, y, gridTiles[i].posX, gridTiles[i].posY);
 		}
 	}
-
+	ofSetColor(25, 100);
 	ofDrawCircle(gridTiles[nearestTile].posX, gridTiles[nearestTile].posY, 20);
 }
 
+//todo
+//make a reize function

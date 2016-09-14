@@ -194,6 +194,7 @@
     <ClCompile Include="src\draggableSprite.cpp" />
     <ClCompile Include="src\GlobalGameParameters.cpp" />
     <ClCompile Include="src\gridManager.cpp" />
+    <ClCompile Include="src\Inspector.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
     <ClCompile Include="src\InteractionSet.cpp" />
     <ClCompile Include="src\LevelMapping.cpp" />
@@ -206,6 +207,7 @@
     <ClCompile Include="src\ScriptTester.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Parameter.cpp" />
+    <ClCompile Include="src\SpriteManager.cpp" />
     <ClCompile Include="src\SpriteSet.cpp" />
     <ClCompile Include="src\Termination.cpp" />
     <ClCompile Include="src\TerminationSet.cpp" />
@@ -227,6 +229,7 @@
     <ClInclude Include="src\draggableSprite.h" />
     <ClInclude Include="src\GlobalGameParameters.h" />
     <ClInclude Include="src\gridManager.h" />
+    <ClInclude Include="src\Inspector.h" />
     <ClInclude Include="src\Interaction.h" />
     <ClInclude Include="src\InteractionSet.h" />
     <ClInclude Include="src\LevelMapping.h" />
@@ -240,6 +243,7 @@
     <ClInclude Include="src\ScriptTester.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Parameter.h" />
+    <ClInclude Include="src\SpriteManager.h" />
     <ClInclude Include="src\SpriteSet.h" />
     <ClInclude Include="src\Termination.h" />
     <ClInclude Include="src\TerminationSet.h" />

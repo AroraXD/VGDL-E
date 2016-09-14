@@ -16,13 +16,14 @@ public:
 		this->draggableBounds->height = this->height; 
 
 		img.loadImage(filename);
-		
-
-
 	}
+
 	void draw();
+	void draw(int x, int y);
+	void drawAtMouse();
 	bool mouseDragged(float x, float y, float width, float height);
 
+	
 
 };
 
