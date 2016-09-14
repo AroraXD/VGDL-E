@@ -27,6 +27,9 @@ public:
 
 	void workWithVGDLCreator(VGDLParser* vgdl, SpriteSet* ss, InteractionSet* is, TerminationSet* ts, LevelMapping* lm, GlobalGameParameters* ggp);
 	void loadVGDLFile(std::ofstream fileToRead);
+	void runVGDLGame(VGDLParser vgdlp);
+
+
 	//methods for each of the possible options when choosing one of the 5 main categories
 
 	//Option 1: Add methods, gets all the possible values and parameters of a Sprite/Termination/Interaction, and at the end saves a new obj to the list
@@ -84,8 +87,16 @@ public:
 	void showParameters(Interaction i);
 	void showGlobalParameters(GlobalGameParameters* ggp);
 
-private:
+	//get-set for variables
+	bool scriptWasLoaded();
+	void setScriptLoaded(bool sl);
 
+	bool scriptWasWritten();
+	void setScriptWritten(bool sw);
+
+private:
+	bool scriptLoaded = false;
+	bool scriptWritten = false;
 
 };
 

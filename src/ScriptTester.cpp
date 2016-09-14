@@ -29,9 +29,10 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 	int choice = 0;
 	while (loop)
 	{
-		cout << "\nWhich main segment would you like to work with now? \n1)SpriteSet\n" <<
+		cout << "\nWhich would you like to work with now? \n1)SpriteSet\n" <<
 				"2)InteractionSet \n3)TerminationSet\n"<<
-				"4)LevelMapping\n5)Global Game Parameters \n6)Write VGDL file \n7)Read VGDL File \n8)Close program\n";
+				"4)LevelMapping\n5)Global Game Parameters \n"<<
+				"6)Write VGDL file \n7)Read VGDL File \n8)Run VGDL Script\n9)Close program\n";
 		cin >> choice;
 		switch (choice)
 		{
@@ -59,6 +60,10 @@ void ScriptTester::runScriptTest(SpriteSet spriteSet, InteractionSet interaction
 			//loadVGDLFile(placeholder);
 			break;
 		case 8:
+			runVGDLGame(vgdlP);
+			break;
+		case 9:
+
 			cout << "Closing program..." << endl;
 			loop = false;
 			break;
@@ -295,9 +300,16 @@ void ScriptTester::workWithGlobalGameParameters(GlobalGameParameters * ggp)
 
 void ScriptTester::workWithVGDLCreator(VGDLParser * vgdl, SpriteSet * ss, InteractionSet * is, TerminationSet * ts, LevelMapping* lm, GlobalGameParameters* ggp)
 {
+	cout << "Give a name for the script you are about to create: ";
+	string scriptName;
+	cin >> scriptName;
+	vgdl->setFileName(scriptName);
 	cout << "Creating a VGDL script in the root directory of the program, named " << vgdl->getPath() << endl;
 	if (vgdl->createVGDLScript(ss, *is, *ts, *lm, *ggp))
+	{
 		cout << "Script created!\n" << endl;
+		setScriptWritten(true);
+	}
 	else
 		cout << "Failed to create script...for some reason" << endl;
 }
@@ -306,6 +318,26 @@ void ScriptTester::loadVGDLFile(std::ofstream fileToRead)
 {
 	//TODO
 	cout << "To be implemented" << endl;
+	//setScriptLoaded(true);
+}
+
+void ScriptTester::runVGDLGame(VGDLParser vgdlp)
+{
+	if(scriptWasLoaded()||scriptWasWritten())
+	{
+		string sysString = "java -jar vgdlRunner.jar ";//GOTTA MANUALLY ADD JAVA PATH?
+		sysString += vgdlp.getFileName();
+
+		const char* c = sysString.c_str();//...and need to make string into char* to use with system
+		system(c);//actually calls VGDL
+		//TODO: Problem: this closes the program once it ends, gotta find a way to not do so
+	}
+
+	else
+	{
+		cout << "Cannot run VGDL program, since no VGDL script was saved/loaded" << endl;
+	}
+
 }
 
 
@@ -938,7 +970,13 @@ void ScriptTester::modifyGlobalParameter(GlobalGameParameters * ggp)
 	int choice = 0;
 	string typeValue;
 	cin >> index;
+	if (index >= ggp->getParameterList().size())
+	{
+		cout << "Parameter out of bounds." << endl;
+		return;
+	}
 	Parameter newGlobalParameter = ggp->getParameterList()[index-1];
+	
 	bool loop = true;
 	while (loop)
 	{
@@ -1266,4 +1304,24 @@ void ScriptTester::showGlobalParameters(GlobalGameParameters * ggp)
 		cout << "Value: " << ggp->getParameterList()[j].getParameterValue() << endl;
 
 	}
+}
+
+bool ScriptTester::scriptWasLoaded()
+{
+	return scriptLoaded;
+}
+
+void ScriptTester::setScriptLoaded(bool sl)
+{
+	scriptLoaded = sl;
+}
+
+bool ScriptTester::scriptWasWritten()
+{
+	return scriptWritten;
+}
+
+void ScriptTester::setScriptWritten(bool sw)
+{
+	scriptWritten = sw;
 }

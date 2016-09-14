@@ -56,8 +56,9 @@ public:
 
 
 private:
-	std::string scriptPath;//holds the path to the VGDL script
+
 	std::string fileName;
+	std::string scriptPath;//holds the path to the VGDL script
 	std::string levelScriptPath;//holds the path to the VGDL level script
 
 

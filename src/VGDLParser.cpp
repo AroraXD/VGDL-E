@@ -9,8 +9,8 @@ VGDLParser::VGDLParser(std::string fileName)//filename is VGDL script's name, ma
 	setLevelPath(fileName + "Map.txt");
 
 	//then creates the files themselves
-	std::ofstream newFile(getPath());
-	std::ofstream newMapFile(getLevelPath());
+	//std::ofstream newFile(getPath());
+	//std::ofstream newMapFile(getLevelPath());
 
 	//the path will be saved and used in the future
 
@@ -52,7 +52,10 @@ std::string VGDLParser::getFileName()
 
 void VGDLParser::setFileName(std::string newFName)
 {
+	//when you set a new file name, need to set a new path name as well
 	fileName = newFName;
+	setPath(fileName + ".txt");
+	setLevelPath(fileName + "Map.txt");
 }
 
 void VGDLParser::writeSpriteSet(SpriteSet* ss)

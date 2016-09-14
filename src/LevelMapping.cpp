@@ -175,7 +175,10 @@ bool LevelMapping::isValidMapLine(std::string line)
 	//heavy operation, O(mn) as far as I noticed, but what other way is there?
 	for (int i = 0; i < line.size(); i++)
 	{
-		//std::cout << "Checking letter " << line[i];
+		//apparently, 'w' and ' ' are hard coded in the language..? If so, hard code these as well...
+		if (line[i] == 'w' || line[i] == ' ')
+			continue;
+
 		//checks every character of the string against 
 		for (int j = 0; j < characters.size(); j++)
 		{

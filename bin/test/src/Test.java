@@ -3,13 +3,12 @@ import java.util.Random;
 import core.ArcadeMachine;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Diego
- * Date: 04/10/13
- * Time: 16:29
- * This is a Java port from Tom Schaul's VGDL - https://github.com/schaul/py-vgdl
+ * User: Brian
+ * Date: 12/09/16
+ * This is a modified version of Diego's Test.java
+ * port from Tom Schaul's VGDL - https://github.com/schaul/py-vgdl, made to work with VGDL-E.
  */
-public class Test
+public class VGDLRunner
 {
 
     public static void main(String[] args)
@@ -62,8 +61,8 @@ public class Test
         else
         	gameIdx = 70;//I'll leave zelda as default because I like it
         int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
-        String game = gamesPath + games[gameIdx] + ".txt";
-        String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
+        String game = args[0] + ".txt";
+        String level1 = args[1] + "Map.txt";
 
         String recordLevelFile = generateLevelPath + games[gameIdx] + "_glvl.txt";
         String recordActionsFile = null;//"actions_" + games[gameIdx] + "_lvl" + levelIdx + "_" + seed + ".txt"; //where to record the actions executed. null if not to save.
