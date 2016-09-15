@@ -23,7 +23,9 @@ public:
 	void drawAtMouse();
 	bool mouseDragged(float x, float y, float width, float height);
 
-	
+	string name;
+	void setName(string n);
+	string getName();
 
 };
 

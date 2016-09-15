@@ -51,3 +51,13 @@ bool draggableSprite::mouseDragged(float x, float y, float width, float height) 
 	else
 		return false;
 }
+
+
+void draggableSprite::setName(string n)
+{
+	name = n;
+}
+
+string draggableSprite::getName() {
+	return name;
+}
