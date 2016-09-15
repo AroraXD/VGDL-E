@@ -20,7 +20,8 @@ SpriteManager::SpriteManager()
 		//ofLogNotice(dir.getPath(i));
 		sprites.push_back(draggableSprite(0,0));
 		sprites[i].loadDraggableImage(dir.getPath(i));
-		sprites[i].setName(dir.getPath(i));
+		sprites[i].setName(dir.getPath(i).erase(0,9));
+		cout << sprites[i].getName();
 	}
 }
 
