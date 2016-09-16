@@ -63,7 +63,8 @@ std::vector<std::string> Manager::getSpritesFromImages(std::vector<MapTile> imag
 	for (int i = 0; i < images.size(); i++)
 	{
 		//if it's a 'blank' tile, simply put 'blank' in the sprites to return and move on to the next one
-		if (images[i].getName() == "blank")
+		cout << "Image name = " << images[i].getName() << endl;
+		if (images[i].getName() == "")
 		{
 			spritesToReturn.push_back("blank");
 			continue;
@@ -92,6 +93,7 @@ std::vector<std::string> Manager::getSpritesFromImages(std::vector<MapTile> imag
 		//if it reaches end of sprite list and didn't find the associated sprite, default to a wall(w)
 		if (spritesToReturn.size() < i + 1)//after i iteractions, spritesToReturn should have i+1 items;if it doesn't, means it didn't find sprite
 		{
+			cout << "Didn't find in sprites, defaulting" << endl;
 			spritesToReturn.push_back("WALL");
 		}
 
@@ -120,7 +122,7 @@ std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites,
 		}
 
 		//likewise, if it's a WALL sprite, associate it with 'w'
-		if (sprites[i]=="WALL")
+		else if (sprites[i] == "WALL")
 		{
 			charsToReturn.push_back('w');//<<-- looks like Arufonsu-kun OwO
 			continue;

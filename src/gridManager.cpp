@@ -4,12 +4,12 @@
 
 gridManager::gridManager()
 {
-	for (int i = 0; i < mapWidth; i++)
+	for (int i = 0; i < mapHeight; i++)
 	{
-		for (int j = 0; j < mapHeight; j++)
+		for (int j = 0; j < mapWidth; j++)
 		{
-			int tempx = gridPosX + i * (gridWidth / mapWidth);
-			int tempy = gridPosY + j * (gridHeight / mapHeight);
+			int tempx = gridPosX + j * (gridWidth / mapWidth);
+			int tempy = gridPosY + i * (gridHeight / mapHeight);
 			gridTiles.push_back(MapTile(tempx+ gridsquarewidth,tempy+ gridsquareheight,gridsquarewidth,gridsquareheight));
 		}
 	}

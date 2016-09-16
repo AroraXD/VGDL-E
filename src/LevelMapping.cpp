@@ -242,9 +242,10 @@ void LevelMapping::setMap(std::vector<char> charsForMap)
 	{
 		for (int j = 0; j < width; j++)
 		{
-			std::cout << "Getting value " << (i*width + j) << std::endl;
+			std::cout << "\nGetting value " << (i*width + j) << "=" << charsForMap[i*width+j]<< std::endl;
 			tempString+=charsForMap[i*width + j];
 		}
+		//std::cout << "Current Line: " << tempString << std::endl;
 		newMap.push_back(tempString);
 		tempString = "";
 	}
