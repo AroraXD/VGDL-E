@@ -15,7 +15,7 @@ class LevelMapping
 {
 public:
 	LevelMapping();
-	LevelMapping(int width=0, int height=0);
+	LevelMapping(int width=10, int height=10);
 	~LevelMapping();
 	
 	//returns the character list
@@ -81,9 +81,8 @@ private:
 
 	std::vector<std::string> map;//holds the map itself; will be a vector of strings which will be organized like a matrix in the end
 
-	int width, height;//will hold the width and height of the ASCII map(necessary?)
-
-	//TODO: how do I save the ASCII map itself?
+	int width = 10; 
+	int height = 10;//will hold the width and height of the ASCII map(necessary?)
 
 
 
