@@ -65,8 +65,8 @@ int main() {
 	//comment the following 2 lines if you want to disable the console-based script testing
 
 
-	ScriptTester scriptTester;
-	scriptTester.runScriptTest(ss, is, ts,lm,ggp);
+	//ScriptTester scriptTester;
+	//scriptTester.runScriptTest(ss, is, ts,lm,ggp);
 	
 
 }

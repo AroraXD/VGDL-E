@@ -5,8 +5,16 @@
 #include "gridManager.h"
 #include"SpriteManager.h"
 #include "Inspector.h"
+#include "PlayButton.h"
 
-
+//backend
+#include "ScriptTester.h"
+#include "InteractionSet.h"
+#include "SpriteSet.h"
+#include "TerminationSet.h"
+#include "LevelMapping.h"
+#include "GlobalGameParameters.h"
+#include "VGDLParser.h"
 
 class ofApp : public ofBaseApp{
 
@@ -47,4 +55,6 @@ class ofApp : public ofBaseApp{
 		SpriteManager sprites;
 
 		Inspector inspector;
+
+		PlayButton Play;
 };

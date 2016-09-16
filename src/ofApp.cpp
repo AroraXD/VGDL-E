@@ -32,7 +32,12 @@ void ofApp::draw(){
 	//gui.draw();
 
 	//play button
-	ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
+	//ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
+
+	if (Play.draw())
+	{
+		//run the code
+	}
 
 	//game map/grid
 	grid.draw();

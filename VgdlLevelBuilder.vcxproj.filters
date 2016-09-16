@@ -94,6 +94,9 @@
     <ClCompile Include="src\SpriteManager.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="src\PlayButton.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -208,6 +211,9 @@
       <Filter>src\Frontend</Filter>
     </ClInclude>
     <ClInclude Include="src\SpriteManager.h">
+      <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PlayButton.h">
       <Filter>src\Frontend</Filter>
     </ClInclude>
   </ItemGroup>
