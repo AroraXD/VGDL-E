@@ -34,12 +34,8 @@ TODO: Make LevelMapping and GlobalParameters classes(DONE)
 TODO: Create validation for avatar and non-avatar map character(check letter case)
 TODO: Start "read VGDL" method
 
-TODO: Find out how the apparently default 'w' and ' ' map characters work, maybe implement them from the beginning on the background
-//(as in, they are valid, they just don't show anywhere)(DONE, NEED TEST)
-
-TODO: Create method that gets the list of images from the front-end map, turns them into sprites, and then turns them into their associated ASCII char
-
-TODO: Fix the global game params, which aren't being written in the script(DONE, NEED TEST)
+TODO: Find out how the apparently default 'w' and ' ' map characters work, maybe implement them from the beginning on the background(as in, they are valid, they just don't show anywhere)
+TODO: Fix the global game params, which aren't being written in the script
 //for later on...
 TODO: check syntax rules for capitalized letters, create method for that in Manager script to (de)capitalize an input when needed.(METHODS CREATED, NEED TO PUT THEM IN CORRECT PLACES)
 */

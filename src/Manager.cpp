@@ -52,21 +52,3 @@ bool Manager::isAlphabetic(std::string input)
 	}
 	return true;
 }
-
-std::vector<std::string> Manager::getSpritesFromImages(std::vector<std::string> images)
-{
-	return std::vector<std::string>();
-}
-
-std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites)
-{
-	return std::vector<char>();
-}
-
-bool Manager::buildASCIIMapFromImageMap(std::vector<draggableSprite> mapImages)
-{
-	//TODO: Implement
-	return false;
-}
-
-
