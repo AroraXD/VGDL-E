@@ -89,6 +89,12 @@ std::vector<std::string> Manager::getSpritesFromImages(std::vector<draggableSpri
 				break;
 			}
 		}
+		//if it reaches end of sprite list and didn't find the associated sprite, default to a wall(w)
+		if (spritesToReturn.size() < i + 1)//after i iteractions, spritesToReturn should have i+1 items;if it doesn't, means it didn't find sprite
+		{
+			spritesToReturn.push_back("WALL");
+		}
+
 
 	}
 	//after this expensive thing....returns vector of sprites
@@ -110,6 +116,13 @@ std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites,
 		if (sprites[i] == "blank")
 		{
 			charsToReturn.push_back(' ');
+			continue;
+		}
+
+		//likewise, if it's a WALL sprite, associate it with 'w'
+		if (sprites[i]=="WALL")
+		{
+			charsToReturn.push_back('w');//<<-- looks like Arufonsu OwO
 			continue;
 		}
 
