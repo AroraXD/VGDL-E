@@ -84,6 +84,6 @@ class ofApp : public ofBaseApp{
 		VGDLParser* vgdlp;
 		ScriptTester scriptT;
 
-
+		void saveToFile();
 
 };

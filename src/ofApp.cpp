@@ -73,14 +73,7 @@ void ofApp::draw(){
 		{
 			isHovered = true;
 			//NEVER EEEEEVER AGAIN enter this
-			m->buildASCIIMapFromImageMap(grid.gridTiles, ss, lm);
-			scriptT.showMap(lm);
-			if (vgdlp->createVGDLScript(ss, *is, *ts, *lm, *ggp))
-			{
-				cout << "Script created!\n" << endl;
-			}
-			else
-				cout << "Failed to create script...for some reason" << endl;
+			saveToFile();
 		}
 	}
 
@@ -239,4 +232,15 @@ void ofApp::drawText(int x,int y) {
 	ofSetLineWidth(3.0f);
 	ofLine(cursorx * 8 + 10, 13.7*cursory, cursorx * 8 + 10, 10 + 13.7*cursory);
 	ofPopStyle();
+}
+
+void ofApp::saveToFile() {
+	m->buildASCIIMapFromImageMap(grid.gridTiles, ss, lm);
+	scriptT.showMap(lm);
+	if (vgdlp->createVGDLScript(ss, *is, *ts, *lm, *ggp))
+	{
+		cout << "Script created!\n" << endl;
+	}
+	else
+		cout << "Failed to create script...for some reason" << endl;
 }
