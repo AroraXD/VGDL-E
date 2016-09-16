@@ -5,7 +5,9 @@ class PlayButton
 {
 public:
 
-	bool draw();
+	PlayButton();
+
+	bool draw(string text);
 
 	int posx = ofGetWidth()*0.4;
 	int posy = ofGetHeight()*0.01;
@@ -13,4 +15,7 @@ public:
 	int height = ofGetHeight()*0.05;
 
 	void resize();
+
+	ofTrueTypeFont font;
+
 };

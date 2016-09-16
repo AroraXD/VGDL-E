@@ -64,7 +64,7 @@ void ofApp::draw(){
 	//play button
 	//ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
 
-	if (Play.draw())
+	if (Button.draw("Save"))
 	{
 		//run the code
 		//cout << "Test" << endl;
