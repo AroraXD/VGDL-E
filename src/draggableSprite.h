@@ -1,7 +1,7 @@
 #pragma once
 #include "draggableRectangle.h"
-class draggableSprite :
-	public draggablerectangle, public ofImage
+
+class draggableSprite : public draggablerectangle, public ofImage
 {
 public:
 	draggableSprite();

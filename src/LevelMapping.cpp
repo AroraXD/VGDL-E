@@ -233,6 +233,25 @@ void LevelMapping::setMap(std::vector<std::string> newMap)
 	map = newMap;
 }
 
+void LevelMapping::setMap(std::vector<char> charsForMap)
+{
+	
+	std::vector<std::string> newMap;
+	std::string tempString="";
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			std::cout << "Getting value " << (i*width + j) << std::endl;
+			tempString+=charsForMap[i*width + j];
+		}
+		newMap.push_back(tempString);
+		tempString = "";
+	}
+	setMap(newMap);
+}
+
+
 std::vector<std::string> LevelMapping::getMap()
 {
 	return map;

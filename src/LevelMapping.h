@@ -65,7 +65,8 @@ public:
 	int getHeight();
 	void setHeight(int h);
 
-	void setMap(std::vector<std::string> newMap);//sets the new map
+	void setMap(std::vector<std::string> newMap);//sets the new map, line by line
+	void setMap(std::vector<char> charsForMap);//sets the new map, char by char, based on the width and height
 	std::vector<std::string> getMap();//returns a copy of the map
 	bool modifyMapLine(int line, std::string newMapLine);//modifies map line for a new map line
 	void clearMap();//clears current map vector
