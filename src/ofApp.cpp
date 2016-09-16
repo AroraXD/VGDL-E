@@ -147,7 +147,7 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 	if (sprites.isASpriteSelected())
 	{
-		grid.setNearestTile(x, y, sprites.getCurrentSpriteImg());
+		grid.setNearestTile(x, y, sprites.getCurrentSpriteImg(), sprites.getCurrentSpriteName());
 	}
 }
 

@@ -86,6 +86,16 @@ ofImage SpriteManager::getCurrentSpriteImg() {
 	return NULL;
 }
 
+string SpriteManager::getCurrentSpriteName() {
+
+	for (int i = 0; i < sprites.size(); i++)
+	{
+		if (sprites[i].isBeingDragged)
+			return sprites[i].getName();
+	}
+	return NULL;
+}
+
 bool SpriteManager::isASpriteSelected()
 {
 	for (int i = 0; i < sprites.size(); i++)

@@ -25,6 +25,10 @@ public:
 	bool SpriteLoaded; //if the tile currently has a sprite or not
 
 	void resize(int w, int h);
+
+	string name;
+	void setName(string s);
+	string getName();
 };
 
  

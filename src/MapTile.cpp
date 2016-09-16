@@ -6,6 +6,7 @@ MapTile::MapTile()
 	posX = 0;
 	posY = 0;
 	SpriteLoaded = false;
+	name = "blank";
 }
 
 
@@ -53,4 +54,14 @@ void MapTile::resize(int w, int h)
 	width = w;
 	height = h;
 	sprite.resize(width*2, height*2);
+}
+
+string MapTile::getName()
+{
+	return name;
+}
+
+void MapTile::setName(string s)
+{
+	name = s;
 }

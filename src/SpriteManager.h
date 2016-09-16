@@ -17,6 +17,7 @@ public:
 	void mousePressed(int x, int y, int button);
 
 	ofImage getCurrentSpriteImg();
+	string getCurrentSpriteName();
 
 	bool isASpriteSelected();
 };

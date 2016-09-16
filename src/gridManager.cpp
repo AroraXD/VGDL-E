@@ -38,7 +38,7 @@ vector<MapTile>* gridManager::getTiles() {
 }
 */
 
-void gridManager::setNearestTile(int x,int y,  ofImage image)
+void gridManager::setNearestTile(int x, int y, ofImage image, string name)
 {
 	int nearestTile = NULL;
 	float nearestTileDist = 999;
@@ -54,6 +54,7 @@ void gridManager::setNearestTile(int x,int y,  ofImage image)
 
 	gridTiles[nearestTile].setSprite(image);
 	gridTiles[nearestTile].SpriteLoaded = true;
+	gridTiles[nearestTile].setName(name);
 }
 
 void gridManager::highlightNearestTile(int x, int y)

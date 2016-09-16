@@ -27,7 +27,7 @@ public:
 	
 	//vector<MapTile>* getTiles();
 
-	void setNearestTile(int x, int y, ofImage image);
+	void setNearestTile(int x, int y, ofImage image, string name);
 
 	void highlightNearestTile(int x, int y);
 
