@@ -1,0 +1,7 @@
+BasicGame 
+	SpriteSet
+
+	InteractionSet
+
+	TerminationSet
+	LevelMapping

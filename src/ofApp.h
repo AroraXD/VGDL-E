@@ -69,7 +69,7 @@ class ofApp : public ofBaseApp{
 
 		Inspector inspector;
 
-		PlayButton Play;
+		PlayButton Button;
 
 
 		bool isHovered = false;
