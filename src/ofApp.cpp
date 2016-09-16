@@ -1,5 +1,35 @@
 #include "ofApp.h"
 
+
+ofApp::ofApp() {
+	cout << "Called constructor" << endl;
+	//Creates the new Sprite, Termination and Interaction Sets, LevelMapping and GlobalGameParameter objects
+	ss = new SpriteSet();
+	is = new InteractionSet();
+	ts = new TerminationSet();
+	lm = new LevelMapping(10,10);
+	ggp = new GlobalGameParameters();
+
+	m = new Manager();
+	vgdlp = new VGDLParser("integrationTest");
+
+}
+
+ofApp::~ofApp() {
+	cout << "Called destructor" << endl;
+	delete ss;
+	delete is;
+	delete ts;
+	delete lm;
+	delete ggp;
+
+	delete m;
+	delete vgdlp;
+
+}
+
+
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	
@@ -37,6 +67,21 @@ void ofApp::draw(){
 	if (Play.draw())
 	{
 		//run the code
+		//cout << "Test" << endl;
+		//dumbass one-time button
+		if (!isHovered)
+		{
+			isHovered = true;
+			//NEVER EEEEEVER AGAIN enter this
+			m->buildASCIIMapFromImageMap(grid.gridTiles, ss, lm);
+			scriptT.showMap(lm);
+			if (vgdlp->createVGDLScript(ss, *is, *ts, *lm, *ggp))
+			{
+				cout << "Script created!\n" << endl;
+			}
+			else
+				cout << "Failed to create script...for some reason" << endl;
+		}
 	}
 
 	//game map/grid

@@ -1,5 +1,6 @@
 #pragma once
 
+//frontend
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "gridManager.h"
@@ -15,13 +16,22 @@
 #include "LevelMapping.h"
 #include "GlobalGameParameters.h"
 #include "VGDLParser.h"
+#include "Manager.h"
+#include "ScriptTester.h"
 
 class ofApp : public ofBaseApp{
 
 	public:
+
+		ofApp();
+		~ofApp();
+
 		void setup();
 		void update();
 		void draw();
+
+
+
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -35,6 +45,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+
+
+
 		ofTrueTypeFont font;
 		ofxPanel gui;
 
@@ -57,4 +70,20 @@ class ofApp : public ofBaseApp{
 		Inspector inspector;
 
 		PlayButton Play;
+
+
+		bool isHovered = false;
+
+		//pointers that will hold the necessary backend classes
+		SpriteSet* ss;
+		TerminationSet* ts;
+		InteractionSet* is;
+		LevelMapping* lm;
+		GlobalGameParameters* ggp;
+		Manager* m;
+		VGDLParser* vgdlp;
+		ScriptTester scriptT;
+
+
+
 };

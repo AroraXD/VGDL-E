@@ -54,7 +54,7 @@ bool Manager::isAlphabetic(std::string input)
 }
 
 
-std::vector<std::string> Manager::getSpritesFromImages(std::vector<draggableSprite> images, SpriteSet* ss)
+std::vector<std::string> Manager::getSpritesFromImages(std::vector<MapTile> images, SpriteSet* ss)
 {
 	//for EACH image in the vector, we will need to check it against the sprites, and get the sprite associated with that img(img or stype?)
 	std::vector<std::string> spritesToReturn;
@@ -122,7 +122,7 @@ std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites,
 		//likewise, if it's a WALL sprite, associate it with 'w'
 		if (sprites[i]=="WALL")
 		{
-			charsToReturn.push_back('w');//<<-- looks like Arufonsu OwO
+			charsToReturn.push_back('w');//<<-- looks like Arufonsu-kun OwO
 			continue;
 		}
 
@@ -156,7 +156,7 @@ std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites,
 
 
 
-bool Manager::buildASCIIMapFromImageMap(std::vector<draggableSprite> mapImages, SpriteSet* ss, LevelMapping* lm)
+bool Manager::buildASCIIMapFromImageMap(std::vector<MapTile> mapImages, SpriteSet* ss, LevelMapping* lm)
 {
 	//TODO: Implement
 

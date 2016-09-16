@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-#include "draggableSprite.h"
+#include "MapTile.h"
 
 
 
@@ -34,13 +34,13 @@ public:
 	static bool isAlphabetic(std::string input);//check if input is alphabetic, i.e., if all chars in it are letters
 
 	//Receives the list of images from the front-end, transforms that into a list of the associated sprites.
-	static std::vector<std::string> getSpritesFromImages(std::vector<draggableSprite> images, SpriteSet* ss);
+	static std::vector<std::string> getSpritesFromImages(std::vector<MapTile> images, SpriteSet* ss);
 
 	//Receives the list of sprites, and returns the characters associated with each sprite.
 	static std::vector<char> getCharsFromSprites(std::vector<std::string> sprites, LevelMapping* lm);
 
 	//receives the Image map from the front end, transforms it into a map of ASCII characters, saves it into levelMapping
-	static bool buildASCIIMapFromImageMap(std::vector<draggableSprite> mapImages, SpriteSet* ss, LevelMapping* lm);
+	static bool buildASCIIMapFromImageMap(std::vector<MapTile> mapImages, SpriteSet* ss, LevelMapping* lm);
 
 };
 
