@@ -8,7 +8,7 @@ SpriteManager::SpriteManager()
 
 	//code from http://openframeworks.cc/documentation/utils/ofDirectory/
 	//some path, may be absolute or relative to bin/data
-	string path = "/sprites";
+	string path = "sprites";
 	ofDirectory dir(path);
 	//only show png files
 	dir.allowExt("png");
@@ -20,8 +20,8 @@ SpriteManager::SpriteManager()
 		//ofLogNotice(dir.getPath(i));
 		sprites.push_back(draggableSprite(0,0));
 		sprites[i].loadDraggableImage(dir.getPath(i));
-		sprites[i].setName(dir.getPath(i).erase(0,9));
-		cout << sprites[i].getName();
+		sprites[i].setName(dir.getPath(i).erase(0,8));
+		//cout << sprites[i].getName();
 	}
 }
 
