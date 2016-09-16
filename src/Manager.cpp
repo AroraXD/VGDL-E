@@ -62,6 +62,13 @@ std::vector<std::string> Manager::getSpritesFromImages(std::vector<draggableSpri
 	bool foundCurrentSprite = false;
 	for (int i = 0; i < images.size(); i++)
 	{
+		//if it's a 'blank' tile, simply put 'blank' in the sprites to return and move on to the next one
+		if (images[i].getName() == "blank")
+		{
+			spritesToReturn.push_back("blank");
+			continue;
+		}
+
 		for (int j = 0; j < spriteList.size(); j++)
 		{
 			for (int k = 0; k < spriteList[j]->getParameterList().size(); k++)
@@ -98,6 +105,14 @@ std::vector<char> Manager::getCharsFromSprites(std::vector<std::string> sprites,
 
 	for (int i = 0; i < sprites.size(); i++)
 	{
+
+		//if the current sprite is a "blank" sprite, associate it with floor(by default, it seems to be ' '... ?) and move on to next one
+		if (sprites[i] == "blank")
+		{
+			charsToReturn.push_back(' ');
+			continue;
+		}
+
 		//for each sprite, compare it against every map character
 		for (int j = 0; j < mapchars.size(); j++)
 		{
