@@ -214,6 +214,7 @@ C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(Add
     <ClCompile Include="src\GlobalGameParameters.cpp" />
     <ClCompile Include="src\gridManager.cpp" />
     <ClCompile Include="src\Inspector.cpp" />
+    <ClCompile Include="src\InspectorTerminationSet.cpp" />
     <ClCompile Include="src\Interaction.cpp" />
     <ClCompile Include="src\InteractionSet.cpp" />
     <ClCompile Include="src\LevelMapping.cpp" />
@@ -271,6 +272,7 @@ C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(Add
     <ClInclude Include="src\GlobalGameParameters.h" />
     <ClInclude Include="src\gridManager.h" />
     <ClInclude Include="src\Inspector.h" />
+    <ClInclude Include="src\InspectorTerminationSet.h" />
     <ClInclude Include="src\Interaction.h" />
     <ClInclude Include="src\InteractionSet.h" />
     <ClInclude Include="src\LevelMapping.h" />

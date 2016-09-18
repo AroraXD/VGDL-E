@@ -44,10 +44,13 @@ void ofApp::setup(){
 	text = "code goes here";
 
 	//testSprite.getTextureReference().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
+	inspector.update();
 
 }
 
@@ -98,12 +101,13 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	typeKey(key);
+	//typeKey(key);
 }
 
 //todo add tab key support 
 void ofApp::typeKey(int key) {
 	//add charachter
+	/*
 	if (key >= 32 && key <= 126) {
 		text.insert(text.begin() + position, key);
 		position++;
@@ -146,6 +150,7 @@ void ofApp::typeKey(int key) {
 			cursorx++;
 		}
 	}
+	*/
 }
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){

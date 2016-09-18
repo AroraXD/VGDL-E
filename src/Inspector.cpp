@@ -12,6 +12,20 @@ Inspector::~Inspector()
 {
 }
 
+void Inspector::update()
+{
+	if (tab == 0) {
+
+	}
+	else if (tab == 1) {
+		TerminationSet.update();
+	}
+	else if (tab == 2) {
+
+	}
+
+}
+
 void Inspector::draw()
 {
 	ofSetColor(200, 200);
@@ -38,6 +52,7 @@ void Inspector::draw()
 	{
 		ofSetColor(220, 200);
 		ofDrawRectangle(ofGetWidth()*0.01, ofGetHeight()*0.2, ofGetWidth()*0.45, ofGetHeight()*0.55);
+		TerminationSet.draw();
 	}
 	else if (tab == 2)
 	{
