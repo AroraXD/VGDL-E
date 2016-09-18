@@ -77,8 +77,8 @@
     <TargetName>$(ProjectName)_debug</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <IncludePath>C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(IncludePath)</IncludePath>
-    <SourcePath>C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(SourcePath)</SourcePath>
+    <IncludePath>$(OF_ROOT)\addons\ofxGui\src;C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(IncludePath)</IncludePath>
+    <SourcePath>$(OF_ROOT)\addons\ofxGui\src;C:\Users\BConfessor\Documents\openFrameworks\apps\myApps\VGDLGUI\src;C:\Users\yuv3s\Documents\openFrameworks\apps\myApps\VGDLGUI\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
@@ -97,13 +97,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -122,15 +122,15 @@ C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(Add
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -147,13 +147,13 @@ C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(Add
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -175,13 +175,13 @@ C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(Add
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
-C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\BConfessor\Documents\openframeworks\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>

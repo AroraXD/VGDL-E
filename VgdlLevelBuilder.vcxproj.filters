@@ -97,6 +97,9 @@
     <ClCompile Include="src\PlayButton.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="src\InspectorTerminationSet.cpp">
+      <Filter>src\Frontend</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClCompile>
@@ -105,9 +108,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp">
       <Filter>addons\ofxDatGui-master\src\libs\ofxSmartFont</Filter>
-    </ClCompile>
-    <ClCompile Include="src\InspectorTerminationSet.cpp">
-      <Filter>src\Frontend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,25 +130,25 @@
       <UniqueIdentifier>{5b1e4993-a0a6-40c6-a93b-83068c5efb54}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master">
-      <UniqueIdentifier>{1ca12293-04e9-4f3c-850e-8fcf23bccaa5}</UniqueIdentifier>
+      <UniqueIdentifier>{eaa43f75-59f7-4ec0-8878-660fb51f00c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src">
-      <UniqueIdentifier>{d7a0e93d-dc99-46d9-8414-19e1e89f4953}</UniqueIdentifier>
+      <UniqueIdentifier>{07890dc1-26d0-4623-a694-5b2627466f80}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src\components">
-      <UniqueIdentifier>{a3e6184b-aea3-4dc3-81f6-0882ecc0fb75}</UniqueIdentifier>
+      <UniqueIdentifier>{2035ffd7-0207-4199-abaa-31c720617ed7}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src\core">
-      <UniqueIdentifier>{eb2aff1c-7c1e-44f6-b589-255ae3692040}</UniqueIdentifier>
+      <UniqueIdentifier>{e65a940f-e00b-4829-8af3-2eeec608a87c}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src\libs">
-      <UniqueIdentifier>{0d948bdb-8aa2-4ad7-96ba-4782fe10c094}</UniqueIdentifier>
+      <UniqueIdentifier>{d8694a71-1664-4c3d-a427-9915f157aa9f}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src\libs\ofxSmartFont">
-      <UniqueIdentifier>{7d0ca3da-b29b-4f0f-b9a7-2732ddd1c27a}</UniqueIdentifier>
+      <UniqueIdentifier>{1bedb44a-0f27-40c1-82c3-e194825371cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxDatGui-master\src\themes">
-      <UniqueIdentifier>{562b9c30-6893-4a66-b8a2-86380493f22b}</UniqueIdentifier>
+      <UniqueIdentifier>{5e9d2369-9ba7-4e6d-9577-d28449d43dcb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +249,9 @@
     <ClInclude Include="src\PlayButton.h">
       <Filter>src\Frontend</Filter>
     </ClInclude>
+    <ClInclude Include="src\InspectorTerminationSet.h">
+      <Filter>src\Frontend</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.h">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClInclude>
@@ -311,9 +314,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\InspectorTerminationSet.h">
-      <Filter>src\Frontend</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

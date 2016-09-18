@@ -1,4 +1,2 @@
 ofxGui
 ofxDatGui-master
-ofxTextBox
-ofxTrueTypeFontUC

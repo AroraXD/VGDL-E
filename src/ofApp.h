@@ -2,7 +2,7 @@
 
 //frontend
 #include "ofMain.h"
-#include "ofxGui.h"
+#include <ofxGui.h>
 #include "gridManager.h"
 #include"SpriteManager.h"
 #include "Inspector.h"
