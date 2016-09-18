@@ -97,6 +97,15 @@
     <ClCompile Include="src\PlayButton.cpp">
       <Filter>src\Frontend</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.cpp">
+      <Filter>addons\ofxDatGui-master\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp">
+      <Filter>addons\ofxDatGui-master\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp">
+      <Filter>addons\ofxDatGui-master\src\libs\ofxSmartFont</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -116,6 +125,27 @@
     </Filter>
     <Filter Include="src\Frontend">
       <UniqueIdentifier>{5b1e4993-a0a6-40c6-a93b-83068c5efb54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master">
+      <UniqueIdentifier>{1ca12293-04e9-4f3c-850e-8fcf23bccaa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src">
+      <UniqueIdentifier>{d7a0e93d-dc99-46d9-8414-19e1e89f4953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src\components">
+      <UniqueIdentifier>{a3e6184b-aea3-4dc3-81f6-0882ecc0fb75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src\core">
+      <UniqueIdentifier>{eb2aff1c-7c1e-44f6-b589-255ae3692040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src\libs">
+      <UniqueIdentifier>{0d948bdb-8aa2-4ad7-96ba-4782fe10c094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src\libs\ofxSmartFont">
+      <UniqueIdentifier>{7d0ca3da-b29b-4f0f-b9a7-2732ddd1c27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxDatGui-master\src\themes">
+      <UniqueIdentifier>{562b9c30-6893-4a66-b8a2-86380493f22b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +245,69 @@
     </ClInclude>
     <ClInclude Include="src\PlayButton.h">
       <Filter>src\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.h">
+      <Filter>addons\ofxDatGui-master\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiControls.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiFRM.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiGroups.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiLabel.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiMatrix.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiScrollView.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiSlider.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTextInput.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTextInputField.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTimeGraph.h">
+      <Filter>addons\ofxDatGui-master\src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.h">
+      <Filter>addons\ofxDatGui-master\src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiConstants.h">
+      <Filter>addons\ofxDatGui-master\src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiEvents.h">
+      <Filter>addons\ofxDatGui-master\src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiIntObject.h">
+      <Filter>addons\ofxDatGui-master\src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.h">
+      <Filter>addons\ofxDatGui-master\src\libs\ofxSmartFont</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h">
+      <Filter>addons\ofxDatGui-master\src\themes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
+      <Filter>addons\ofxDatGui-master\src\themes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

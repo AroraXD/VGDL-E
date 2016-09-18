@@ -97,15 +97,19 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -118,8 +122,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -127,7 +136,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -139,8 +147,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -151,7 +164,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -163,8 +175,13 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>
-..\..\..\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxGui\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\components;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\core;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;
+C:\Users\yuv3s\Documents\openFrameworks\addons\ofxDatGui-master\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -174,13 +191,15 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
@@ -215,6 +234,27 @@
     <ClCompile Include="src\VGDLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiControls.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiFRM.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiGroups.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiMatrix.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiScrollView.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTextInput.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTextInputField.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\components\ofxDatGuiTimeGraph.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiEvents.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\core\ofxDatGuiIntObject.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\ofxDatGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h" />
+    <ClInclude Include="..\..\..\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
