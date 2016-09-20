@@ -21,12 +21,9 @@ TODO: fix fstream VGDL builder that's not creating the document for some reason(
 TODO: add a "modify object" option to the Sprite, Termination, Interaction menus(to add/remove parameters and etc after creation)(DONE)
 TODO: make operator= for all 3 main objects, to make life easier(OPERATOR= DONE)
 TODO: Finish 'modify' methods in script tester(DONE, NEEDS TESTING)
-
 TODO: make a method to display all parenting and children(DONE)
 TODO: fix possible problem with ofstream giving runtime error(fixed it)
 TODO: start thinking about Sprite parenting(DONE)
-
-
 TODO: fix Modify and Delete Sprite methods(DONE)
 
 TODO: figure out how to allow VGDL docs to be created anywhere within user's disk(BEING DONE, GOTTA FIX IT)
@@ -34,8 +31,9 @@ TODO: Make LevelMapping and GlobalParameters classes(DONE)
 TODO: Create validation for avatar and non-avatar map character(check letter case)
 TODO: Start "read VGDL" method
 
-TODO: Find out how the apparently default 'w' and ' ' map characters work, maybe implement them from the beginning on the background(as in, they are valid, they just don't show anywhere)
-TODO: Fix the global game params, which aren't being written in the script
+TODO: Find out how the apparently default 'w' and ' ' map characters work, maybe implement them from the beginning on the background(as in, they are valid, they just don't show anywhere)(DONE)
+TODO: Fix the global game params, which aren't being written in the script(DONE)
+TODO: Learn how to use the ofxDatGui library so it can be properly used by all the sets
 //for later on...
 TODO: check syntax rules for capitalized letters, create method for that in Manager script to (de)capitalize an input when needed.(METHODS CREATED, NEED TO PUT THEM IN CORRECT PLACES)
 */
