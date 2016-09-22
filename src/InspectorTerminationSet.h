@@ -42,13 +42,19 @@ private:
 	TerminationSet* ts;//holds the Termination Set that will be used throughout the program
 
 
+	//Buttons position variables
+	int buttonsX = 150;
+	int buttonsY = 200;
+
+
+	//Buttons
 	ofxDatGuiButton* nextButton;
 	ofxDatGuiButton* previousButton;
 	ofxDatGuiButton* saveTerminationButton;
 	ofxDatGuiButton* addNewTerminationButton;
 	
-	ofxDatGuiDropdown* type;
-	ofxDatGuiTextInput* value;
+	ofxDatGuiDropdown* type;//Holds Termination Type
+	//ofxDatGuiTextInput* value;
 
 	std::vector<ofxDatGuiDropdown*> paramType;//Type of parameter accepted by Termination
 	std::vector<ofxDatGuiTextInput*> paramValue;//Value of parameter

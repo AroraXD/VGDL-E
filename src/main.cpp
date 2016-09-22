@@ -55,7 +55,7 @@ int main() {
 	// pass in width and height too:
 
 	//uncomment the following two lines if you wish to open the OpenFrameworks windows
-	ofSetupOpenGL(1024, 768, OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(1224, 868, OF_WINDOW);			// <-------- setup the GL context
 	ofRunApp(new ofApp());
 
 

@@ -4,8 +4,10 @@
 
 InspectorTerminationSet::InspectorTerminationSet()
 {
-	type = new ofxDatGuiDropdown("Type",dt.getTerminationTypeList());
-	value = new ofxDatGuiTextInput("Value");
+
+
+	type = new ofxDatGuiDropdown("Termination Type",dt.getTerminationTypeList());
+	//value = new ofxDatGuiTextInput("Value");
 
 	//starts with one termination, always(should I...?)
 	currentTermination = 1;
@@ -16,52 +18,52 @@ InspectorTerminationSet::InspectorTerminationSet()
 	int j = 280;
 	for (int i = 0; i < 4; i++)//Creates 4 parameter values and types. They will only show depending on what's chosen in the dropdown
 	{
-		ofxDatGuiDropdown* newType = new ofxDatGuiDropdown("Type", dt.getTerminationParameterList());
-		newType->setPosition(100, j);
+		ofxDatGuiDropdown* newType = new ofxDatGuiDropdown("Parameter Type", dt.getTerminationParameterList());
+		newType->setPosition(buttonsX, j);
 		j += 30;
 		paramType.push_back(newType);
 
 		ofxDatGuiTextInput* newValue = new ofxDatGuiTextInput("Value");
-		newValue->setPosition(100, j);
+		newValue->setPosition(buttonsX, j);
 		j += 60;
 		paramValue.push_back(newValue);
 
 	}
 
 	//Setting up position of Termination Type and Value
-	type->setPosition(100, 200);
-	value->setPosition(100, 220);
+	type->setPosition(buttonsX, 200);
+	//value->setPosition(100, 220);
 }
 
 InspectorTerminationSet::InspectorTerminationSet(TerminationSet * ts)
 {
 	this->ts = ts;
-	type = new ofxDatGuiDropdown("Type", dt.getTerminationTypeList());
-	value = new ofxDatGuiTextInput("Value");
+	type = new ofxDatGuiDropdown("Termination Type", dt.getTerminationTypeList());
+	//value = new ofxDatGuiTextInput("Value");
 
 	//starts with one termination, always(should I...?)
 	currentTermination = 1;
 	numberOfTerminations = 1;
 	numberOfParametersLoaded = 4;//for now, load no parameters
 
-	int j = 300;
+	int j = buttonsY+100;
 	for (int i = 0; i < 4; i++)//Creates 4 parameter values and types. They will only show depending on what's chosen in the dropdown
 	{
-		ofxDatGuiDropdown* newType = new ofxDatGuiDropdown("Type", dt.getTerminationParameterList());
-		newType->setPosition(100, j);
+		ofxDatGuiDropdown* newType = new ofxDatGuiDropdown("Parameter Type", dt.getTerminationParameterList());
+		newType->setPosition(buttonsX, j);
 		j += 30;
 		paramType.push_back(newType);
 
 		ofxDatGuiTextInput* newValue = new ofxDatGuiTextInput("Value");
-		newValue->setPosition(100, j);
+		newValue->setPosition(buttonsX, j);
 		j += 60;
 		paramValue.push_back(newValue);
 
 	}
 
 	//Setting up position of Termination Type and Value
-	type->setPosition(100, 200);
-	value->setPosition(100, 220);
+	type->setPosition(buttonsX, buttonsY);
+	//value->setPosition(100, 220);
 
 
 }
@@ -80,13 +82,13 @@ void InspectorTerminationSet::draw() {
 		paramValue[i]->draw();
 		paramType[i]->draw();
 	}
-	value->draw();
+	//value->draw();
 	type->draw();
 
 }
 
 void InspectorTerminationSet::update() {
-	value->update();
+	//value->update();
 	type->update();
 
 	for (int i = 0; i < numberOfParametersLoaded; i++)

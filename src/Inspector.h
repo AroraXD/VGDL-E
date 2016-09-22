@@ -1,5 +1,6 @@
 #pragma once
 #include "ofmain.h"
+#include "ofxDatGui.h"
 #include "InspectorTerminationSet.h"
 
 class Inspector
@@ -11,6 +12,14 @@ public:
 	void draw();
 	void update();
 	void mousePressed(int x, int y);
+
+
+private:
+
+	ofxDatGui* mapDimensionGUI;
+	ofxDatGuiSlider* mapX, *mapY;
+	ofxDatGui* saveLoadGUI;
+	ofxDatGuiButton *save, *load, *run;
 
 	ofTrueTypeFont font;
 

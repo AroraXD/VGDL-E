@@ -4,7 +4,18 @@
 
 Inspector::Inspector()
 {
-	font.loadFont("playtime.ttf", 14);
+	font.loadFont("playtime.ttf", 16);
+	//Creates GUI for map dimensions holding
+	mapDimensionGUI = new ofxDatGui(900, 20);
+	mapX = mapDimensionGUI->addSlider("X size: ", 1, 15);
+	mapY = mapDimensionGUI->addSlider("Y size: ", 1, 15);
+
+	//Creates GUI for the save and load buttons
+	saveLoadGUI = new ofxDatGui(600, 20);
+	save=saveLoadGUI->addButton("Save Script");
+	load=saveLoadGUI->addButton("Load Script");
+	run=saveLoadGUI->addButton("Run");
+
 }
 
 
@@ -75,4 +86,9 @@ void Inspector::mousePressed(int x, int y)
 	{
 		tab = 2;
 	}
+}
+
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
+{
+	cout << e.target->getLabel() << " was clicked!" << endl;
 }
