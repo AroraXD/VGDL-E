@@ -16,6 +16,13 @@ Inspector::Inspector()
 	load=saveLoadGUI->addButton("Load Script");
 	run=saveLoadGUI->addButton("Run");
 
+
+	//starts the listeners for the button events(FOR NOW JUST ONE)
+	save->onButtonEvent(this, &Inspector::onButtonEvent);
+	load->onButtonEvent(this, &Inspector::onButtonEvent);
+	run->onButtonEvent(this, &Inspector::onButtonEvent);
+
+
 }
 
 
@@ -88,7 +95,46 @@ void Inspector::mousePressed(int x, int y)
 	}
 }
 
-void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
+void Inspector::onButtonEvent(ofxDatGuiButtonEvent e)
 {
 	cout << e.target->getLabel() << " was clicked!" << endl;
+	if (e.target == save)
+		clickedSave = true;
+	else if (e.target == load)
+		clickedLoad = true;
+	else if (e.target == run)
+		clickedRun = true;
 }
+
+bool Inspector::saveWasClicked()
+{
+	return clickedSave;
+}
+
+void Inspector::setSaveClicked(bool b)
+{
+	clickedSave = b;
+}
+
+bool Inspector::loadWasClicked()
+{
+	return clickedLoad;
+}
+
+void Inspector::setLoadClicked(bool b)
+{
+	clickedLoad = b;
+}
+
+bool Inspector::runWasClicked()
+{
+	return clickedRun;
+}
+
+void Inspector::setRunClicked(bool b)
+{
+	clickedRun = b;
+}
+
+
+

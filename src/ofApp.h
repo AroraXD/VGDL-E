@@ -9,7 +9,6 @@
 #include "PlayButton.h"
 
 //backend
-#include "ScriptTester.h"
 #include "InteractionSet.h"
 #include "SpriteSet.h"
 #include "TerminationSet.h"
@@ -45,7 +44,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-
+		void saveToFile();
+		void loadFile();//TODO: MAKE THIS METHOD ALREADY
+		void runVGDL();
 
 
 		ofTrueTypeFont font;
@@ -84,6 +85,5 @@ class ofApp : public ofBaseApp{
 		VGDLParser* vgdlp;
 		ScriptTester scriptT;
 
-		void saveToFile();
 
 };

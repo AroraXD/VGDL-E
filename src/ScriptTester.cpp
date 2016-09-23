@@ -96,7 +96,7 @@ void ScriptTester::workWithSpriteSet(SpriteSet* ss)
 			break;
 		case 2:
 			//modify sprite
-			modifySprite(ss);//NEEDS WORK, NOT MODIFYING YET SINCE WORKING WITH VECTORS IS SOMETIMES ANNOYING
+			modifySprite(ss);
 			break;
 		case 3:
 			//ask the name of the sprite to be deleted, look it up in the sprite list, return true if found name and deleted it

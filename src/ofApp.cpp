@@ -13,6 +13,7 @@ ofApp::ofApp() {
 	m = new Manager();
 	vgdlp = new VGDLParser("integrationTest");
 
+	
 }
 
 ofApp::~ofApp() {
@@ -67,17 +68,22 @@ void ofApp::draw(){
 	//play button
 	//ofDrawRectangle(ofGetWidth()*0.4,ofGetHeight()*0.01,ofGetWidth()*0.05,ofGetHeight()*0.05);
 
-	if (Button.draw("Save"))
+	if (inspector.saveWasClicked())
 	{
-		//run the code
-		//cout << "Test" << endl;
-		//dumbass one-time button
-		if (!isHovered)
-		{
-			isHovered = true;
-			//NEVER EEEEEVER AGAIN enter this
-			saveToFile();
-		}
+		saveToFile();
+		inspector.setSaveClicked(false);
+	}
+
+	else if (inspector.loadWasClicked())
+	{
+		//for now, does nothing
+		inspector.setLoadClicked(false);
+	}
+
+	else if (inspector.runWasClicked())
+	{
+		runVGDL();
+		inspector.setRunClicked(false);
 	}
 
 	//game map/grid
@@ -248,4 +254,9 @@ void ofApp::saveToFile() {
 	}
 	else
 		cout << "Failed to create script...for some reason" << endl;
+}
+
+void ofApp::runVGDL()
+{
+	scriptT.runVGDLGame(*vgdlp);
 }
