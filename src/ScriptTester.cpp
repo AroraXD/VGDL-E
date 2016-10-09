@@ -323,7 +323,8 @@ void ScriptTester::loadVGDLFile(std::ofstream fileToRead)
 
 void ScriptTester::runVGDLGame(VGDLParser vgdlp)
 {
-	if(scriptWasLoaded()||scriptWasWritten())
+	//if(scriptWasLoaded()||scriptWasWritten())//for now, always runs this
+	if(true)
 	{
 		string sysString = "java -jar vgdlRunner.jar ";//GOTTA MANUALLY ADD JAVA PATH?
 		sysString += vgdlp.getFileName();

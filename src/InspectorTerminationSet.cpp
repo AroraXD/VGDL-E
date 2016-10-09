@@ -7,8 +7,8 @@ InspectorTerminationSet::InspectorTerminationSet()
 
 
 	type = new ofxDatGuiDropdown("Termination Type",dt.getTerminationTypeList());
-	//value = new ofxDatGuiTextInput("Value");
-
+	type->onDropdownEvent(this, &InspectorTerminationSet::onDropdownEvent);
+	
 	//starts with one termination, always(should I...?)
 	currentTermination = 1;
 	numberOfTerminations = 1;
@@ -16,19 +16,23 @@ InspectorTerminationSet::InspectorTerminationSet()
 	numberOfParametersLoaded = 4;//for now, load no parameters
 
 	int j = 280;
-	for (int i = 0; i < 4; i++)//Creates 4 parameter values and types. They will only show depending on what's chosen in the dropdown
+	for (int i = 0; i < 4; i++)//Creates 4 parameter values and types, and start their events. They will only show depending on what's chosen in the dropdown
 	{
 		ofxDatGuiDropdown* newType = new ofxDatGuiDropdown("Parameter Type", dt.getTerminationParameterList());
+		newType->onDropdownEvent(this, &InspectorTerminationSet::onDropdownEvent);
 		newType->setPosition(buttonsX, j);
 		j += 30;
 		paramType.push_back(newType);
 
 		ofxDatGuiTextInput* newValue = new ofxDatGuiTextInput("Value");
+		newValue->onTextInputEvent(this, &InspectorTerminationSet::onTextInputEvent);
 		newValue->setPosition(buttonsX, j);
 		j += 60;
 		paramValue.push_back(newValue);
 
 	}
+
+
 
 	//Setting up position of Termination Type and Value
 	type->setPosition(buttonsX, 200);
@@ -102,14 +106,50 @@ void InspectorTerminationSet::onButtonEvent(ofxDatGuiButtonEvent e) {
 
 }
 
-void InspectorTerminationSet::onTextInputEvent(ofxDatGuiTextInputEvent e) {
-
-
+void InspectorTerminationSet::onTextInputEvent(ofxDatGuiTextInputEvent e)
+{
+	for (int i = 0; i < numberOfParametersLoaded; i++)
+	{
+		if (e.target == paramValue[i])
+		{
+			cout << paramValue[i]->getText() << " was written! " << endl;
+		}
+	}
 }
 
-void InspectorTerminationSet::onDropdownEvent(ofxDatGuiDropdownEvent e) {
+void InspectorTerminationSet::onDropdownEvent(ofxDatGuiDropdownEvent e) 
+{
+	//if the dropdown clicked is the Termination Type one, it changes the amount of parameters shown, and chooses the other dropdowns 
+	if (e.target == type)
+	{
+		//checks the type of type
+		if (type->getLabel() == "SpriteCounter")
+		{
+			numberOfParametersLoaded = 2;
+		}
 
+		else if (type->getLabel() == "MultiSpriteCounter")
+		{
+			numberOfParametersLoaded = 4;
 
+		}
+		else if (type->getLabel() == "TimeoutScoreCount")
+		{
+			numberOfParametersLoaded = 2;
+		}
+	}
+
+	else
+	{
+		cout << e.target->getLabel() << " was clicked!" << endl;
+		for (int i = 0; i < numberOfParametersLoaded; i++)
+		{
+			if (e.target == paramType[i])
+			{
+				cout << paramType[i]->getName() << " was chosen!" << endl;
+			}
+		}
+	}
 }
 
 void InspectorTerminationSet::addNewTermination()
@@ -125,6 +165,10 @@ void InspectorTerminationSet::clearInputs()
 }
 
 void InspectorTerminationSet::loadTermination(Termination t)
+{
+}
+
+void InspectorTerminationSet::saveCurrentTermination()
 {
 }
 

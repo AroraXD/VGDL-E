@@ -3,6 +3,7 @@
 #include "ofxDatGui.h"
 #include "DataSet.h"//to get the info about the lists
 #include <vector>
+#include <string>
 
 class InspectorTerminationSet
 {
@@ -13,6 +14,7 @@ public:
 
 	void draw();
 	void update();
+
 
 	void onButtonEvent(ofxDatGuiButtonEvent e);
 	void onTextInputEvent(ofxDatGuiTextInputEvent e);
@@ -58,6 +60,7 @@ private:
 
 	std::vector<ofxDatGuiDropdown*> paramType;//Type of parameter accepted by Termination
 	std::vector<ofxDatGuiTextInput*> paramValue;//Value of parameter
+	std::vector<std::string> paramValueString;//Value of parameter transformed in string
 
 	int currentTermination = 0;
 	int numberOfTerminations = 0;

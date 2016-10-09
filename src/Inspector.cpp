@@ -17,7 +17,7 @@ Inspector::Inspector()
 	run=saveLoadGUI->addButton("Run");
 
 
-	//starts the listeners for the button events(FOR NOW JUST ONE)
+	//starts the listeners for the button events
 	save->onButtonEvent(this, &Inspector::onButtonEvent);
 	load->onButtonEvent(this, &Inspector::onButtonEvent);
 	run->onButtonEvent(this, &Inspector::onButtonEvent);
